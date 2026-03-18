@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://basesdedatosfacil.netlify.app/sitemap.xml
