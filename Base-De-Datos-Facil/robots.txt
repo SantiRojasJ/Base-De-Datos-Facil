@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://basesdedatosfacil.netlify.app/sitemap.xml
+Sitemap: https://bddfacil.netlify.app/sitemap.xml
