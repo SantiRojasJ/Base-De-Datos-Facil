@@ -2,19 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://basesdedatosfacil.netlify.app/</loc>
+        <loc>https://bddfacil.netlify.app/</loc>
     </url>
 
     <url>
-        <loc>https://basesdedatosfacil.netlify.app/Articulos/base-de-datos-relacionales/que-es-sql.html</loc>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/que-es-sql</loc>
     </url>
 
     <url>
-        <loc>https://basesdedatosfacil.netlify.app/articulos/base-de-datos-relacionales/sql-server.html</loc>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/sql-server</loc>
     </url>
 
     <url>
-        <loc>https://basesdedatosfacil.netlify.app/Articulos/Base-de-datos-No-Relacionales /base-de-datos-NoSQL.html</loc>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/base-de-datos-nosql</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/Base-de-Datos-Documentales/MongoDB</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/Redis-BDD-clave-valor</loc>
     </url>
 
 </urlset>

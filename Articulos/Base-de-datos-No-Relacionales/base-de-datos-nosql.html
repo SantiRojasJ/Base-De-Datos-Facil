@@ -113,6 +113,57 @@
 
             <p>Por esto, la decisión entre usar SQL o NoSQL no es de "uno u otro", sino de elegir la herramienta adecuada según las necesidades específicas de cada proyecto. En muchos casos, las aplicaciones modernas utilizan ambos tipos de bases de datos en conjunto, aprovechando las fortalezas de cada una.</p>
 
+            <h2>Principales diferencias con las Bases de Datos Relacionales</h2>
+            <h3>El Teorema de CAP</h3>
+            <p>Una de las bases teóricas fundamentales que sustentan las bases de datos NoSQL es el <strong>Teorema de CAP</strong>. Este teorema establece algo importante: en un sistema de base de datos distribuida, solo podés garantizar como máximo dos de estas tres características a la vez:</p>
+
+            <ul>
+                <li><strong>Consistencia (Consistency):</strong> Todos los usuarios ven exactamente los mismos datos en el mismo momento. Si un usuario actualiza un dato, todos los demás ven ese cambio inmediatamente.</li>
+
+                <li><strong>Disponibilidad (Availability):</strong> El sistema sigue funcionando incluso si hay fallos. La base de datos permanece operativa y responde a las solicitudes, aunque alguna parte del sistema haya caído.</li>
+
+                <li><strong>Tolerancia a particiones (Partition Tolerance):</strong> El sistema puede seguir operando aunque se pierda la comunicación entre diferentes partes de la red distribuida. Si la conexión entre dos servidores se cae, cada uno sigue trabajando de forma independiente.</li>
+            </ul>
+
+            <p>Debido a esta limitación del teorema, las bases de datos NoSQL deben elegir qué combinación priorizar según sus necesidades:</p>
+
+            <ul>
+                <li><strong>Sistemas CA (Coherentes y Disponibles):</strong> Funcionan bien cuando todo está conectado, pero tienen problemas si la red se particiona en segmentos aislados.</li>
+
+                <li><strong>Sistemas CP (Coherentes y Tolerantes a particiones):</strong> Mantienen la consistencia de los datos incluso cuando hay particiones de red, pero a costa de sacrificar disponibilidad en ciertos momentos.</li>
+
+                <li><strong>Sistemas AP (Disponibles y Tolerantes a particiones):</strong> Priorizan que el sistema esté siempre disponible y funcione aunque haya particiones, pero no garantizan que todos los nodos tengan los mismos datos al mismo tiempo (consistencia eventual).</li>
+            </ul>
+
+            <h3>Propiedades ACID vs BASE</h3>
+            <p>Las bases de datos relacionales tradicionales se basan fuertemente en las propiedades <strong>ACID</strong>, que garantizan transacciones confiables y seguras. Sin embargo, NoSQL tuvo que flexibilizar o modificar algunos de estos aspectos para cumplir con los nuevos requerimientos de escalabilidad y rendimiento:</p>
+
+            <ul>
+                <li><strong>Atomicidad (Atomicity):</strong> Una transacción es todo o nada. Si una operación falla a mitad de camino, todo se deshace como si nunca hubiera ocurrido. No puede quedar "a medias".</li>
+
+                <li><strong>Consistencia (Consistency):</strong> La base de datos siempre pasa de un estado válido a otro estado válido. Antes y después de cada transacción, todos los datos cumplen con las reglas definidas.</li>
+
+                <li><strong>Aislamiento (Isolation):</strong> Aunque múltiples usuarios ejecuten transacciones al mismo tiempo, cada transacción debe comportarse como si fuera la única ejecutándose. Una transacción no debe ver los cambios parciales de otras transacciones en curso.</li>
+
+                <li><strong>Durabilidad (Durability):</strong> Una vez que una transacción se confirma exitosamente, sus cambios quedan guardados de forma permanente, incluso si hay un fallo de hardware o del sistema inmediatamente después.</li>
+            </ul>
+
+            <h3>Consistencia eventual: el gran cambio</h3>
+            <p>Un ejemplo claro de esta flexibilización es el manejo de la consistencia. En las bases de datos relacionales, mantener la consistencia total del sistema lo hace más lento, ya que implementa restricciones estrictas. Por ejemplo, si dos usuarios intentan modificar el mismo registro simultáneamente, uno debe esperar a que el otro termine.</p>
+
+            <p>En cambio, los sistemas NoSQL suelen implementar <strong>consistencia eventual</strong>. Esto significa que permiten que varios usuarios hagan cambios al mismo tiempo, y el sistema se encarga de sincronizar esos cambios poco después. Durante un breve período, diferentes nodos pueden tener versiones ligeramente distintas de los datos, pero eventualmente todos convergen al mismo estado.</p>
+
+            <p>Esta decisión favorece la velocidad y disponibilidad sobre la consistencia inmediata, lo cual es ideal para aplicaciones que manejan millones de usuarios simultáneos.</p>
+
+            <h3>Estructura flexible y sin JOINs</h3>
+            <p>Otra diferencia importante es que las bases de datos NoSQL abandonan la estructura rígida de tablas y columnas que caracteriza a las bases relacionales. En su lugar, utilizan modelos de almacenamiento más flexibles como documentos, clave-valor, grafos o columnas anchas.</p>
+
+            <p>Además, dado que manejan volúmenes masivos de datos distribuidos, generalmente <strong>no permiten operaciones JOIN</strong> entre diferentes conjuntos de datos. Los JOINs, aunque útiles, son extremadamente costosos en términos de rendimiento cuando trabajás con datos distribuidos en múltiples servidores. Por eso, en NoSQL se prefiere duplicar datos cuando es necesario en lugar de relacionarlos mediante JOINs.</p>
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
             <div class="ad-in-content">
                 <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
             </div>
@@ -120,6 +171,10 @@
             <div style="margin-top: 3rem; text-align: center;">
                 <a href="../base-de-datos-relacionales/que-es-sql.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
                     ← Artículo Anterior: ¿Qué es SQL?
+                </a>
+
+                <a href="../Base-de-datos-No-Relacionales/Base-de-Datos-Documentales/MongoDB.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    Articulo Siguiente : MongoDB
                 </a>
             </div>
         </div>
