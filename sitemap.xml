@@ -25,4 +25,29 @@
         <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html</loc>
     </url>
 
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/neo4j.html</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/cassandra.html</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/que-es-tsql.html</loc>
+    </url>
+
+
+    <url>
+        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/Legal/Privacidad.html</loc>
+    </url>
+
+    <url>
+        <loc>https://bddfacil.netlify.app/Legal/Terminos.html</loc>
+    </url>
+
 </urlset>
