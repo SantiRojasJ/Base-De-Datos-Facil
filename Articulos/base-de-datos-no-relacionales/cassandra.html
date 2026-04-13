@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Básico -->
+    <title>¿Qué es Cassandra? Base de Datos Columnar NoSQL | BDD Facil</title>
+    <meta name="description" content="Descubre Apache Cassandra, la base de datos columnar distribuida ideal para Big Data. Aprende cómo funciona, sus ventajas y cuándo usarla.">
+    <meta name="keywords" content="Cassandra, base de datos columnar, NoSQL, Apache Cassandra, Big Data, bases de datos distribuidas">
+    <meta name="author" content="BDD Facil">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="¿Qué es Cassandra? Base de Datos Columnar NoSQL">
+    <meta property="og:description" content="Aprende Apache Cassandra, la base de datos NoSQL ideal para manejar volúmenes masivos de datos distribuidos.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bddfacil.netlify.app/Articulos/Base-de-datos-No-Relacionales/Cassandra.html">
+    <meta property="og:site_name" content="BDD Facil">
+
+    <!-- Article Meta -->
+    <meta property="article:published_time" content="2026-04-04">
+    <meta property="article:author" content="BDD Facil">
+    <meta property="article:section" content="NoSQL Columnar">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bddfacil.netlify.app/Articulos/Base-de-datos-No-Relacionales/Cassandra.html">
+
+    <link rel="stylesheet" href="../../css/Styles.css">
+</head>
+<body>
+<main class="main-content">
+    <a href="../../Index.html" class="back-button">← Volver al inicio</a>
+
+    <article>
+        <header class="article-header">
+            <span class="article-category">Bases de Datos Columnares</span>
+            <h1 class="article-title">¿Qué es Apache Cassandra?</h1>
+            <div class="article-meta">
+                <span>Publicado: Abril 2026</span> • <span>Lectura: 12 min</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <h2>Introducción a Cassandra</h2>
+            <p><strong>Apache Cassandra</strong> es una base de datos NoSQL de tipo columnar, diseñada específicamente para manejar volúmenes masivos de datos distribuidos en múltiples servidores. A diferencia de las bases de datos relacionales que organizan la información en filas y columnas tradicionales, Cassandra almacena los datos por columnas, lo que la hace extremadamente eficiente para consultas que involucran grandes cantidades de información.</p>
+
+            <p>Desarrollada originalmente por Facebook y ahora mantenida por la Apache Software Foundation, Cassandra es una de las bases de datos NoSQL más populares del mundo, utilizada por empresas como Netflix, Instagram, Twitter y Spotify.</p>
+
+            <h2>¿Qué son las Bases de Datos Columnares?</h2>
+            <p>Para entender Cassandra, primero necesitamos entender qué es una base de datos columnar. En lugar de guardar los datos organizados por filas completas (como en SQL), las bases de datos columnares agrupan y almacenan los datos por columnas.</p>
+
+            <h3>Diferencia clave:</h3>
+            <ul>
+                <li><strong>Base de datos relacional (por filas):</strong> Lee toda la fila aunque solo necesites un dato</li>
+                <li><strong>Base de datos columnar:</strong> Lee solo las columnas que necesitás, ignorando el resto</li>
+            </ul>
+
+            <p><strong>Ejemplo práctico:</strong> Imaginate que tenés una tabla con millones de usuarios y querés saber la edad promedio. En una base SQL tradicional, tendrías que leer todas las filas completas (nombre, email, edad, dirección, etc.) solo para calcular el promedio de la columna "edad". En Cassandra, leerías solo esa columna directamente, lo que es muchísimo más rápido.</p>
+
+            <h2>Arquitectura de Cassandra</h2>
+
+            <h3>Conceptos fundamentales:</h3>
+
+            <h4>1. Keyspace</h4>
+            <p>Es el equivalente a una "base de datos" en SQL. Es el contenedor de nivel más alto donde definís tus tablas (llamadas "column families" en Cassandra). Cuando creás un Keyspace, definís:</p>
+            <ul>
+                <li><strong>Estrategia de replicación:</strong> Cómo se distribuyen las copias de tus datos</li>
+                <li><strong>Factor de replicación:</strong> Cuántas copias de cada dato querés mantener</li>
+            </ul>
+
+            <p><strong>Ejemplo:</strong> Un <code>replication_factor: 3</code> significa que cada dato se guarda en 3 nodos diferentes. Si uno falla, todavía tenés 2 copias disponibles.</p>
+
+            <h4>2. Column Family (Tabla)</h4>
+            <p>Similar a las tablas en SQL, pero con una diferencia importante: <strong>cada fila puede tener columnas completamente diferentes</strong>. No estás obligado a que todas las filas tengan la misma estructura.</p>
+
+            <h4>3. Filas y Columnas</h4>
+            <ul>
+                <li><strong>Fila:</strong> Identificada por una clave primaria única (Row Key)</li>
+                <li><strong>Columna:</strong> Tiene tres componentes: nombre, valor y timestamp (marca de tiempo)</li>
+            </ul>
+
+            <p>El timestamp es importante porque Cassandra usa "last-write-wins" para resolver conflictos: si dos escrituras modifican el mismo dato, gana la más reciente.</p>
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2>Características Principales de Cassandra</h2>
+
+            <h3>1. Escalabilidad Horizontal</h3>
+            <p>Esta es una de las mayores ventajas de Cassandra. Podés agregar más servidores (nodos) para aumentar la capacidad sin tener que apagar nada. Los datos se redistribuyen automáticamente entre todos los nodos disponibles.</p>
+
+            <h3>2. Alta Disponibilidad</h3>
+            <p>Gracias a su sistema de replicación, Cassandra no tiene un "punto único de falla". Si un nodo se cae, los demás siguen funcionando normalmente y sirven las réplicas de los datos.</p>
+
+            <h3>3. Consistencia Eventual</h3>
+            <p>Cassandra implementa el modelo BASE (en lugar de ACID como SQL). Esto significa:</p>
+            <ul>
+                <li><strong>Basically Available:</strong> El sistema siempre responde</li>
+                <li><strong>Soft state:</strong> El estado puede cambiar con el tiempo</li>
+                <li><strong>Eventually consistent:</strong> Eventualmente todos los nodos tendrán los mismos datos</li>
+            </ul>
+
+            <p>Podés configurar diferentes niveles de consistencia según tus necesidades:</p>
+            <ul>
+                <li><strong>ONE:</strong> La operación se considera exitosa si un solo nodo responde (máxima velocidad, mínima consistencia)</li>
+                <li><strong>QUORUM:</strong> Requiere que la mayoría de los nodos respondan (equilibrio entre velocidad y consistencia)</li>
+                <li><strong>ALL:</strong> Todos los nodos deben responder (máxima consistencia, menor velocidad)</li>
+            </ul>
+
+            <h3>4. Esquema Flexible</h3>
+            <p>A diferencia de SQL donde tenés que definir todas las columnas por adelantado, en Cassandra podés agregar columnas dinámicamente sin afectar las filas existentes.</p>
+
+            <h3>5. Compresión Eficiente</h3>
+            <p>Como los datos de una columna suelen ser similares entre sí, Cassandra puede comprimirlos muy eficientemente, ahorrando muchísimo espacio de almacenamiento.</p>
+
+            <h2>Lenguaje CQL (Cassandra Query Language)</h2>
+            <p>Cassandra usa CQL, que es muy similar a SQL. Si ya conocés SQL, aprender CQL te va a resultar súper fácil.</p>
+
+            <h3>Operaciones Básicas:</h3>
+
+            <h4>Crear un Keyspace:</h4>
+            <pre><code>CREATE KEYSPACE mi_tienda
+WITH replication = {
+  'class': 'SimpleStrategy',
+  'replication_factor': 3
+};</code></pre>
+
+            <h4>Crear una Tabla:</h4>
+            <pre><code>CREATE TABLE usuarios (
+  user_id UUID PRIMARY KEY,
+  nombre TEXT,
+  email TEXT,
+  edad INT,
+  ciudad TEXT
+);</code></pre>
+
+            <h4>Insertar Datos:</h4>
+            <pre><code>INSERT INTO usuarios (user_id, nombre, email, edad)
+VALUES (uuid(), 'Juan Pérez', 'juan@example.com', 28);</code></pre>
+
+            <h4>Consultar:</h4>
+            <pre><code>SELECT nombre, email FROM usuarios
+WHERE user_id = 123e4567-e89b-12d3-a456-426614174000;</code></pre>
+
+            <h4>TTL (Time-to-Live):</h4>
+            <p>Una característica super útil: podés definir que un dato se borre automáticamente después de cierto tiempo.</p>
+            <pre><code>INSERT INTO sesiones (session_id, user_id, token)
+VALUES ('abc123', uuid(), 'token_secreto')
+USING TTL 86400;  // Se borra después de 24 horas</code></pre>
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2>Ventajas de Cassandra</h2>
+
+            <ul>
+                <li><strong>Velocidad brutal para lecturas de columnas específicas:</strong> Ideal para análisis de datos donde solo necesitás algunas columnas de millones de filas</li>
+
+                <li><strong>Tolerancia a fallos:</strong> No hay punto único de falla. Siempre está disponible</li>
+
+                <li><strong>Escalabilidad lineal:</strong> Agregar nodos aumenta proporcionalmente el rendimiento</li>
+
+                <li><strong>Diseño para Big Data:</strong> Puede manejar petabytes de datos sin problemas</li>
+
+                <li><strong>Escrituras muy rápidas:</strong> Optimizado para alto volumen de escrituras</li>
+
+                <li><strong>Distribución geográfica:</strong> Podés tener nodos en diferentes países/continentes</li>
+            </ul>
+
+            <h2>Desventajas de Cassandra</h2>
+
+            <ul>
+                <li><strong>No soporta JOINs:</strong> Si necesitás combinar datos de múltiples tablas, tenés que hacerlo en tu aplicación</li>
+
+                <li><strong>Modelo de consultas limitado:</strong> Las consultas tienen que estar diseñadas alrededor de la clave primaria. No podés hacer consultas arbitrarias como en SQL</li>
+
+                <li><strong>Curva de aprendizaje:</strong> Diseñar un buen modelo de datos en Cassandra requiere pensar diferente que en SQL</li>
+
+                <li><strong>Consistencia eventual:</strong> Si necesitás garantías ACID estrictas, Cassandra puede no ser la mejor opción</li>
+
+                <li><strong>Uso de recursos:</strong> Consume bastante memoria y almacenamiento por la replicación</li>
+            </ul>
+
+            <h2>¿Cuándo usar Cassandra?</h2>
+
+            <p>Cassandra es ideal para:</p>
+
+            <ul>
+                <li><strong>Análisis de series temporales:</strong> Logs de aplicaciones, datos de sensores IoT, métricas de rendimiento</li>
+
+                <li><strong>Sistemas de mensajería:</strong> WhatsApp, Messenger, donde hay millones de mensajes por segundo</li>
+
+                <li><strong>Catálogos de productos:</strong> E-commerce con millones de productos</li>
+
+                <li><strong>Datos geográficamente distribuidos:</strong> Aplicaciones globales que necesitan baja latencia en todo el mundo</li>
+
+                <li><strong>Alta disponibilidad crítica:</strong> Sistemas que no pueden caerse nunca (servicios financieros, telecomunicaciones)</li>
+
+                <li><strong>Big Data analytics:</strong> Procesamiento de enormes volúmenes de datos</li>
+            </ul>
+
+            <h2>¿Cuándo NO usar Cassandra?</h2>
+
+            <ul>
+                <li><strong>Transacciones complejas:</strong> Si necesitás garantías ACID estrictas, mejor usá PostgreSQL</li>
+
+                <li><strong>Consultas ad-hoc:</strong> Si no sabés de antemano qué consultas vas a hacer</li>
+
+                <li><strong>Volúmenes pequeños de datos:</strong> Para aplicaciones chicas, Cassandra es overkill. Usá MongoDB o PostgreSQL</li>
+
+                <li><strong>Relaciones complejas:</strong> Si tu modelo de datos tiene muchas relaciones entre entidades, considerá bases de datos de grafos como Neo4j</li>
+            </ul>
+
+            <h2>Cassandra vs otras bases de datos</h2>
+
+            <h3>Cassandra vs MongoDB</h3>
+            <ul>
+                <li><strong>Cassandra:</strong> Mejor para escrituras masivas y distribución geográfica</li>
+                <li><strong>MongoDB:</strong> Mejor para consultas flexibles y esquemas dinámicos</li>
+            </ul>
+
+            <h3>Cassandra vs SQL (PostgreSQL, MySQL)</h3>
+            <ul>
+                <li><strong>Cassandra:</strong> Escalabilidad horizontal infinita, disponibilidad total</li>
+                <li><strong>SQL:</strong> Transacciones ACID, JOINs complejos, integridad referencial</li>
+            </ul>
+
+            <h3>Cassandra vs HBase</h3>
+            <ul>
+                <li><strong>Cassandra:</strong> Arquitectura peer-to-peer (todos los nodos son iguales)</li>
+                <li><strong>HBase:</strong> Arquitectura master-slave (depende de Hadoop)</li>
+            </ul>
+
+            <h2>Conclusión</h2>
+
+            <p>Apache Cassandra es una base de datos NoSQL extremadamente poderosa cuando necesitás manejar volúmenes masivos de datos con alta disponibilidad y escalabilidad horizontal. Su arquitectura sin punto único de falla y su capacidad para distribuir datos geográficamente la hacen ideal para aplicaciones a escala global.</p>
+
+            <p>Sin embargo, no es la solución universal. Cassandra brilla en escenarios de Big Data, series temporales y alta disponibilidad, pero para aplicaciones pequeñas o que requieren transacciones complejas, existen mejores alternativas.</p>
+
+            <p>La clave está en entender tu caso de uso: si necesitás manejar petabytes de datos distribuidos con tolerancia a fallos total, Cassandra es tu mejor aliada. Si estás construyendo una aplicación tradicional con relaciones complejas, probablemente PostgreSQL o MongoDB sean mejores opciones.</p>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="base-de-datos-nosql.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    ← Volver a: ¿Por qué aparecen las BD NoSQL?
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+</body>
+</html>

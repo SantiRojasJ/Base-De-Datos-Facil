@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <title>Bases de Datos desde Cero: Aprende SQL y NoSQL Gratis | BasesDeDatosFacil</title>
-    <meta name="description" content="Aprende bases de datos SQL y NoSQL desde cero con tutoriales gratuitos, ejercicios prácticos y guías paso a paso. Ideal para principiantes.">
-    <meta name="keywords" content="bases de datos, SQL, NoSQL, tutoriales SQL, aprender bases de datos, SQL Server, MongoDB, tutorial gratis">
-    <meta name="author" content="BasesDeDatosFacil">
+    <!-- SEO Básico -->
+    <title>BDD Facil - Aprende Bases de Datos SQL y NoSQL desde Cero</title>
+    <meta name="description" content="Tutoriales prácticos de SQL, NoSQL, MongoDB, Redis, Cassandra y más. Aprende bases de datos relacionales y no relacionales con ejemplos reales.">
+    <meta name="keywords" content="bases de datos, SQL, NoSQL, tutoriales SQL, MongoDB, Redis, Cassandra, aprender bases de datos">
+    <meta name="author" content="BDD Facil">
     <meta name="robots" content="index, follow">
 
-
-    <meta property="og:title" content="BasesDeDatosFacil - Aprende SQL y NoSQL desde Cero">
-    <meta property="og:description" content="Tutoriales gratuitos de bases de datos SQL y NoSQL para principiantes. Aprende con ejemplos prácticos.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="BDD Facil - Aprende Bases de Datos SQL y NoSQL">
+    <meta property="og:description" content="Tutoriales prácticos de bases de datos relacionales y no relacionales. Aprende SQL, MongoDB, Redis y más.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://basesdedatosfacil.com/">
-    <meta property="og:site_name" content="BasesDeDatosFacil">
+    <meta property="og:url" content="https://bddfacil.netlify.app/">
+    <meta property="og:site_name" content="BDD Facil">
 
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="BasesDeDatosFacil - Aprende SQL y NoSQL">
-    <meta name="twitter:description" content="Tutoriales gratuitos de bases de datos para principiantes">
-
-
-    <link rel="canonical" href="https://basesdedatosfacil.com/">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bddfacil.netlify.app/">
 
     <link rel="stylesheet" href="css/StyleIndex.css">
 </head>
@@ -55,19 +50,19 @@
             <li><a href="Articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html">Sentencias DDL y Tipos de Datos</a></li>
 
             <h5 class="sidebar-section">Base de Datos no Relacionales</h5>
-            <li><a href="Articulos/Base-de-datos-No-Relacionales/base-de-datos-nosql.html">¿Por qué NoSQL?</a></li>
+            <li><a href="Articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">¿Por qué NoSQL?</a></li>
 
             <h5 class="sidebar-section">Base de Datos Documentales</h5>
-            <li><a href="Articulos/Base-de-datos-No-Relacionales/Base-de-Datos-Documentales/mongodb.html">MongoDB</a></li>
+            <li><a href="Articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html">MongoDB</a></li>
 
             <h5 class="sidebar-section">Base de Datos Clave-Valor</h5>
-            <li><a href="Articulos/Base-de-datos-No-Relacionales/redis-bdd-clave-valor.html">Redis</a></li>
+            <li><a href="Articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html">Redis</a></li>
 
             <h5 class="sidebar-section">Base de Datos Columnar</h5>
-            <li><a href="Articulos/Base-de-datos-No-Relacionales/cassandra.html">Cassandra</a></li>
+            <li><a href="Articulos/base-de-datos-no-relacionales/cassandra.html">Cassandra</a></li>
 
             <h5 class="sidebar-section">Base de Datos de Grafos</h5>
-            <li><a href="Articulos/Base-de-datos-No-Relacionales/neo4j.html">Neo4j</a></li>
+            <li><a href="Articulos/base-de-datos-no-relacionales/neo4j.html">Neo4j</a></li>
         </ul>
 
         <h3 class="sidebar-section">⚖️ Legal</h3>
@@ -128,9 +123,9 @@
 
             <article class="article-card">
                 <span class="card-category">NoSQL</span>
-                <h2><a href="Articulos/Base%20de%20datos%20No%20Relacionales/base%20de%20datos%20NoSQL.html">¿Por qué aparecen las Bases de Datos NoSQL?</a></h2>
+                <h2><a href="Articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">¿Por qué aparecen las Bases de Datos NoSQL?</a></h2>
                 <p>Descubrí por qué surgen las bases de datos NoSQL, qué problemas buscan resolver y cuáles son sus principales ventajas.</p>
-                <a href="Articulos/Base%20de%20datos%20No%20Relacionales/base%20de%20datos%20NoSQL.html" class="read-more"></a>
+                <a href="Articulos/base-de-datos-no-relacionales/base-de-datos-nosql" class="read-more"></a>
             </article>
 
         </div>
@@ -160,5 +155,34 @@
     <a href="legal/terminos.html">Términos</a>
 </footer>
 
+
+<div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:#111; color:#fff; padding:15px; text-align:center; z-index:9999;">
+    Usamos cookies para mejorar tu experiencia y mostrar anuncios personalizados.
+
+    <button onclick="aceptarCookies()" style="margin-left:10px; padding:8px 15px; background:#22c55e; color:white; border:none; border-radius:5px;">
+        Aceptar
+    </button>
+
+    <button onclick="rechazarCookies()" style="margin-left:10px; padding:8px 15px; background:#ef4444; color:white; border:none; border-radius:5px;">
+        Rechazar
+    </button>
+</div>
+
+<script>
+    function aceptarCookies() {
+        localStorage.setItem("cookies", "accepted");
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    function rechazarCookies() {
+        localStorage.setItem("cookies", "rejected");
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    // Ocultar si ya eligió
+    if(localStorage.getItem("cookies")) {
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+</script>
 </body>
 </html>
