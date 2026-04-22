@@ -28,9 +28,32 @@
 <header class="header">
     <div class="nav-container">
         <div class="logo">BasesDeDatosFacil</div>
-
     </div>
 </header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav">
+    <button class="mobile-nav-toggle" onclick="toggleMenu()">☰ Menú</button>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero">🏠 Inicio</a>
+        <a href="#articulos">📚 Artículos</a>
+        <hr style="border-color: rgba(139,92,246,0.3); margin: 0.5rem 0;">
+        <h4 style="color: #8b5cf6; margin: 0.5rem 0;">📂 Base de datos Relacionales</h4>
+        <a href="Articulos/base-de-datos-relacionales/que-es-sql.html">• Qué es SQL</a>
+        <a href="Articulos/base-de-datos-relacionales/sql-server.html">• Sql Server</a>
+        <a href="Articulos/base-de-datos-relacionales/que-es-tsql.html">• Qué es TSQL</a>
+        <a href="Articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html">• Sentencias DDL</a>
+        <h4 style="color: #8b5cf6; margin: 0.5rem 0;">📂 Base de Datos no Relacionales</h4>
+        <a href="Articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">• Why NoSQL?</a>
+        <a href="Articulos/base-de-datos-no-relacionais/base-de-datos-documentales/mongodb.html">• MongoDB</a>
+        <a href="Articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html">• Redis</a>
+        <a href="Articulos/base-de-datos-no-relacionales/cassandra.html">• Cassandra</a>
+        <a href="Articulos/base-de-datos-no-relacionales/neo4j.html">• Neo4j</a>
+        <hr style="border-color: rgba(139,92,246,0.3); margin: 0.5rem 0;">
+        <a href="legal/privacidad.html">⚖️ Privacidad</a>
+        <a href="legal/terminos.html">⚖️ Términos</a>
+    </div>
+</nav>
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
@@ -169,6 +192,10 @@
 </div>
 
 <script>
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('show');
+    }
+
     function aceptarCookies() {
         localStorage.setItem("cookies", "accepted");
         document.getElementById("cookie-banner").style.display = "none";
