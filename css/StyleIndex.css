@@ -535,17 +535,12 @@ body {
     @media (max-width: 768px) {
 
         .sidebar {
-            width: 200px; /* antes 280px */
+            width: 180px;
+            font-size: 0.85rem;
         }
 
         .main-content {
-            margin-left: 200px;
-            padding: 1rem;
-        }
-
-        /* Evita scroll horizontal */
-        body {
-            overflow-x: hidden;
+            margin-left: 180px;
         }
 
     }
