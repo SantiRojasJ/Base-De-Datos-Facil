@@ -531,4 +531,22 @@ body {
     .article-title {
         font-size: 2rem;
     }
+
+    @media (max-width: 768px) {
+
+        .sidebar {
+            width: 200px; /* antes 280px */
+        }
+
+        .main-content {
+            margin-left: 200px;
+            padding: 1rem;
+        }
+
+        /* Evita scroll horizontal */
+        body {
+            overflow-x: hidden;
+        }
+
+    }
 }
