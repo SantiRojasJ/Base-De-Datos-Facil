@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Básico -->
+    <title>¿Qué es T-SQL? Lenguaje de SQL Server | BDD Facil</title>
+    <meta name="description" content="Descubre qué es Transact-SQL (T-SQL), el lenguaje de programación de SQL Server. Aprende sus características, tipos de sentencias y casos de uso.">
+    <meta name="keywords" content="T-SQL, Transact-SQL, SQL Server, lenguaje de bases de datos, programación SQL">
+    <meta name="author" content="BDD Facil">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="¿Qué es T-SQL? Lenguaje de SQL Server">
+    <meta property="og:description" content="Aprende T-SQL, el lenguaje de programación que extiende SQL en SQL Server con funciones avanzadas.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bddfacil.netlify.app/Articulos/base-de-datos-relacionales/que-es-tsql.html">
+    <meta property="og:site_name" content="BDD Facil">
+
+    <!-- Article Meta -->
+    <meta property="article:published_time" content="2026-04-04">
+    <meta property="article:author" content="BDD Facil">
+    <meta property="article:section" content="SQL Server">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bddfacil.netlify.app/Articulos/base-de-datos-relacionales/que-es-tsql.html">
+
+    <link rel="stylesheet" href="../../css/Styles.css">
+</head>
+<body>
+<main class="main-content">
+    <a href="../../index.html" class="back-button">← Volver al inicio</a>
+
+    <article>
+        <header class="article-header">
+            <span class="article-category">SQL Server</span>
+            <h1 class="article-title">¿Qué es T-SQL?</h1>
+            <div class="article-meta">
+                <span>Publicado: Abril 2026</span> • <span>Lectura: 8 min</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <h2>Introducción a Transact-SQL</h2>
+            <p><strong>Transact-SQL</strong>, conocido como <strong>T-SQL</strong>, es el lenguaje de programación que Microsoft creó como extensión del SQL estándar para trabajar con SQL Server. Básicamente, es SQL potenciado con esteroides: tiene todo lo que ya conocés de SQL tradicional, pero le suma un montón de funcionalidades extra que te permiten hacer cosas mucho más complejas.</p>
+
+            <p>Si SQL es como saber manejar un auto, T-SQL es como saber manejar un auto de Fórmula 1. Tenés todo el control básico, pero además podés ajustar mil cosas más para sacarle el máximo provecho.</p>
+
+            <h2>¿Para qué sirve T-SQL?</h2>
+            <p>Con T-SQL podés hacer prácticamente cualquier cosa relacionada con bases de datos en SQL Server:</p>
+
+            <ul>
+                <li><strong>Crear y modificar estructuras:</strong> Tablas, vistas, índices, procedimientos almacenados, funciones</li>
+                <li><strong>Manipular datos:</strong> Insertar, actualizar, eliminar y consultar información</li>
+                <li><strong>Controlar el acceso:</strong> Definir quién puede hacer qué en la base de datos</li>
+                <li><strong>Programar lógica compleja:</strong> Usar variables, ciclos, condiciones, manejo de errores</li>
+                <li><strong>Automatizar tareas:</strong> Crear triggers (disparadores) que se ejecutan automáticamente</li>
+                <li><strong>Gestionar transacciones:</strong> Asegurar que las operaciones se completen correctamente o se reviertan</li>
+            </ul>
+
+            <h2>¿Qué hace a T-SQL diferente de SQL estándar?</h2>
+            <p>SQL estándar es como el idioma base que todas las bases de datos entienden. Pero cada proveedor (Microsoft, Oracle, PostgreSQL) le agrega sus propias extensiones. T-SQL es la extensión de Microsoft para SQL Server.</p>
+
+            <h3>Diferencias clave:</h3>
+
+            <h4>1. Variables y declaraciones</h4>
+            <p>En T-SQL podés declarar variables y usarlas dentro de tus consultas:</p>
+            <pre><code>DECLARE @edad INT;
+SET @edad = 25;
+
+SELECT * FROM Usuarios
+WHERE edad > @edad;</code></pre>
+
+            <h4>2. Estructuras de control</h4>
+            <p>Podés usar IF, WHILE, CASE para crear lógica condicional:</p>
+            <pre><code>IF (SELECT COUNT(*) FROM Usuarios) > 100
+BEGIN
+    PRINT 'Hay más de 100 usuarios'
+END
+ELSE
+BEGIN
+    PRINT 'Hay menos de 100 usuarios'
+END</code></pre>
+
+            <h4>3. Manejo de errores</h4>
+            <p>T-SQL tiene un sistema robusto de manejo de errores con TRY...CATCH:</p>
+            <pre><code>BEGIN TRY
+    -- Código que puede fallar
+    INSERT INTO Usuarios (nombre, email)
+    VALUES ('Juan', 'juan@example.com');
+END TRY
+BEGIN CATCH
+    -- Qué hacer si falla
+    PRINT 'Error: ' + ERROR_MESSAGE();
+END CATCH</code></pre>
+
+            <h4>4. Procedimientos almacenados</h4>
+            <p>Podés guardar consultas complejas como "funciones reutilizables":</p>
+            <pre><code>CREATE PROCEDURE ObtenerUsuariosPorCiudad
+    @ciudad VARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM Usuarios
+    WHERE ciudad = @ciudad;
+END</code></pre>
+
+            <h4>5. Triggers (Disparadores)</h4>
+            <p>Código que se ejecuta automáticamente cuando pasa algo en una tabla:</p>
+            <pre><code>CREATE TRIGGER ActualizarFechaModificacion
+ON Usuarios
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE Usuarios
+    SET fecha_modificacion = GETDATE()
+    WHERE id IN (SELECT id FROM inserted);
+END</code></pre>
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2>Tipos de Sentencias en T-SQL</h2>
+            <p>T-SQL organiza sus comandos en diferentes categorías según lo que hacen. Acá te las explico todas:</p>
+
+            <img src="../../imagenes/tipos-sentencias.jpg.jpeg" Tipos de sentencias en T-SQL" style="max-width: 100%; height: auto; margin: 2rem 0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+
+            <h3>1. DDL - Sentencias de Definición de Datos</h3>
+            <p>Se usan para crear, modificar y eliminar la estructura de la base de datos (tablas, vistas, índices, etc.).</p>
+            <ul>
+                <li><strong>CREATE:</strong> Crea un nuevo objeto (tabla, vista, procedimiento)</li>
+                <li><strong>ALTER:</strong> Modifica un objeto existente</li>
+                <li><strong>DROP:</strong> Elimina un objeto</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>CREATE TABLE Productos (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    precio DECIMAL(10,2)
+);</code></pre>
+
+            <h3>2. DML - Sentencias de Manipulación de Datos</h3>
+            <p>Se usan para consultar y modificar los datos dentro de las tablas.</p>
+            <ul>
+                <li><strong>SELECT:</strong> Consulta datos</li>
+                <li><strong>INSERT:</strong> Inserta nuevos registros</li>
+                <li><strong>UPDATE:</strong> Actualiza registros existentes</li>
+                <li><strong>DELETE:</strong> Elimina registros</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>INSERT INTO Productos (id, nombre, precio)
+VALUES (1, 'Laptop', 800.00);</code></pre>
+
+            <h3>3. DCL - Sentencias de Control de Datos</h3>
+            <p>Se usan para controlar permisos y acceso a la base de datos.</p>
+            <ul>
+                <li><strong>GRANT:</strong> Otorga permisos a usuarios</li>
+                <li><strong>REVOKE:</strong> Quita permisos a usuarios</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>GRANT SELECT ON Productos TO usuario_lectura;</code></pre>
+
+            <h3>4. TCL - Sentencias de Control de Transacciones</h3>
+            <p>Se usan para gestionar transacciones y asegurar la integridad de los datos.</p>
+            <ul>
+                <li><strong>BEGIN TRANSACTION:</strong> Inicia una transacción</li>
+                <li><strong>COMMIT:</strong> Confirma los cambios</li>
+                <li><strong>ROLLBACK:</strong> Deshace los cambios</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>BEGIN TRANSACTION;
+
+UPDATE Productos SET precio = precio * 1.10;
+
+COMMIT; -- Confirma el aumento del 10%</code></pre>
+
+            <h3>5. Sentencias de Programación</h3>
+            <p>T-SQL agrega sentencias para programar lógica más compleja:</p>
+            <ul>
+                <li><strong>DECLARE:</strong> Declara variables</li>
+                <li><strong>SET:</strong> Asigna valores a variables</li>
+                <li><strong>IF...ELSE:</strong> Condicionales</li>
+                <li><strong>WHILE:</strong> Bucles</li>
+                <li><strong>CASE:</strong> Evaluación de múltiples condiciones</li>
+                <li><strong>TRY...CATCH:</strong> Manejo de errores</li>
+            </ul>
+
+            <h2>Ventajas de usar T-SQL</h2>
+
+            <ul>
+                <li><strong>Potencia y flexibilidad:</strong> Podés hacer desde consultas simples hasta lógica empresarial compleja</li>
+
+                <li><strong>Rendimiento:</strong> Los procedimientos almacenados en T-SQL son pre-compilados y ejecutan más rápido</li>
+
+                <li><strong>Seguridad:</strong> Control granular sobre quién puede hacer qué</li>
+
+                <li><strong>Mantenibilidad:</strong> La lógica está centralizada en la base de datos, no dispersa en el código de la aplicación</li>
+
+                <li><strong>Reutilización:</strong> Creás funciones y procedimientos que podés usar desde cualquier aplicación</li>
+
+                <li><strong>Transacciones robustas:</strong> Manejo de errores y rollback automático si algo falla</li>
+            </ul>
+
+            <h2>Desventajas de T-SQL</h2>
+
+            <ul>
+                <li><strong>Específico de SQL Server:</strong> No funciona en MySQL, PostgreSQL u otras bases de datos</li>
+
+                <li><strong>Curva de aprendizaje:</strong> Más complejo que SQL básico</li>
+
+                <li><strong>Depuración:</strong> Debuggear procedimientos almacenados puede ser más difícil que código de aplicación</li>
+
+                <li><strong>Control de versiones:</strong> Más complicado versionar código en la base de datos que en Git</li>
+            </ul>
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2>¿Cuándo usar T-SQL?</h2>
+
+            <p>T-SQL es ideal para:</p>
+
+            <ul>
+                <li><strong>Lógica de negocio en la base de datos:</strong> Validaciones, cálculos complejos, reglas empresariales</li>
+
+                <li><strong>Operaciones masivas de datos:</strong> Procesar millones de registros de forma eficiente</li>
+
+                <li><strong>Tareas programadas:</strong> Jobs que se ejecutan automáticamente (backups, limpieza de datos)</li>
+
+                <li><strong>Reportes complejos:</strong> Consultas que cruzan múltiples tablas y necesitan cálculos avanzados</li>
+
+                <li><strong>Auditoría automática:</strong> Triggers que registran cambios en las tablas</li>
+            </ul>
+
+            <h2>Ejemplo práctico completo</h2>
+            <p>Imaginate que tenés una tienda online y querés crear un procedimiento que registre una venta:</p>
+
+            <pre><code>CREATE PROCEDURE RegistrarVenta
+    @producto_id INT,
+    @cantidad INT,
+    @cliente_id INT
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Verificar que hay stock
+        DECLARE @stock_actual INT;
+        SELECT @stock_actual = stock
+        FROM Productos
+        WHERE id = @producto_id;
+
+        IF @stock_actual >= @cantidad
+        BEGIN
+            -- Reducir stock
+            UPDATE Productos
+            SET stock = stock - @cantidad
+            WHERE id = @producto_id;
+
+            -- Registrar venta
+            INSERT INTO Ventas (producto_id, cantidad, cliente_id, fecha)
+            VALUES (@producto_id, @cantidad, @cliente_id, GETDATE());
+
+            COMMIT;
+            PRINT 'Venta registrada exitosamente';
+        END
+        ELSE
+        BEGIN
+            PRINT 'Stock insuficiente';
+            ROLLBACK;
+        END
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        PRINT 'Error: ' + ERROR_MESSAGE();
+    END CATCH
+END</code></pre>
+
+            <p>Este procedimiento hace todo lo necesario: verifica stock, actualiza inventario, registra la venta, y si algo falla, deshace todo automáticamente.</p>
+
+            <h2>Conclusión</h2>
+
+            <p>T-SQL es el lenguaje que te permite aprovechar al máximo SQL Server. No es solo un lenguaje de consultas; es una herramienta completa de programación que te permite crear lógica compleja, automatizar tareas, controlar accesos y garantizar la integridad de tus datos.</p>
+
+            <p>Si trabajás con SQL Server, aprender T-SQL no es opcional: es esencial. Te permite ir mucho más allá de simples SELECT y construir soluciones robustas y profesionales.</p>
+
+            <p>En los próximos artículos vamos a profundizar en cada tipo de sentencia, los tipos de datos disponibles, y cómo crear procedimientos almacenados y triggers efectivos.</p>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="sql-server.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    ← Volver a: ¿Qué es SQL Server?
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+</body>
+</html>
