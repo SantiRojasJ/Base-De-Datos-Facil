@@ -2,52 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://bddfacil.netlify.app/</loc>
+        <loc>https://base-de-datos-facil.vercel.app/</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/que-es-sql.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/que-es-sql.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/sql-server.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/sql-server.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/neo4j.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/neo4j.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-no-relacionales/cassandra.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/cassandra.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/que-es-tsql.html</loc>
-    </url>
-
-
-    <url>
-        <loc>https://bddfacil.netlify.app/articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/que-es-tsql.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/legal/privacidad.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html</loc>
     </url>
 
     <url>
-        <loc>https://bddfacil.netlify.app/legal/terminos.html</loc>
+        <loc>https://base-de-datos-facil.vercel.app/legal/privacidad.html</loc>
+    </url>
+
+    <url>
+        <loc>https://base-de-datos-facil.vercel.app/legal/terminos.html</loc>
     </url>
 
 </urlset>
