@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://base-de-datos-facil.vercel.app/sitemap.xml
+Sitemap: https://bdd-facil.elpiratasanti.workers.dev/sitemap.xml
