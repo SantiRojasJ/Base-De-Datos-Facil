@@ -73,6 +73,13 @@
     </url>
 
     <url>
+        <loc> https://base-de-datos-facil.vercel.app/seccion-podcast/que-es-sql.html</loc>
+        <lastmod>2026-05-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://base-de-datos-facil.vercel.app/legal/privacidad.html</loc>
         <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
