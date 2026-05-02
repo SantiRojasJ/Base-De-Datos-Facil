@@ -1,78 +1,135 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Básico -->
-    <title>BDD Facil - Aprende Bases de Datos SQL y NoSQL desde Cero</title>
-    <meta name="description" content="Tutoriales prácticos de SQL, NoSQL, MongoDB, Redis, Cassandra y más. Aprende bases de datos relacionales y no relacionales con ejemplos reales.">
-    <meta name="keywords" content="bases de datos, SQL, NoSQL, tutoriales SQL, MongoDB, Redis, Cassandra, aprender bases de datos">
-    <meta name="author" content="BDD Facil">
+    <title>Bases de Datos desde Cero: Aprende SQL y NoSQL Gratis | BasesDeDatosFacil</title>
+    <meta name="description" content="Aprende bases de datos SQL y NoSQL desde cero con tutoriales gratuitos, ejercicios prácticos y guías paso a paso. Ideal para principiantes.">
+    <meta name="keywords" content="bases de datos, SQL, NoSQL, tutoriales SQL, aprender bases de datos, SQL Server, MongoDB, tutorial gratis">
+    <meta name="author" content="BasesDeDatosFacil">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="BDD Facil - Aprende Bases de Datos SQL y NoSQL">
-    <meta property="og:description" content="Tutoriales prácticos de bases de datos relacionales y no relacionales. Aprende SQL, MongoDB, Redis y más.">
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="BasesDeDatosFacil - Aprende SQL y NoSQL desde Cero">
+    <meta property="og:description" content="Tutoriales gratuitos de bases de datos SQL y NoSQL para principiantes. Aprende con ejemplos prácticos.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://base-de-datos-facil.vercel.app/">
-    <meta property="og:site_name" content="BDD Facil">
+    <meta property="og:url" content="https://basesdedatosfacil.com/">
+    <meta property="og:site_name" content="BasesDeDatosFacil">
 
-    <!-- Canonical URL -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BasesDeDatosFacil - Aprende SQL y NoSQL">
+    <meta name="twitter:description" content="Tutoriales gratuitos de bases de datos para principiantes">
+
     <link rel="canonical" href="https://base-de-datos-facil.vercel.app/">
-
     <link rel="stylesheet" href="css/StyleIndex.css">
+    <script src="cookies/index.js" defer></script>
 </head>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Base de Datos Fácil</title>
+
+    <!-- Esta es la línea que pone el icono en la pestaña -->
+    <link rel="icon" type="image/png" href="imagenes/logo.png">
+
+    <!-- Tus otros links de CSS irían aquí abajo -->
+</head>
+
+<div class="hero-section">
+
+
+
+    <h1 class="hero-title">
+        Base<span class="highlight">De</span>Datos<span class="highlight-cyan">Facil</span>
+    </h1>
+
+    <p class="hero-subtitle">
+        APRENDE • PRACTICA • DOMINA
+    </p>
+</div>
+
+
+
+
 <body>
-
-<header class="header">
-    <div class="nav-container">
-        <div class="logo">BasesDeDatosFacil</div>
-    </div>
-</header>
-
-
-
 <!-- SIDEBAR -->
 <aside class="sidebar">
     <div class="sidebar-content">
+
         <h3>🗂️ Navegación</h3>
         <ul>
             <li><a href="#hero">🏠 Inicio</a></li>
             <li><a href="#articulos">📚 Artículos</a></li>
-
         </ul>
-        <h3 class="sidebar-section">🔥 Artículos Destacados</h3>
+
+        <h3 class="sidebar-section">🔥 Artículos</h3>
+
+        <!-- RELACIONALES -->
+        <h4 class="sidebar-section">📊 Base de datos Relacionales</h4>
         <ul>
-            <h4 class="sidebar-section">Base de datos Relacionales</h4>
             <li><a href="articulos/base-de-datos-relacionales/que-es-sql.html">Qué es SQL</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/sql-server.html">Sql Server</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/que-es-tsql.html">¿Que es TSQL?</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html">Sentencias DDL y Tipos de Datos</a></li>
+            <li><a href="articulos/base-de-datos-relacionales/sql-server.html">SQL Server</a></li>
+            <li><a href="articulos/base-de-datos-relacionales/que-es-tsql.html">¿Qué es T-SQL?</a></li>
+            <li><a href="articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html">DDL y Tipos de Datos</a></li>
+        </ul>
 
-            <h5 class="sidebar-section">Base de Datos no Relacionales</h5>
-            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">Base de datos&nbsp;NoSQL</a></li>
+        <!-- NOSQL -->
+        <h4 class="sidebar-section">🧠 Base de datos NoSQL</h4>
+        <ul>
+            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">Base de Datos NoSQL</a></li>
+        </ul>
 
-            <h5 class="sidebar-section">Base de Datos Documentales</h5>
+        <!-- DOCUMENTALES -->
+        <h4 class="sidebar-section">📄 Documentales</h4>
+        <ul>
             <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html">MongoDB</a></li>
+        </ul>
 
-            <h5 class="sidebar-section">Base de Datos Clave-Valor</h5>
+        <!-- CLAVE VALOR -->
+        <h4 class="sidebar-section">🔑 Clave-Valor</h4>
+        <ul>
             <li><a href="articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html">Redis</a></li>
+        </ul>
 
-            <h5 class="sidebar-section">Base de Datos Columnar</h5>
+        <!-- COLUMNAR -->
+        <h4 class="sidebar-section">📦 Columnar</h4>
+        <ul>
             <li><a href="articulos/base-de-datos-no-relacionales/cassandra.html">Cassandra</a></li>
+        </ul>
 
-            <h5 class="sidebar-section">Base de Datos de Grafos</h5>
+        <!-- GRAFOS -->
+        <h4 class="sidebar-section">🕸️ Grafos</h4>
+        <ul>
             <li><a href="articulos/base-de-datos-no-relacionales/neo4j.html">Neo4j</a></li>
         </ul>
+            
+        <h4 CLASS="sidebar-section" >Seccion Podcast
+          <ul>
+              <li><a href="seccion-podcast/que-es-sql.html">Capitulo 1: Que es Sql?</a> </li>
+          </ul>
 
+            
+        </h4>
+        
+        <!-- LEGAL -->
         <h3 class="sidebar-section">⚖️ Legal</h3>
         <ul>
             <li><a href="legal/privacidad.html">Privacidad</a></li>
             <li><a href="legal/terminos.html">Términos</a></li>
         </ul>
+
     </div>
 </aside>
+
+
+
+
+
+
 
 
 <main class="main-content">
@@ -81,7 +138,7 @@
         <h1>Domina las Bases de Datos NoSQL y <span class="gradient-text">SQL desde Cero</span></h1>
         <p class="hero-subtitle">Tutoriales prácticos, ejercicios resueltos , guías paso a paso para convertirte en experto en bases de datos relacionales y no relacionales</p>
         <div style="margin-top: 2rem;">
-            <a href="#Listo para comenzar?" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+            <a href="#Listo para comenzar?" style="background: linear-gradient(135deg, rgba(72,27,228,0.52) 0%, rgba(72,27,228,0.52) 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgb(255,255,255);">
                 🚀 Comenzar Ahora
             </a>
             <p style="font-size: 1rem; color: #94a3b8; margin-top: 1rem;">
@@ -89,7 +146,6 @@
             </p>
         </div>
     </section>
-
     <!-- BANNER ADSENSE -->
     <div class="ad-horizontal" style="max-width: 728px; margin: 2rem auto; text-align: center;">
     <small>📢 Anuncio - Google AdSense (728x90 o responsive)</small>
@@ -102,31 +158,49 @@
 
 
     <section id="articulos" style="margin: 5rem 0;">
-        <h2 style="text-align: center; font-size: 2.5rem; color: #e2e8f0; margin-bottom: 3rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+        <h2 style="text-align: center; font-size: 2.5rem; color: rgba(72,21,255,0.84); margin-bottom: 3rem; text-shadow: 0 0 20px rgba(72,21,255,0.84);">
             🔥 Artículos <span class="gradient-text">Más Leídos</span>
         </h2>
 
-
         <div class="articles-grid">
-
 
             <article class="article-card">
                 <span class="card-category">SQL Básico</span>
-                <h2><a href="articulos/base-de-datos-relacionales/que-es-sql.html">¿Qué es SQL?</a></h2>
-                <p>Aprende qué es SQL, para qué sirve y por qué es el lenguaje estándar para trabajar con bases de datos relacionales.</p>
-                <a href="articulos/base-de-datos-relacionales/que-es-sql.html" class="read-more"></a>
+                <h2>
+                    <a href="articulos/base-de-datos-relacionales/que-es-sql.html">
+                        ¿Qué es SQL?
+                    </a>
+                </h2>
+                <p>Aprende qué es SQL, para qué sirve y por qué es el lenguaje estándar.</p>
+                <a href="articulos/base-de-datos-relacionales/que-es-sql.html" class="read-more">
+                    Leer más →
+                </a>
             </article>
+
             <article class="article-card">
                 <span class="card-category">SQL Server</span>
-                <h2><a href="articulos/base-de-datos-relacionales/sql-server.html">¿Qué es SQL Server?</a></h2>
-                <p>Descubre el sistema de gestión de bases de datos de Microsoft, sus modelos OLTP y OLAP, y los objetos principales que maneja.</p>
+                <h2>
+                    <a href="articulos/base-de-datos-relacionales/sql-server.html">
+                        ¿Qué es SQL Server?
+                    </a>
+                </h2>
+                <p>Descubre el sistema de gestión de bases de datos de Microsoft.</p>
+                <a href="articulos/base-de-datos-relacionales/sql-server.html" class="read-more">
+                    Leer más →
+                </a>
             </article>
 
             <article class="article-card">
                 <span class="card-category">NoSQL</span>
-                <h2><a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">¿Por qué aparecen las Bases de Datos NoSQL?</a></h2>
-                <p>Descubrí por qué surgen las bases de datos NoSQL, qué problemas buscan resolver y cuáles son sus principales ventajas.</p>
-                <a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html" class="read-more"></a>
+                <h2>
+                    <a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">
+                        ¿Por qué aparecen las Bases de Datos NoSQL?
+                    </a>
+                </h2>
+                <p>Descubrí por qué surgen las bases NoSQL y qué problemas resuelven.</p>
+                <a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html" class="read-more">
+                    Leer más →
+                </a>
             </article>
 
         </div>
@@ -139,55 +213,33 @@
 
 
     <section id="Listo para comenzar?" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%); border: 2px solid rgba(139, 92, 246, 0.3); border-radius: 20px; padding: 4rem 2rem; text-align: center; margin: 5rem 0;">
-        <h2 style="font-size: 2.5rem; color: #e2e8f0; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+        <h2 style="font-size: 2.5rem; color: #e2e8f0; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(72,21,255,0.76);">
             ¿Listo para <span class="gradient-text">Comenzar?</span>
         </h2>
         <p style="font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem auto;">
             Únete a miles de estudiantes que ya están dominando SQL y bases de datos con nuestros tutoriales gratuitos.
         </p>
-        <a href="articulos/base-de-datos-relacionales/que-es-sql.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+        <a href="articulos/base-de-datos-relacionales/que-es-sql.html" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(72,21,255,0.84);">
             📚 Empezar Primer Artículo
         </a>
     </section>
 </main>
 
+<p>
+    Usamos cookies para mejorar tu experiencia.
+    <a href="legal/privacidad.html">Leer más</a>
+</p>
 <footer>
     <a href="legal/privacidad.html">Privacidad</a> |
     <a href="legal/terminos.html">Términos</a>
 </footer>
+<div id="cookie-banner" class="cookie-banner">
+    🍪 Usamos cookies para mejorar tu experiencia.
 
-
-<div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:#111; color:#fff; padding:15px; text-align:center; z-index:9999;">
-    Usamos cookies para mejorar tu experiencia y mostrar anuncios personalizados.
-
-    <button onclick="aceptarCookies()" style="margin-left:10px; padding:8px 15px; background:#22c55e; color:white; border:none; border-radius:5px;">
-        Aceptar
-    </button>
-
-    <button onclick="rechazarCookies()" style="margin-left:10px; padding:8px 15px; background:#ef4444; color:white; border:none; border-radius:5px;">
-        Rechazar
-    </button>
+    <div class="cookie-buttons">
+        <button onclick="aceptarCookies()">Aceptar</button>
+        <button onclick="rechazarCookies()">Rechazar</button>
+    </div>
 </div>
-
-<script>
-    function toggleMenu() {
-        document.getElementById('mobileMenu').classList.toggle('show');
-    }
-
-    function aceptarCookies() {
-        localStorage.setItem("cookies", "accepted");
-        document.getElementById("cookie-banner").style.display = "none";
-    }
-
-    function rechazarCookies() {
-        localStorage.setItem("cookies", "rejected");
-        document.getElementById("cookie-banner").style.display = "none";
-    }
-
-    // Ocultar si ya eligió
-    if(localStorage.getItem("cookies")) {
-        document.getElementById("cookie-banner").style.display = "none";
-    }
-</script>
 </body>
 </html>

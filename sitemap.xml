@@ -3,50 +3,88 @@
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/que-es-sql.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/sql-server.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/neo4j.html</loc>
-    </url>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+       </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-no-relacionales/cassandra.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/que-es-tsql.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/legal/privacidad.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+
     </url>
 
     <url>
         <loc>https://base-de-datos-facil.vercel.app/legal/terminos.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
 </urlset>

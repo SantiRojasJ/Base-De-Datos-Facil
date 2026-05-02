@@ -735,3 +735,10 @@ footer {
         display: none;
     }
 }
+
+.audio {
+    width: 100%;
+    max-width: 400px;
+    outline: none;
+    border: none;
+}
