@@ -8,6 +8,11 @@
     <title>BDD Fácil | Aprende Bases de Datos SQL y NoSQL desde Cero</title>
     <meta name="description"
           content="Aprende bases de datos relacionales y no relacionales desde cero. Tutoriales gratuitos de SQL, SQL Server, T-SQL, MongoDB, Redis, Cassandra y Neo4j con ejemplos prácticos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bdd-facil.netlify.app/">
+    <meta property="og:site_name" content="BDD Fácil">
+
+    <meta name="twitter:site" content="@bddfacil">
 
     <meta name="keywords"
           content="bases de datos, SQL, SQL Server, T-SQL, NoSQL, MongoDB, Redis, Cassandra, Neo4j, tutoriales SQL, aprender bases de datos, bases de datos relacionales, bases de datos no relacionales">
@@ -49,12 +54,15 @@
     <script type="application/ld+json">
         {
             "@context":"https://schema.org",
-            "@type":"EducationalOrganization",
+            "@type":"WebSite",
             "name":"BDD Fácil",
             "url":"https://bdd-facil.netlify.app/",
-            "description":"Plataforma educativa gratuita dedicada a la enseñanza de bases de datos relacionales y no relacionales.",
-            "educationalUse":"Tutoriales",
-            "learningResourceType":"Artículo educativo"
+            "description":"Plataforma educativa gratuita para aprender bases de datos SQL y NoSQL desde cero.",
+            "inLanguage":"es",
+            "publisher":{
+                "@type":"Organization",
+                "name":"BDD Fácil"
+            }
         }
     </script>
 </head>
@@ -152,13 +160,19 @@
             </li>
         </ul>
             
-        </h4>
+
         
         <!-- LEGAL -->
         <h3 class="sidebar-section">⚖️ Legal</h3>
         <ul>
             <li><a href="legal/privacidad.html">Privacidad</a></li>
             <li><a href="legal/terminos.html">Términos</a></li>
+        </ul>
+
+        <h3 class="sidebar-section">📝 Ejercicios</h3>
+        <ul>
+            <li><a href="articulos/base-de-datos-relacionales/ejercicios/ejercicios-fundamentos.html">Nivel 1 - Fundamentos</a></li>
+            <li><a href="#" class="locked-level" id="nivel2-link-home">🔒 Nivel 2 - Consultas SQL</a></li>
         </ul>
 
     </div>
@@ -185,6 +199,19 @@
             </p>
         </div>
     </section>
+
+    <!-- PROGRESO GLOBAL -->
+    <section class="progress-home" id="progress-home" style="display:none;">
+        <h3>📈 Tu progreso</h3>
+        <div class="progress-bar-home">
+            <div class="progress-fill-home" id="globalProgress"></div>
+        </div>
+        <div class="progress-info-home">
+            <span id="progressText">0%</span>
+            <span id="progressDetail">0 de 30 ejercicios completados</span>
+        </div>
+    </section>
+
     <!-- BANNER ADSENSE -->
     <div class="ad-horizontal" style="max-width: 728px; margin: 2rem auto; text-align: center;">
     <small>📢 Anuncio - Google AdSense (728x90 o responsive)</small>
@@ -351,12 +378,136 @@ margin: 4rem 0;
         </a>
     </section>
 
+    <section id="ejercicios" style="
+background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(6,182,212,.08));
+border: 2px solid rgba(139,92,246,.2);
+border-radius: 20px;
+padding: 3rem;
+margin: 4rem 0;
+">
 
+        <h2 style="color:#8b5cf6;text-align:center;margin-bottom:1rem;">
+            📝 Ejercicios y Simuladores
+        </h2>
+
+        <p style="text-align:center;color:#cbd5e1;font-size:1.1rem;">
+            Poné a prueba tus conocimientos con ejercicios prácticos de SQL,
+            validación automática y pistas para que aprendas resolviendo.
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;">
+
+            <a href="articulos/base-de-datos-relacionales/ejercicios/ejercicios-fundamentos.html" style="
+                display:block;
+                background:rgba(255,255,255,.04);
+                border:1px solid rgba(0,240,255,.15);
+                border-radius:16px;
+                padding:1.8rem;
+                text-decoration:none;
+                transition:0.3s;
+                position:relative;
+                overflow:hidden;
+            ">
+                <span style="
+                    display:inline-block;
+                    font-family:'Orbitron',monospace;
+                    font-size:.6em;
+                    padding:4px 12px;
+                    border-radius:20px;
+                    font-weight:600;
+                    letter-spacing:1px;
+                    text-transform:uppercase;
+                    margin-bottom:.8rem;
+                    background:rgba(0,240,255,.08);
+                    color:#00f0ff;
+                    border:1px solid rgba(0,240,255,.15);
+                ">Nivel 1</span>
+                <h3 style="font-family:'Orbitron',monospace;color:#fff;font-size:1.1rem;margin-bottom:.6rem;">
+                    SQL DDL y DML
+                </h3>
+                <p style="color:#8888aa;font-size:.9rem;line-height:1.6;margin-bottom:1rem;">
+                    CREATE DATABASE, CREATE TABLE, INSERT, SELECT, WHERE, UPDATE, DELETE y ORDER BY.
+                </p>
+                <span style="color:#00f0ff;font-weight:600;font-size:.88rem;">
+                    10 ejercicios →
+                </span>
+            </a>
+
+            <a href="#" id="nivel2-card" class="locked-level-card" style="
+                display:block;
+                background:rgba(255,255,255,.02);
+                border:1px dashed rgba(255,255,255,.08);
+                border-radius:16px;
+                padding:1.8rem;
+                text-decoration:none;
+                opacity:.5;
+                pointer-events:none;
+                cursor:not-allowed;
+            ">
+                <span style="
+                    display:inline-block;
+                    font-family:'Orbitron',monospace;
+                    font-size:.6em;
+                    padding:4px 12px;
+                    border-radius:20px;
+                    font-weight:600;
+                    letter-spacing:1px;
+                    text-transform:uppercase;
+                    margin-bottom:.8rem;
+                    background:rgba(255,0,170,.08);
+                    color:#ff00aa;
+                    border:1px solid rgba(255,0,170,.15);
+                ">🔒 Nivel 2</span>
+                <h3 style="font-family:'Orbitron',monospace;color:#8888aa;font-size:1.1rem;margin-bottom:.6rem;">
+                    Consultas SQL
+                </h3>
+                <p style="color:#8888aa;font-size:.9rem;line-height:1.6;">
+                    JOIN, GROUP BY, HAVING, subconsultas, LIKE, BETWEEN y más.
+                </p>
+                <span style="color:#8888aa;font-weight:600;font-size:.88rem;">
+                    Completá el Nivel 1 para desbloquear →
+                </span>
+            </a>
+
+            <div style="
+                display:block;
+                background:rgba(255,255,255,.02);
+                border:1px dashed rgba(255,255,255,.08);
+                border-radius:16px;
+                padding:1.8rem;
+                opacity:.5;
+            ">
+                <span style="
+                    display:inline-block;
+                    font-family:'Orbitron',monospace;
+                    font-size:.6em;
+                    padding:4px 12px;
+                    border-radius:20px;
+                    font-weight:600;
+                    letter-spacing:1px;
+                    text-transform:uppercase;
+                    margin-bottom:.8rem;
+                    background:rgba(255,0,170,.08);
+                    color:#ff00aa;
+                    border:1px solid rgba(255,0,170,.15);
+                ">Próximamente</span>
+                <h3 style="font-family:'Orbitron',monospace;color:#8888aa;font-size:1.1rem;margin-bottom:.6rem;">
+                    Simulacro UTN
+                </h3>
+                <p style="color:#8888aa;font-size:.9rem;line-height:1.6;">
+                    Ejercicios tipo parcial con tiempo límite y corrección automática.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
 
 <p>
     Usamos cookies para mejorar tu experiencia.
     <a href="legal/privacidad.html">Leer más</a>
 </p>
+
 <footer>
     <a href="/">Inicio</a> |
     <a href="legal/privacidad.html">Privacidad</a> |
@@ -371,6 +522,75 @@ margin: 4rem 0;
         <button onclick="rechazarCookies()">Rechazar</button>
     </div>
 </div>
+
+<script>
+(function() {
+    var TOTAL_POR_NIVEL = 10;
+    var TOTAL_NIVELES = 3;
+    var TOTAL_EJERCICIOS = TOTAL_POR_NIVEL * TOTAL_NIVELES;
+
+    function contarCompletados() {
+        var completados = 0;
+        try {
+            var nivel1 = JSON.parse(localStorage.getItem("bdd-facil-ejercicios"));
+            if (nivel1 && nivel1.completados) {
+                for (var k in nivel1.completados) {
+                    if (nivel1.completados[k]) completados++;
+                }
+            }
+        } catch(e) {}
+        try {
+            var nivel2 = JSON.parse(localStorage.getItem("bdd-facil-ejercicios-consultas"));
+            if (nivel2 && nivel2.completados) {
+                for (var k in nivel2.completados) {
+                    if (nivel2.completados[k]) completados++;
+                }
+            }
+        } catch(e) {}
+        return completados;
+    }
+
+    function verificarDesbloqueoNivel2() {
+        var nivel1 = localStorage.getItem("nivel1_completado");
+        var nivel2Link = document.getElementById("nivel2-link-home");
+        var nivel2Card = document.getElementById("nivel2-card");
+        if (nivel1 === "true") {
+            if (nivel2Link) {
+                nivel2Link.innerHTML = "Nivel 2 - Consultas SQL";
+                nivel2Link.href = "articulos/base-de-datos-relacionales/ejercicios/ejercicios-consultas.html";
+                nivel2Link.classList.remove("locked-level");
+            }
+            if (nivel2Card) {
+                nivel2Card.href = "articulos/base-de-datos-relacionales/ejercicios/ejercicios-consultas.html";
+                nivel2Card.style.opacity = "1";
+                nivel2Card.style.pointerEvents = "auto";
+                nivel2Card.style.cursor = "pointer";
+                nivel2Card.classList.remove("locked-level-card");
+                nivel2Card.innerHTML = nivel2Card.innerHTML.replace("🔒 Nivel 2", "Nivel 2");
+                nivel2Card.innerHTML = nivel2Card.innerHTML.replace("Completá el Nivel 1 para desbloquear →", "10 ejercicios →");
+            }
+        }
+    }
+
+    function mostrarProgreso() {
+        var completados = contarCompletados();
+        if (completados > 0) {
+            var section = document.getElementById("progress-home");
+            var fill = document.getElementById("globalProgress");
+            var text = document.getElementById("progressText");
+            var detail = document.getElementById("progressDetail");
+            if (section) section.style.display = "block";
+            var porcentaje = Math.round((completados / TOTAL_EJERCICIOS) * 100);
+            if (fill) fill.style.width = porcentaje + "%";
+            if (text) text.textContent = porcentaje + "%";
+            if (detail) detail.textContent = completados + " de " + TOTAL_EJERCICIOS + " ejercicios completados";
+        }
+    }
+
+    verificarDesbloqueoNivel2();
+    mostrarProgreso();
+})();
+</script>
 </main>
 
 </body>
