@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ejercicios Consultas SQL | BDD Fácil</title>
+    <meta name="description"
+          content="Practicá SQL con 10 ejercicios de consultas: JOIN, GROUP BY, HAVING, subconsultas, LIKE, BETWEEN y más con validación automática.">
+    <meta name="keywords"
+          content="ejercicios SQL, práctica SQL, consultas SQL, JOIN, INNER JOIN, LEFT JOIN, GROUP BY, HAVING, subconsultas, LIKE, BETWEEN, ejercicios bases de datos">
+    <meta name="author" content="BDD Fácil">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+
+    <link rel="canonical" href="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ejercicios/ejercicios-consultas.html">
+
+    <meta property="og:title" content="Ejercicios Consultas SQL | BDD Fácil">
+    <meta property="og:description"
+          content="10 ejercicios prácticos de consultas SQL intermedias con validación automática.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ejercicios/ejercicios-consultas.html">
+    <meta property="og:site_name" content="BDD Fácil">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ejercicios Consultas SQL | BDD Fácil">
+    <meta name="twitter:description"
+          content="10 ejercicios prácticos de consultas SQL con validación y pistas.">
+
+    <link rel="icon" type="image/png" href="../../../imagenes/logo.png">
+    <link rel="stylesheet" href="../../../css/StyleEjercicios.css">
+    <script src="../../../js/ejercicios-consultas.js" defer></script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="sidebar-content">
+
+        <h3>🗂️ Navegación</h3>
+        <ul>
+            <li><a href="../../../index.html">🏠 Inicio</a></li>
+        </ul>
+
+        <h3 class="sidebar-section">🔥 Artículos</h3>
+
+        <h4 class="sidebar-section">📊 Base de datos Relacionales</h4>
+        <ul>
+            <li><a href="../que-es-sql.html">Qué es SQL</a></li>
+            <li><a href="../sql-server.html">SQL Server</a></li>
+            <li><a href="../que-es-tsql.html">¿Qué es T-SQL?</a></li>
+            <li><a href="../sentencias-ddl-tipos-datos.html">DDL y Tipos de Datos</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">🧠 Base de datos NoSQL</h4>
+        <ul>
+            <li><a href="../../base-de-datos-no-relacionales/base-de-datos-nosql.html">Base de Datos NoSQL</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">📄 Documentales</h4>
+        <ul>
+            <li><a href="../../base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html">MongoDB</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">🔑 Clave-Valor</h4>
+        <ul>
+            <li><a href="../../base-de-datos-no-relacionales/redis-bdd-clave-valor.html">Redis</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">📦 Columnar</h4>
+        <ul>
+            <li><a href="../../base-de-datos-no-relacionales/cassandra.html">Cassandra</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">🕸️ Grafos</h4>
+        <ul>
+            <li><a href="../../base-de-datos-no-relacionales/neo4j.html">Neo4j</a></li>
+        </ul>
+
+        <h4 class="sidebar-section">🎙️ Sección Podcast</h4>
+        <ul>
+            <li><a href="../../../seccion-podcast/que-es-sql.html">Capítulo 1: ¿Qué es SQL?</a></li>
+            <li><a href="../../../seccion-podcast/sql-server.html">Capítulo 2: SQL Server</a></li>
+            <li><a href="../../../seccion-podcast/que-es-tsql.html">Capítulo 3: ¿Qué es T-SQL?</a></li>
+        </ul>
+
+        <h3 class="sidebar-section">📝 Ejercicios</h3>
+        <ul>
+            <li><a href="ejercicios-fundamentos.html">Nivel 1 - Fundamentos</a></li>
+            <li><a href="ejercicios-consultas.html" class="active-link">Nivel 2 - Consultas SQL</a></li>
+        </ul>
+
+        <h3 class="sidebar-section">⚖️ Legal</h3>
+        <ul>
+            <li><a href="../../../legal/privacidad.html">Privacidad</a></li>
+            <li><a href="../../../legal/terminos.html">Términos</a></li>
+        </ul>
+
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <a href="../../../index.html" class="back-button">← Volver al inicio</a>
+
+    <!-- HEADER -->
+    <section class="ejercicios-header">
+        <div>
+            <span class="level-badge">Nivel 2</span>
+            <h1>Consultas SQL</h1>
+            <p class="header-subtitle">10 ejercicios de consultas intermedias</p>
+
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-label">Progreso</span>
+                    <span class="progress-count">0 / 10</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXERCISE CONTAINER -->
+    <div class="exercise-container">
+
+        <!-- ========== EJERCICIO 1 ========== -->
+        <div class="exercise-card">
+            <div class="exercise-top">
+                <span class="exercise-number">01</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">JOIN</span>
+                    <h2 class="exercise-title">INNER JOIN</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Dadas las tablas <strong>Alumnos</strong> y <strong>Carreras</strong>, mostrar el <strong>nombre</strong> del alumno y el nombre de su <strong>carrera</strong>.</p>
+                <p>Alumnos: <code>id_alumno</code>, <code>nombre</code>, <code>id_carrera</code></p>
+                <p>Carreras: <code>id_carrera</code>, <code>nombre_carrera</code></p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-0" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(0)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-0">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-0"></div>
+            </div>
+
+            <div class="hint-area" id="pista-0">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">INNER JOIN combina filas que tienen coincidencia en ambas tablas. Usá ON para indicar la condición.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-0">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT A.nombre, C.nombre_carrera
+FROM Alumnos A
+INNER JOIN Carreras C ON A.id_carrera = C.id_carrera;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-0" disabled onclick="toggleSolucion(0)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" id="btn-anterior" onclick="ejercicioAnterior()" disabled>← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 2 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">02</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">JOIN</span>
+                    <h2 class="exercise-title">LEFT JOIN</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar <strong>todos los alumnos</strong> y su carrera (si tienen una). Los alumnos sin carrera también deben aparecer.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-1" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(1)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-1">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-1"></div>
+            </div>
+
+            <div class="hint-area" id="pista-1">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">LEFT JOIN trae todas las filas de la tabla izquierda, aunque no haya coincidencia en la derecha.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-1">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT A.nombre, C.nombre_carrera
+FROM Alumnos A
+LEFT JOIN Carreras C ON A.id_carrera = C.id_carrera;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-1" disabled onclick="toggleSolucion(1)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 3 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">03</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">JOIN</span>
+                    <h2 class="exercise-title">RIGHT JOIN</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar <strong>todas las carreras</strong> y los alumnos que cursan cada una. Las carreras sin alumnos también deben aparecer.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-2" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(2)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-2">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-2"></div>
+            </div>
+
+            <div class="hint-area" id="pista-2">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">RIGHT JOIN trae todas las filas de la tabla derecha, aunque no haya coincidencia en la izquierda.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-2">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT A.nombre, C.nombre_carrera
+FROM Alumnos A
+RIGHT JOIN Carreras C ON A.id_carrera = C.id_carrera;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-2" disabled onclick="toggleSolucion(2)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 4 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">04</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Agregación</span>
+                    <h2 class="exercise-title">GROUP BY</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Contar <strong>cuántos alumnos</strong> hay en cada carrera.</p>
+                <p>Mostrar el nombre de la carrera y la cantidad.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-3" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(3)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-3">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-3"></div>
+            </div>
+
+            <div class="hint-area" id="pista-3">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">GROUP BY agrupa filas por columna. COUNT(*) cuenta las filas de cada grupo.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-3">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT C.nombre_carrera, COUNT(*) AS cantidad
+FROM Alumnos A
+INNER JOIN Carreras C ON A.id_carrera = C.id_carrera
+GROUP BY C.nombre_carrera;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-3" disabled onclick="toggleSolucion(3)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 5 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">05</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Agregación</span>
+                    <h2 class="exercise-title">HAVING</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar las carreras que tienen <strong>más de 3 alumnos</strong>.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-4" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(4)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-4">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-4"></div>
+            </div>
+
+            <div class="hint-area" id="pista-4">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">HAVING filtra después de GROUP BY. Es como WHERE pero para grupos.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-4">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT C.nombre_carrera, COUNT(*) AS cantidad
+FROM Alumnos A
+INNER JOIN Carreras C ON A.id_carrera = C.id_carrera
+GROUP BY C.nombre_carrera
+HAVING COUNT(*) > 3;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-4" disabled onclick="toggleSolucion(4)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 6 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">06</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Subconsulta</span>
+                    <h2 class="exercise-title">WHERE IN</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar los alumnos que cursan <strong>una carrera que empieza con "S"</strong> usando una subconsulta.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-5" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(5)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-5">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-5"></div>
+            </div>
+
+            <div class="hint-area" id="pista-5">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">Usá WHERE id_carrera IN (SELECT id_carrera FROM Carreras WHERE nombre_carrera LIKE 'S%').</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-5">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT * FROM Alumnos
+WHERE id_carrera IN (
+    SELECT id_carrera FROM Carreras
+    WHERE nombre_carrera LIKE 'S%'
+);</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-5" disabled onclick="toggleSolucion(5)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 7 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">07</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Filtro</span>
+                    <h2 class="exercise-title">LIKE</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar los alumnos cuyo nombre <strong>empieza con "A"</strong>.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-6" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(6)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-6">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-6"></div>
+            </div>
+
+            <div class="hint-area" id="pista-6">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">LIKE busca patrones. El % es un comodín para cualquier carácter.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-6">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT * FROM Alumnos WHERE nombre LIKE 'A%';</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-6" disabled onclick="toggleSolucion(6)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 8 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">08</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Filtro</span>
+                    <h2 class="exercise-title">BETWEEN</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar los alumnos con edad <strong>entre 20 y 25 años</strong> (incluidos).</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-7" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(7)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-7">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-7"></div>
+            </div>
+
+            <div class="hint-area" id="pista-7">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">BETWEEN incluye ambos valores extremos. Es equivalente a >= y <=.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-7">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT * FROM Alumnos WHERE edad BETWEEN 20 AND 25;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-7" disabled onclick="toggleSolucion(7)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 9 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">09</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Avanzado</span>
+                    <h2 class="exercise-title">JOIN + WHERE + ORDER BY</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Mostrar el <strong>nombre del alumno</strong> y su carrera, pero solo los que cursan <strong>Ingeniería en Sistemas</strong>.</p>
+                <p>Ordenar los resultados por <strong>nombre del alumno</strong> alfabéticamente.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-8" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(8)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-8">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-8"></div>
+            </div>
+
+            <div class="hint-area" id="pista-8">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">Combiná INNER JOIN con WHERE para filtrar y ORDER BY para ordenar.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-8">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT A.nombre, C.nombre_carrera
+FROM Alumnos A
+INNER JOIN Carreras C ON A.id_carrera = C.id_carrera
+WHERE C.nombre_carrera = 'Ingeniería en Sistemas'
+ORDER BY A.nombre ASC;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-8" disabled onclick="toggleSolucion(8)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" onclick="siguienteEjercicio()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== EJERCICIO 10 ========== -->
+        <div class="exercise-card" style="display:none">
+            <div class="exercise-top">
+                <span class="exercise-number">10</span>
+                <div class="exercise-title-group">
+                    <span class="exercise-tag">Integrador</span>
+                    <h2 class="exercise-title">Ejercicio Integrador</h2>
+                </div>
+            </div>
+
+            <div class="exercise-statement">
+                <p>Dadas las tablas <strong>Alumnos</strong>, <strong>Carreras</strong> y <strong>Materias</strong>:</p>
+                <ul>
+                    <li>Alumnos: <code>id_alumno</code>, <code>nombre</code>, <code>id_carrera</code></li>
+                    <li>Carreras: <code>id_carrera</code>, <code>nombre_carrera</code></li>
+                    <li>Materias: <code>id_materia</code>, <code>nombre_materia</code>, <code>id_carrera</code></li>
+                </ul>
+                <p>Mostrar el <strong>nombre de la carrera</strong>, la <strong>cantidad de alumnos</strong> y la <strong>cantidad de materias</strong> de cada carrera.</p>
+                <p>Mostrar solo las carreras con <strong>más de 2 alumnos</strong>, ordenadas por cantidad de alumnos de mayor a menor.</p>
+            </div>
+
+            <div class="answer-area">
+                <label class="answer-label">Tu respuesta SQL:</label>
+                <textarea class="sql-answer" id="respuesta-9" placeholder="Escribí tu solución SQL acá..." spellcheck="false"></textarea>
+                <div class="answer-actions">
+                    <button class="btn-corregir" onclick="corregir(9)">⚡ Corregir</button>
+                    <span class="attempt-count" id="intentos-9">Intentos: 0/3</span>
+                </div>
+                <div class="result-message" id="resultado-9"></div>
+            </div>
+
+            <div class="hint-area" id="pista-9">
+                <div class="hint-inner">
+                    <span class="hint-label">💡 Pista</span>
+                    <p class="hint-text">Usá subconsultas para contar alumnos y materias por carrera, o combiná JOINs con GROUP BY y HAVING.</p>
+                </div>
+            </div>
+
+            <div class="solution" id="solucion-9">
+                <div class="solution-inner">
+                    <span class="solution-label">Solución</span>
+                    <pre><code>SELECT
+    C.nombre_carrera,
+    (SELECT COUNT(*) FROM Alumnos A WHERE A.id_carrera = C.id_carrera) AS cantidad_alumnos,
+    (SELECT COUNT(*) FROM Materias M WHERE M.id_carrera = C.id_carrera) AS cantidad_materias
+FROM Carreras C
+HAVING cantidad_alumnos > 2
+ORDER BY cantidad_alumnos DESC;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-actions">
+                <button class="btn-solucion locked" id="btn-solucion-9" disabled onclick="toggleSolucion(9)">🔒 Mostrar solución</button>
+                <div class="exercise-nav-buttons">
+                    <button class="btn-nav btn-anterior" onclick="ejercicioAnterior()">← Anterior</button>
+                    <button class="btn-nav btn-siguiente" id="btn-siguiente" onclick="siguienteEjercicio()" disabled>Siguiente →</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION DOTS -->
+    <div class="exercise-dots">
+        <span class="dot active" onclick="irAEjercicio(0)"></span>
+        <span class="dot" onclick="irAEjercicio(1)"></span>
+        <span class="dot" onclick="irAEjercicio(2)"></span>
+        <span class="dot" onclick="irAEjercicio(3)"></span>
+        <span class="dot" onclick="irAEjercicio(4)"></span>
+        <span class="dot" onclick="irAEjercicio(5)"></span>
+        <span class="dot" onclick="irAEjercicio(6)"></span>
+        <span class="dot" onclick="irAEjercicio(7)"></span>
+        <span class="dot" onclick="irAEjercicio(8)"></span>
+        <span class="dot" onclick="irAEjercicio(9)"></span>
+    </div>
+
+    <!-- KEYBOARD HINT -->
+    <div class="keyboard-hint">
+        Usá las teclas <kbd>←</kbd> <kbd>→</kbd> para navegar entre ejercicios
+    </div>
+
+    <!-- COMPLETION MESSAGE -->
+    <div class="completion-message" id="completion-message">
+        <div class="completion-icon">🎉</div>
+        <h3>¡Completaste todos los ejercicios!</h3>
+        <p>Has resuelto los 10 ejercicios de consultas SQL. Seguí practicando con los artículos de la plataforma.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="../../../index.html">Inicio</a> |
+        <a href="../../../legal/privacidad.html">Privacidad</a> |
+        <a href="../../../legal/terminos.html">Términos</a> |
+        <a href="../../../sitemap.xml">Sitemap</a>
+    </footer>
+
+</main>
+
+</body>
+</html>
