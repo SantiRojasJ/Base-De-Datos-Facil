@@ -86,93 +86,99 @@
 
 
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <span class="logo-icon">📀</span>
+            <span class="logo-text nav-label">BDD Fácil</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar" title="Colapsar sidebar">☰</button>
+    </div>
     <div class="sidebar-content">
 
-        <h3>🗂️ Navegación</h3>
+        <h3><span class="nav-icon">🗂️</span><span class="nav-label"> Navegación</span></h3>
         <ul>
-            <li><a href="#hero">🏠 Inicio</a></li>
-            <li><a href="#articulos">📚 Artículos</a></li>
+            <li><a href="#hero"><span class="nav-icon">🏠</span><span class="nav-label"> Inicio</span></a></li>
+            <li><a href="#articulos"><span class="nav-icon">📚</span><span class="nav-label"> Artículos</span></a></li>
         </ul>
 
-        <h3 class="sidebar-section">🔥 Artículos</h3>
+        <h3 class="sidebar-section"><span class="nav-icon">🔥</span><span class="nav-label"> Artículos</span></h3>
 
         <!-- RELACIONALES -->
-        <h4 class="sidebar-section">📊 Base de datos Relacionales</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">📊</span><span class="nav-label"> Relacionales</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-relacionales/que-es-sql.html">Qué es SQL</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/sql-server.html">SQL Server</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/que-es-tsql.html">¿Qué es T-SQL?</a></li>
-            <li><a href="articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html">DDL y Tipos de Datos</a></li>
+            <li><a href="articulos/base-de-datos-relacionales/que-es-sql.html"><span class="nav-icon">🗃️</span><span class="nav-label"> Qué es SQL</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/sql-server.html"><span class="nav-icon">⚙️</span><span class="nav-label"> SQL Server</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/que-es-tsql.html"><span class="nav-icon">🔧</span><span class="nav-label"> ¿Qué es T-SQL?</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/sentencias-ddl-tipos-datos.html"><span class="nav-icon">📐</span><span class="nav-label"> DDL y Tipos de Datos</span></a></li>
+        </ul>
+
+        <h5 class="sidebar-subsection"><span class="nav-icon">🏗️</span><span class="nav-label"> DDL</span></h5>
+        <ul>
+            <li><a href="articulos/base-de-datos-relacionales/ddl/create-database.html"><span class="nav-icon">📀</span><span class="nav-label"> CREATE DATABASE</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/ddl/create-table.html"><span class="nav-icon">📋</span><span class="nav-label"> CREATE TABLE</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/ddl/alter-table.html"><span class="nav-icon">✏️</span><span class="nav-label"> ALTER TABLE</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/ddl/drop-table.html"><span class="nav-icon">🗑️</span><span class="nav-label"> DROP TABLE</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/ddl/truncate-table.html"><span class="nav-icon">✂️</span><span class="nav-label"> TRUNCATE TABLE</span></a></li>
+        </ul>
+
+        <h5 class="sidebar-subsection"><span class="nav-icon">🗄️</span><span class="nav-label"> DML</span></h5>
+        <ul>
+            <li><a href="articulos/base-de-datos-relacionales/dml/insert.html"><span class="nav-icon">➕</span><span class="nav-label"> INSERT</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/dml/select.html"><span class="nav-icon">🔍</span><span class="nav-label"> SELECT</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/dml/update.html"><span class="nav-icon">🔄</span><span class="nav-label"> UPDATE</span></a></li>
+            <li><a href="articulos/base-de-datos-relacionales/dml/delete.html"><span class="nav-icon">❌</span><span class="nav-label"> DELETE</span></a></li>
         </ul>
 
         <!-- NOSQL -->
-        <h4 class="sidebar-section">🧠 Base de datos NoSQL</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">🧠</span><span class="nav-label"> NoSQL</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html">Base de Datos NoSQL</a></li>
+            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-nosql.html"><span class="nav-icon">🧠</span><span class="nav-label"> Base de Datos NoSQL</span></a></li>
         </ul>
 
         <!-- DOCUMENTALES -->
-        <h4 class="sidebar-section">📄 Documentales</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">📄</span><span class="nav-label"> Documentales</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html">MongoDB</a></li>
+            <li><a href="articulos/base-de-datos-no-relacionales/base-de-datos-documentales/mongodb.html"><span class="nav-icon">🍃</span><span class="nav-label"> MongoDB</span></a></li>
         </ul>
 
         <!-- CLAVE VALOR -->
-        <h4 class="sidebar-section">🔑 Clave-Valor</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">🔑</span><span class="nav-label"> Clave-Valor</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html">Redis</a></li>
+            <li><a href="articulos/base-de-datos-no-relacionales/redis-bdd-clave-valor.html"><span class="nav-icon">⚡</span><span class="nav-label"> Redis</span></a></li>
         </ul>
 
         <!-- COLUMNAR -->
-        <h4 class="sidebar-section">📦 Columnar</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">📦</span><span class="nav-label"> Columnar</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-no-relacionales/cassandra.html">Cassandra</a></li>
+            <li><a href="articulos/base-de-datos-no-relacionales/cassandra.html"><span class="nav-icon">🐘</span><span class="nav-label"> Cassandra</span></a></li>
         </ul>
 
         <!-- GRAFOS -->
-        <h4 class="sidebar-section">🕸️ Grafos</h4>
+        <h4 class="sidebar-section"><span class="nav-icon">🕸️</span><span class="nav-label"> Grafos</span></h4>
         <ul>
-            <li><a href="articulos/base-de-datos-no-relacionales/neo4j.html">Neo4j</a></li>
+            <li><a href="articulos/base-de-datos-no-relacionales/neo4j.html"><span class="nav-icon">🔮</span><span class="nav-label"> Neo4j</span></a></li>
         </ul>
 
-        <h4 class="sidebar-section">
-            🎙️ Sección Podcast
-        </h4>
+        <h4 class="sidebar-section"><span class="nav-icon">🎙️</span><span class="nav-label"> Podcast</span></h4>
 
         <ul>
-            <li>
-                <a href="seccion-podcast/que-es-sql.html">
-                    Capítulo 1: ¿Qué es SQL?
-                </a>
-            </li>
-
-            <li>
-                <a href="seccion-podcast/sql-server.html">
-                    Capítulo 2: SQL Server
-                </a>
-            </li>
-
-            <li>
-                <a href="seccion-podcast/que-es-tsql.html">
-                    Capítulo 3: ¿Qué es T-SQL?
-                </a>
-            </li>
+            <li><a href="seccion-podcast/que-es-sql.html"><span class="nav-icon">🎙️</span><span class="nav-label"> Cap. 1: ¿Qué es SQL?</span></a></li>
+            <li><a href="seccion-podcast/sql-server.html"><span class="nav-icon">🎙️</span><span class="nav-label"> Cap. 2: SQL Server</span></a></li>
+            <li><a href="seccion-podcast/que-es-tsql.html"><span class="nav-icon">🎙️</span><span class="nav-label"> Cap. 3: ¿Qué es T-SQL?</span></a></li>
         </ul>
             
-
-        
         <!-- LEGAL -->
-        <h3 class="sidebar-section">⚖️ Legal</h3>
+        <h3 class="sidebar-section"><span class="nav-icon">⚖️</span><span class="nav-label"> Legal</span></h3>
         <ul>
-            <li><a href="legal/privacidad.html">Privacidad</a></li>
-            <li><a href="legal/terminos.html">Términos</a></li>
+            <li><a href="legal/privacidad.html"><span class="nav-icon">🔒</span><span class="nav-label"> Privacidad</span></a></li>
+            <li><a href="legal/terminos.html"><span class="nav-icon">📄</span><span class="nav-label"> Términos</span></a></li>
         </ul>
 
-        <h3 class="sidebar-section">📝 Ejercicios</h3>
+        <h3 class="sidebar-section"><span class="nav-icon">📝</span><span class="nav-label"> Ejercicios</span></h3>
         <ul>
-            <li><a href="articulos/base-de-datos-relacionales/ejercicios/ejercicios-fundamentos.html">Nivel 1 - Fundamentos</a></li>
-            <li><a href="#" class="locked-level" id="nivel2-link-home">🔒 Nivel 2 - Consultas SQL</a></li>
+            <li><a href="articulos/base-de-datos-relacionales/ejercicios/ejercicios-fundamentos.html"><span class="nav-icon">📝</span><span class="nav-label"> Nivel 1 - Fundamentos</span></a></li>
+            <li><a href="#" class="locked-level" id="nivel2-link-home"><span class="nav-icon">🔒</span><span class="nav-label"> Nivel 2 - Consultas SQL</span></a></li>
         </ul>
 
     </div>
@@ -492,7 +498,7 @@ margin: 4rem 0;
                     border:1px solid rgba(255,0,170,.15);
                 ">Próximamente</span>
                 <h3 style="font-family:'Orbitron',monospace;color:#8888aa;font-size:1.1rem;margin-bottom:.6rem;">
-                    Simulacro UTN
+                    Pon a prueba tus conocimientos
                 </h3>
                 <p style="color:#8888aa;font-size:.9rem;line-height:1.6;">
                     Ejercicios tipo parcial con tiempo límite y corrección automática.
@@ -528,6 +534,61 @@ margin: 4rem 0;
     var TOTAL_POR_NIVEL = 10;
     var TOTAL_NIVELES = 3;
     var TOTAL_EJERCICIOS = TOTAL_POR_NIVEL * TOTAL_NIVELES;
+
+    function initSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var toggle = document.getElementById('sidebarToggle');
+        if (!sidebar || !toggle) return;
+        var isMobile = function() { return window.innerWidth <= 768; };
+
+        function applyState(collapsed) {
+            if (isMobile()) {
+                sidebar.classList.toggle('mobile-open', collapsed);
+                document.body.classList.remove('sidebar-collapsed');
+            } else {
+                sidebar.classList.toggle('collapsed', collapsed);
+                document.body.classList.toggle('sidebar-collapsed', collapsed);
+                toggle.textContent = collapsed ? '☰' : '✕';
+                toggle.title = collapsed ? 'Expandir sidebar' : 'Colapsar sidebar';
+            }
+        }
+
+        toggle.addEventListener('click', function() {
+            var currentlyCollapsed = isMobile()
+                ? sidebar.classList.contains('mobile-open')
+                : sidebar.classList.contains('collapsed');
+            applyState(!currentlyCollapsed);
+            try {
+                localStorage.setItem('bdd-facil-sidebar', JSON.stringify({
+                    collapsed: !isMobile() && !currentlyCollapsed
+                }));
+            } catch(e) {}
+        });
+
+        window.addEventListener('resize', function() {
+            if (isMobile()) {
+                sidebar.classList.remove('collapsed');
+                document.body.classList.remove('sidebar-collapsed');
+            } else {
+                sidebar.classList.remove('mobile-open');
+                var saved = false;
+                try {
+                    var d = JSON.parse(localStorage.getItem('bdd-facil-sidebar'));
+                    if (d) saved = d.collapsed;
+                } catch(e) {}
+                applyState(saved);
+            }
+        });
+
+        var savedState = false;
+        try {
+            var d = JSON.parse(localStorage.getItem('bdd-facil-sidebar'));
+            if (d) savedState = d.collapsed;
+        } catch(e) {}
+        if (!isMobile() && savedState) {
+            applyState(true);
+        }
+    }
 
     function contarCompletados() {
         var completados = 0;
@@ -587,6 +648,7 @@ margin: 4rem 0;
         }
     }
 
+    initSidebar();
     verificarDesbloqueoNivel2();
     mostrarProgreso();
 })();

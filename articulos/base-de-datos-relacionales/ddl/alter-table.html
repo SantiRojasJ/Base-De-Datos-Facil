@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Básico -->
+    <title>ALTER TABLE: Modificar Tablas en SQL | BDD Facil</title>
+    <meta name="description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes: agregar, modificar y eliminar columnas.">
+    <meta name="keywords" content="ALTER TABLE, SQL, modificar tabla, ADD COLUMN, DROP COLUMN, DDL, modificar estructura">
+    <meta name="author" content="BDD Facil">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ALTER TABLE: Modificar Tablas en SQL">
+    <meta property="og:description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html">
+    <meta property="og:site_name" content="BDD Facil">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ALTER TABLE: Modificar Tablas en SQL">
+    <meta name="twitter:description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes.">
+
+    <!-- Article Meta -->
+    <meta property="article:published_time" content="2026-07-28">
+    <meta property="article:author" content="BDD Facil">
+    <meta property="article:section" content="DDL">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../../imagenes/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../css/Styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "ALTER TABLE: Modificar Tablas en SQL",
+        "description": "Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes: agregar, modificar y eliminar columnas.",
+        "author": {
+            "@type": "Organization",
+            "name": "BDD Facil"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "BDD Facil"
+        },
+        "datePublished": "2026-07-28",
+        "inLanguage": "es",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<main class="main-content">
+    <a href="../../../index.html" class="back-button">← Volver al inicio</a>
+
+    <!-- Breadcrumb -->
+    <nav style="margin-bottom: 2rem; font-size: 0.9rem; color: #94a3b8;">
+        <ol style="list-style: none; display: flex; gap: 0.5rem; padding: 0;">
+            <li><a href="../../../index.html" style="color: #06b6d4; text-decoration: none;">Inicio</a></li>
+            <li><span style="color: #64748b;">/</span></li>
+            <li><a href="../../sentencias-ddl-tipos-datos.html" style="color: #06b6d4; text-decoration: none;">DDL</a></li>
+            <li><span style="color: #64748b;">/</span></li>
+            <li aria-current="page" style="color: #94a3b8;">ALTER TABLE</li>
+        </ol>
+    </nav>
+
+    <article>
+        <header class="article-header">
+            <span class="article-category">DDL</span>
+            <h1 class="article-title">ALTER TABLE: Modificar Tablas en SQL</h1>
+            <div class="article-meta">
+                <span>Publicado: Julio 2026</span> • <span>Lectura: 8 min</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <!-- Índice del artículo -->
+            <section style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                <h2 style="margin-top: 0;">Índice del artículo</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="#introduccion" style="color: #06b6d4; text-decoration: none;">Introducción</a></li>
+                    <li><a href="#que-aprenderas" style="color: #06b6d4; text-decoration: none;">¿Qué aprenderás?</a></li>
+                    <li><a href="#sintaxis" style="color: #06b6d4; text-decoration: none;">Sintaxis</a></li>
+                    <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación</a></li>
+                    <li><a href="#ejemplo-practico" style="color: #06b6d4; text-decoration: none;">Ejemplo práctico</a></li>
+                    <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Caso real</a></li>
+                    <li><a href="#buenas-practicas" style="color: #06b6d4; text-decoration: none;">Buenas prácticas</a></li>
+                    <li><a href="#errores-comunes" style="color: #06b6d4; text-decoration: none;">Errores comunes</a></li>
+                    <li><a href="#ejercicios" style="color: #06b6d4; text-decoration: none;">Ejercicios propuestos</a></li>
+                    <li><a href="#podcast" style="color: #06b6d4; text-decoration: none;">Podcast relacionado</a></li>
+                    <li><a href="#resumen" style="color: #06b6d4; text-decoration: none;">Resumen</a></li>
+                </ul>
+            </section>
+
+            <h2 id="introduccion">Introducción</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="que-aprenderas">¿Qué aprenderás?</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="sintaxis">Sintaxis</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="explicacion">Explicación</h2>
+            <!-- Contenido pendiente -->
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2 id="ejemplo-practico">Ejemplo práctico</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="caso-real">Caso real</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="buenas-practicas">Buenas prácticas</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="errores-comunes">Errores comunes</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="ejercicios">Ejercicios propuestos</h2>
+            <!-- Contenido pendiente -->
+
+            <div class="ad-in-content">
+                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
+            </div>
+
+            <h2 id="podcast">Podcast relacionado</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="resumen">Resumen</h2>
+            <!-- Contenido pendiente -->
+
+            <h2 id="articulo-siguiente">Artículo siguiente</h2>
+            <!-- Contenido pendiente -->
+
+            <!-- Navegación entre artículos -->
+            <div style="display: flex; justify-content: space-between; margin-top: 3rem;">
+                <a href="create-table.html" id="link-anterior" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    ← Anterior: CREATE TABLE
+                </a>
+                <a href="drop-table.html" id="link-siguiente" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    Siguiente: DROP TABLE →
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+
+<script src="../../../js/progreso-lectura.js"></script>
+<script>
+    ProgresoLectura.inicializar({
+        articuloId: 'ddl-alter-table'
+    });
+</script>
+</body>
+</html>

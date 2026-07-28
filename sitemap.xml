@@ -73,6 +73,69 @@
     </url>
 
     <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-database.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-table.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/drop-table.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/truncate-table.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/dml/insert.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/dml/select.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/dml/update.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/dml/delete.html</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://bdd-facil.netlify.app/seccion-podcast/que-es-sql.html</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>monthly</changefreq>
