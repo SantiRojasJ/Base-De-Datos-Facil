@@ -119,45 +119,579 @@
             <p>Esta será la primera sentencia que utilizarás al comenzar prácticamente cualquier proyecto de bases de datos.</p>
 
             <h2 id="que-aprenderas">¿Qué aprenderás?</h2>
-            <!-- Contenido pendiente -->
+            <p>En este artículo vas a aprender a utilizar la sentencia <code>CREATE DATABASE</code> de SQL Server para crear una nueva base de datos desde cero.</p>
+
+            <p>Al finalizar, vas a poder:</p>
+
+            <ul>
+                <li>Entender qué función cumple <code>CREATE DATABASE</code>.</li>
+                <li>Reconocer la sintaxis básica de la sentencia.</li>
+                <li>Crear una base de datos utilizando T-SQL.</li>
+                <li>Seleccionar una base de datos mediante <code>USE</code>.</li>
+                <li>Comprobar cuál es la base de datos actualmente seleccionada.</li>
+                <li>Consultar las bases de datos disponibles en una instancia de SQL Server.</li>
+                <li>Comprender, a nivel introductorio, qué archivos utiliza SQL Server para almacenar una base de datos.</li>
+                <li>Identificar errores frecuentes al utilizar <code>CREATE DATABASE</code>.</li>
+                <li>Aplicar estos conceptos en situaciones similares a las que aparecen en proyectos reales.</li>
+            </ul>
+
+            <p>También vas a entender algo fundamental: crear una base de datos no significa que ya tengamos creadas las tablas de nuestro sistema. La creación de las tablas será el siguiente paso y la veremos utilizando <code>CREATE TABLE</code>.</p>
 
             <h2 id="sintaxis">Sintaxis</h2>
-            <!-- Contenido pendiente -->
+            <p>La forma más sencilla de crear una base de datos en SQL Server es:</p>
 
-            <h2 id="explicacion">Explicación</h2>
-            <!-- Contenido pendiente -->
+            <pre><code>CREATE DATABASE nombre_base_de_datos;</code></pre>
+
+            <p>Por ejemplo, si queremos crear una base de datos para una biblioteca:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <p>Al ejecutar esta sentencia, SQL Server crea una nueva base de datos llamada <code>Biblioteca</code>.</p>
+
+            <h3>¿Qué significa cada parte?</h3>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <ul>
+                <li><code>CREATE</code> — Indica que queremos crear un nuevo objeto.</li>
+                <li><code>DATABASE</code> — Especifica que el objeto que queremos crear es una base de datos.</li>
+                <li><code>Biblioteca</code> — Es el nombre que tendrá la base de datos.</li>
+                <li><code>;</code> — Indica el final de la sentencia SQL.</li>
+            </ul>
+
+            <h3>Utilizando GO</h3>
+            <p>Cuando trabajamos con SQL Server Management Studio es habitual encontrar:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p><code>GO</code> no es una instrucción SQL como <code>CREATE DATABASE</code> o <code>SELECT</code>. Es un separador de lotes reconocido por herramientas como SQL Server Management Studio.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO
+
+USE Biblioteca;
+GO</code></pre>
+
+            <p>En este caso estamos realizando dos operaciones diferentes:</p>
+
+            <ol>
+                <li>Crear la base de datos.</li>
+                <li>Seleccionar la base de datos para trabajar con ella.</li>
+            </ol>
+
+            <h3><code>CREATE DATABASE</code> y <code>USE</code> no hacen lo mismo</h3>
+            <p>Esta diferencia es muy importante.</p>
+
+            <p><code>CREATE DATABASE</code> crea una base de datos nueva:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <p><code>USE</code> selecciona una base de datos que ya existe:</p>
+
+            <pre><code>USE Biblioteca;</code></pre>
+
+            <p>Por lo tanto:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO
+
+USE Biblioteca;
+GO</code></pre>
+
+            <p>significa:</p>
+
+            <p><strong>"Creá una base de datos llamada Biblioteca y después seleccioná esa base para trabajar sobre ella."</strong></p>
 
             <div class="ad-in-content">
                 <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
             </div>
 
+            <h2 id="explicacion">Explicación</h2>
+            <p>Cuando ejecutamos:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <p>estamos creando una nueva base de datos dentro de una instancia de SQL Server.</p>
+
+            <p>Una forma sencilla de imaginar la organización es:</p>
+
+            <pre><code>Instancia de SQL Server
+│
+├── Base de datos Biblioteca
+│
+├── Base de datos SistemaVentas
+│
+└── Base de datos Universidad</code></pre>
+
+            <p>Cada base de datos puede contener diferentes objetos, como tablas, vistas, procedimientos almacenados y otros elementos.</p>
+
+            <p>Para empezar, es importante entender esta relación:</p>
+
+            <pre><code>Instancia de SQL Server
+        ↓
+    Base de datos
+        ↓
+       Tablas
+        ↓
+Filas y columnas</code></pre>
+
+            <h3>Una base de datos no es una tabla</h3>
+            <p>Esta es una de las primeras confusiones que suele aparecer cuando se empieza a estudiar SQL.</p>
+
+            <p>Una <strong>base de datos</strong> es el espacio lógico donde se organizan los diferentes objetos que forman parte de un sistema.</p>
+
+            <p>Una <strong>tabla</strong> es uno de esos objetos y se utiliza para almacenar información estructurada.</p>
+
+            <p>Por ejemplo, podemos tener:</p>
+
+            <pre><code>Biblioteca
+│
+├── Libros
+├── Autores
+├── Socios
+└── Prestamos</code></pre>
+
+            <p><code>Biblioteca</code> es la base de datos.</p>
+
+            <p><code>Libros</code>, <code>Autores</code>, <code>Socios</code> y <code>Prestamos</code> serían tablas.</p>
+
+            <p>Pero si ejecutamos solamente:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <p>las tablas anteriores todavía no existen.</p>
+
+            <p>Primero creamos la base:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>Y posteriormente podremos crear las tablas mediante <code>CREATE TABLE</code>.</p>
+
+            <h3>¿Qué ocurre internamente?</h3>
+            <p>SQL Server necesita almacenar físicamente la información de una base de datos. Para ello utiliza archivos.</p>
+
+            <p>A nivel introductorio podemos encontrar principalmente:</p>
+
+            <ul>
+                <li><strong>Archivo <code>.mdf</code></strong> — Es el archivo de datos principal de la base de datos. Contiene información almacenada por SQL Server, incluyendo las estructuras y datos de la base.</li>
+                <li><strong>Archivo <code>.ndf</code></strong> — Son archivos de datos secundarios. Una base de datos puede utilizar archivos secundarios cuando la organización o el tamaño de los datos lo requiere. No es necesario utilizarlos para una base de datos sencilla.</li>
+                <li><strong>Archivo <code>.ldf</code></strong> — Es el archivo de registro de transacciones, conocido como transaction log. SQL Server utiliza este registro para mantener información relacionada con las operaciones realizadas sobre la base de datos y ayudar a mantener la integridad de las transacciones.</li>
+            </ul>
+
+            <p>Para comenzar a trabajar con <code>CREATE DATABASE</code> no necesitamos configurar manualmente estos archivos. SQL Server puede crear y administrar la configuración básica automáticamente.</p>
+
+            <h3>Consultar las bases de datos disponibles</h3>
+            <p>Podemos utilizar la vista de sistema <code>sys.databases</code> para consultar las bases de datos disponibles en la instancia:</p>
+
+            <pre><code>SELECT name
+FROM sys.databases;</code></pre>
+
+            <p>El resultado mostrará una lista con los nombres de las bases de datos disponibles.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>master
+tempdb
+model
+msdb
+Biblioteca</code></pre>
+
+            <p>Las primeras bases que aparecen son bases utilizadas internamente por SQL Server.</p>
+
+            <p>La base <code>Biblioteca</code> sería la que acabamos de crear nosotros.</p>
+
+            <h3>¿Cómo saber qué base de datos estoy utilizando?</h3>
+            <p>Podemos utilizar la función <code>DB_NAME()</code>:</p>
+
+            <pre><code>SELECT DB_NAME() AS BaseDeDatosActual;</code></pre>
+
+            <p>Si previamente ejecutamos:</p>
+
+            <pre><code>USE Biblioteca;
+GO</code></pre>
+
+            <p>podemos obtener:</p>
+
+            <pre><code>BaseDeDatosActual
+-----------------
+Biblioteca</code></pre>
+
+            <p>Esto resulta especialmente útil cuando estamos trabajando con varias bases de datos y queremos comprobar sobre cuál estamos ejecutando nuestras consultas.</p>
+
             <h2 id="ejemplo-practico">Ejemplo práctico</h2>
-            <!-- Contenido pendiente -->
+            <p>Vamos a crear una base de datos para una biblioteca desde cero.</p>
+
+            <h3>Paso 1: crear la base</h3>
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>En este momento SQL Server crea la base de datos.</p>
+
+            <p>Pero todavía no tenemos tablas.</p>
+
+            <h3>Paso 2: seleccionar la base</h3>
+            <pre><code>USE Biblioteca;
+GO</code></pre>
+
+            <p>Ahora indicamos que queremos trabajar dentro de <code>Biblioteca</code>.</p>
+
+            <h3>Paso 3: comprobar la base actual</h3>
+            <p>Podemos verificarlo mediante:</p>
+
+            <pre><code>SELECT DB_NAME() AS BaseDeDatosActual;</code></pre>
+
+            <p>El resultado debería indicar:</p>
+
+            <pre><code>Biblioteca</code></pre>
+
+            <h3>Paso 4: consultar las bases disponibles</h3>
+            <p>También podemos comprobar que nuestra base aparece entre las bases de datos de SQL Server:</p>
+
+            <pre><code>SELECT name
+FROM sys.databases;</code></pre>
+
+            <p>De esta manera tenemos un pequeño flujo completo:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO
+
+USE Biblioteca;
+GO
+
+SELECT DB_NAME() AS BaseDeDatosActual;</code></pre>
+
+            <p>Este es un buen ejemplo para ejecutar mientras estás aprendiendo porque permite ver claramente las tres etapas:</p>
+
+            <p><strong>Crear → Seleccionar → Comprobar</strong></p>
+
+            <h3>Otro ejemplo: sistema de ventas</h3>
+            <p>Imaginemos ahora que estamos desarrollando una aplicación para una empresa que vende productos.</p>
+
+            <p>Podríamos comenzar creando:</p>
+
+            <pre><code>CREATE DATABASE SistemaVentas;
+GO
+
+USE SistemaVentas;
+GO</code></pre>
+
+            <p>Más adelante, esa base podría contener tablas como:</p>
+
+            <pre><code>SistemaVentas
+│
+├── Clientes
+├── Productos
+├── Ventas
+└── DetalleVenta</code></pre>
+
+            <p>Nuevamente, <code>CREATE DATABASE</code> solamente crea la base. Las tablas se crearán posteriormente.</p>
 
             <h2 id="caso-real">Caso real</h2>
-            <!-- Contenido pendiente -->
+            <h3>Sistema para una biblioteca</h3>
+            <p>Imaginemos que una biblioteca quiere desarrollar un sistema para administrar sus libros y préstamos.</p>
+
+            <p>Actualmente necesita almacenar información sobre:</p>
+
+            <ul>
+                <li>Libros.</li>
+                <li>Autores.</li>
+                <li>Socios.</li>
+                <li>Préstamos.</li>
+            </ul>
+
+            <p>Antes de crear esas estructuras necesitamos un lugar donde almacenarlas.</p>
+
+            <p>Comenzamos creando la base:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO
+
+USE Biblioteca;
+GO</code></pre>
+
+            <p>Conceptualmente, nuestro sistema quedaría organizado de esta manera:</p>
+
+            <pre><code>Biblioteca
+│
+├── Libros
+├── Autores
+├── Socios
+└── Prestamos</code></pre>
+
+            <p>Cada una de esas estructuras podría convertirse posteriormente en una tabla.</p>
+
+            <p>Por ejemplo, <code>Libros</code> podría almacenar información como el título, ISBN y año de publicación.</p>
+
+            <p><code>Socios</code> podría contener los datos de las personas registradas en la biblioteca.</p>
+
+            <p><code>Prestamos</code> podría registrar qué libro fue prestado, a qué socio y en qué fecha.</p>
+
+            <p>Pero todavía no necesitamos preocuparnos por esas tablas.</p>
+
+            <p>El primer paso fue crear la base de datos.</p>
+
+            <p>En el siguiente artículo veremos cómo crear las tablas utilizando <code>CREATE TABLE</code>.</p>
 
             <h2 id="buenas-practicas">Buenas prácticas</h2>
-            <!-- Contenido pendiente -->
+            <p>Aunque crear una base de datos parece sencillo, desde el principio conviene acostumbrarse a escribir scripts claros.</p>
+
+            <h3>Utilizar nombres descriptivos</h3>
+            <p>No es recomendable utilizar nombres como:</p>
+
+            <pre><code>CREATE DATABASE BD1;</code></pre>
+
+            <p>Cuando el proyecto crezca, <code>BD1</code> no nos dice prácticamente nada.</p>
+
+            <p>Es mucho más claro utilizar:</p>
+
+            <pre><code>CREATE DATABASE SistemaBiblioteca;</code></pre>
+
+            <p>El nombre permite identificar rápidamente cuál es la finalidad de la base.</p>
+
+            <h3>Mantener una convención de nombres</h3>
+            <p>Si trabajamos en un proyecto, conviene definir una forma consistente de nombrar las bases y los objetos.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>SistemaBiblioteca
+SistemaVentas
+SistemaHospital</code></pre>
+
+            <p>Lo importante es mantener un criterio coherente durante todo el proyecto.</p>
+
+            <h3>Evitar nombres innecesariamente complicados</h3>
+            <p>Conviene evitar nombres con espacios o caracteres especiales que puedan dificultar el trabajo posterior.</p>
+
+            <p>Es preferible:</p>
+
+            <pre><code>CREATE DATABASE SistemaVentas;</code></pre>
+
+            <p>antes que utilizar nombres poco claros o difíciles de escribir.</p>
+
+            <h3>Pensar en el mantenimiento</h3>
+            <p>Un proyecto de bases de datos puede crecer bastante con el tiempo. El nombre que hoy parece obvio debería seguir siendo entendible dentro de varios meses, cuando otras personas tengan que trabajar con el mismo proyecto.</p>
+
+            <h3>Evitar crear una base que ya existe</h3>
+            <p>Si tenemos un script que podemos ejecutar varias veces, podemos comprobar previamente si la base existe.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>IF DB_ID('Biblioteca') IS NULL
+BEGIN
+    CREATE DATABASE Biblioteca;
+END;
+GO</code></pre>
+
+            <p><code>DB_ID()</code> permite obtener el identificador de una base de datos a partir de su nombre.</p>
+
+            <p>En este caso:</p>
+
+            <pre><code>DB_ID('Biblioteca')</code></pre>
+
+            <p>devuelve información si la base existe. Si no existe, devuelve <code>NULL</code>.</p>
+
+            <p>Por eso podemos utilizar la condición:</p>
+
+            <pre><code>IF DB_ID('Biblioteca') IS NULL</code></pre>
+
+            <p>para indicar:</p>
+
+            <p><strong>"Si Biblioteca no existe, entonces créala."</strong></p>
+
+            <p>Este tipo de comprobación resulta especialmente útil en scripts que pueden ejecutarse más de una vez.</p>
 
             <h2 id="errores-comunes">Errores comunes</h2>
-            <!-- Contenido pendiente -->
+
+            <h3>Intentar crear una base que ya existe</h3>
+            <p>Por ejemplo:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO
+
+CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>La primera sentencia crea la base. La segunda intenta crear nuevamente una base con el mismo nombre y producirá un error porque <code>Biblioteca</code> ya existe.</p>
+
+            <h3>Escribir incorrectamente el nombre de la base</h3>
+            <p>Si creamos:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>pero después escribimos:</p>
+
+            <pre><code>USE Bibliotecca;
+GO</code></pre>
+
+            <p>SQL Server no encontrará una base llamada <code>Bibliotecca</code>.</p>
+
+            <p>El nombre correcto es:</p>
+
+            <pre><code>USE Biblioteca;
+GO</code></pre>
+
+            <p>Parece un error pequeño, pero es bastante común cuando se empieza a trabajar con SQL.</p>
+
+            <h3>Confundir <code>CREATE DATABASE</code> con <code>USE</code></h3>
+            <p>Otro error frecuente es pensar que <code>USE</code> crea una base de datos.</p>
+
+            <p>Esto:</p>
+
+            <pre><code>USE Biblioteca;</code></pre>
+
+            <p>no crea <code>Biblioteca</code>. La base debe existir previamente.</p>
+
+            <p>Para crearla utilizamos:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;</code></pre>
+
+            <p>Después podemos seleccionarla:</p>
+
+            <pre><code>USE Biblioteca;</code></pre>
+
+            <h3>Pensar que <code>CREATE DATABASE</code> crea las tablas</h3>
+            <p>Después de ejecutar:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>podemos tener la impresión de que ya está preparado todo el sistema. Pero todavía no tenemos:</p>
+
+            <ul>
+                <li>Libros</li>
+                <li>Autores</li>
+                <li>Socios</li>
+                <li>Prestamos</li>
+            </ul>
+
+            <p>Tenemos únicamente la base de datos. Las tablas se crearán mediante <code>CREATE TABLE</code>, que veremos en el siguiente artículo.</p>
+
+            <h3>Utilizar nombres poco descriptivos</h3>
+            <p>Un nombre como:</p>
+
+            <pre><code>CREATE DATABASE BD2;</code></pre>
+
+            <p>puede funcionar técnicamente, pero no ayuda a entender el proyecto.</p>
+
+            <p>Es preferible:</p>
+
+            <pre><code>CREATE DATABASE SistemaBiblioteca;</code></pre>
+
+            <p>porque cualquier persona que vea el script puede identificar rápidamente su propósito.</p>
 
             <h2 id="ejercicios">Ejercicios propuestos</h2>
-            <!-- Contenido pendiente -->
+            <p>Estos ejercicios están pensados para que practiques lo aprendido antes de pasar a <code>CREATE TABLE</code>.</p>
+
+            <h3>Ejercicio 1 — Crear una base</h3>
+            <p>Una biblioteca necesita una base de datos para su sistema.</p>
+
+            <p>Creá una base llamada:</p>
+
+            <pre><code>BibliotecaUTN</code></pre>
+
+            <h3>Ejercicio 2 — Crear y seleccionar</h3>
+            <p>Una institución necesita una base de datos llamada:</p>
+
+            <pre><code>Hospital</code></pre>
+
+            <p>Creala y después seleccionála utilizando <code>USE</code>.</p>
+
+            <h3>Ejercicio 3 — Comprobar la base actual</h3>
+            <p>Después de seleccionar <code>BibliotecaUTN</code>, utilizá <code>DB_NAME()</code> para comprobar que efectivamente es la base de datos actual.</p>
+
+            <h3>Ejercicio 4 — Consultar las bases disponibles</h3>
+            <p>Utilizá <code>sys.databases</code> para obtener una lista de las bases de datos disponibles en SQL Server.</p>
+
+            <h3>Ejercicio 5 — Caso práctico</h3>
+            <p>Una empresa llamada TecnoShop necesita una base de datos para administrar productos, clientes y ventas.</p>
+
+            <p>Creá y seleccioná:</p>
+
+            <pre><code>TecnoShop</code></pre>
+
+            <h3>Ejercicio 6 — Desafío</h3>
+            <p>Creá una base de datos llamada:</p>
+
+            <pre><code>BibliotecaDigital</code></pre>
+
+            <p>Después:</p>
+
+            <ol>
+                <li>Comprobá que existe.</li>
+                <li>Seleccionala utilizando <code>USE</code>.</li>
+                <li>Comprobá que es la base de datos actual utilizando <code>DB_NAME()</code>.</li>
+            </ol>
+
+            <p><strong>¿Querés comprobar tus respuestas?</strong></p>
+            <p>Practicá estos ejercicios en la sección interactiva de DDL de BDD Fácil.</p>
+            <p><a href="../ejercicios/ejercicios-fundamentos.html" style="color: #06b6d4; text-decoration: none; font-weight: 600;">→ Ir a los ejercicios interactivos de DDL</a></p>
 
             <div class="ad-in-content">
                 <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
             </div>
 
             <h2 id="podcast">Podcast relacionado</h2>
-            <!-- Contenido pendiente -->
+
+            <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 12px; padding: 2rem; margin-top: 1rem;">
+                <p style="margin-top: 0; color: #94a3b8;">¿Preferís repasar este tema escuchándolo? También podés encontrar este contenido explicado en formato podcast.</p>
+
+                <div style="display: flex; align-items: flex-start; gap: 1.2rem; margin-top: 1.5rem;">
+                    <div style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); border-radius: 12px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+                        🎧
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0 0 0.3rem 0; font-size: 1.1rem;">CREATE DATABASE — Podcast</h3>
+                        <p style="margin: 0 0 1rem 0; color: #94a3b8; font-size: 0.95rem;">En este episodio repasamos qué es una base de datos, para qué sirve CREATE DATABASE, cómo utilizarlo en SQL Server y cuál es la diferencia entre crear una base de datos y crear una tabla.</p>
+                        <audio controls style="width: 100%; height: 40px; outline: none;">
+                            <source src="../../../seccion-podcast/CREATE DATABASE — Podcast.m4a" type="audio/mp4">
+                            Tu navegador no soporta la reproducción de audio.
+                        </audio>
+                        <p style="margin: 0.8rem 0 0 0; font-size: 0.85rem; color: #64748b; font-style: italic;">Escuchá este episodio mientras repasás el artículo.</p>
+                    </div>
+                </div>
+            </div>
 
             <h2 id="resumen">Resumen</h2>
-            <!-- Contenido pendiente -->
+            <p><code>CREATE DATABASE</code> es la sentencia que utilizamos en SQL Server para crear una nueva base de datos.</p>
+
+            <p>Su sintaxis básica es:</p>
+
+            <pre><code>CREATE DATABASE nombre_base_de_datos;</code></pre>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>CREATE DATABASE Biblioteca;
+GO</code></pre>
+
+            <p>Una vez creada, podemos seleccionarla utilizando:</p>
+
+            <pre><code>USE Biblioteca;
+GO</code></pre>
+
+            <p>Es importante recordar que <code>CREATE DATABASE</code> crea la base de datos, pero no crea las tablas de nuestra aplicación.</p>
+
+            <p>Podemos consultar las bases disponibles mediante:</p>
+
+            <pre><code>SELECT name
+FROM sys.databases;</code></pre>
+
+            <p>Y podemos comprobar cuál es la base actualmente seleccionada mediante:</p>
+
+            <pre><code>SELECT DB_NAME() AS BaseDeDatosActual;</code></pre>
+
+            <p>También aprendimos que SQL Server utiliza archivos de datos y de registro para administrar físicamente la información de las bases de datos.</p>
+
+            <p>Finalmente, vimos algunas buenas prácticas, errores frecuentes y situaciones reales donde <code>CREATE DATABASE</code> representa el primer paso para construir la estructura de un sistema.</p>
+
+            <p>Ahora que ya sabemos crear una base de datos, el siguiente paso es aprender a crear las tablas que almacenarán la información.</p>
 
             <h2 id="articulo-siguiente">Artículo siguiente</h2>
-            <!-- Contenido pendiente -->
+            <p>Una base de datos por sí sola todavía no contiene las estructuras que necesita nuestra aplicación. En el siguiente artículo vamos a aprender a crear esas estructuras utilizando <code>CREATE TABLE</code>.</p>
 
             <!-- Navegación entre artículos -->
             <div style="display: flex; justify-content: space-between; margin-top: 3rem;">

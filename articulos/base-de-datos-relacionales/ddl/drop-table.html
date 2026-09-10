@@ -82,7 +82,7 @@
             <span class="article-category">DDL</span>
             <h1 class="article-title">DROP TABLE: Eliminar Tablas en SQL</h1>
             <div class="article-meta">
-                <span>Publicado: Julio 2026</span> • <span>Lectura: 6 min</span>
+                <span>Publicado: Julio 2026</span> • <span>Lectura: 7 min</span>
             </div>
         </header>
 
@@ -97,6 +97,7 @@
                     <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación</a></li>
                     <li><a href="#ejemplo-practico" style="color: #06b6d4; text-decoration: none;">Ejemplo práctico</a></li>
                     <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Caso real</a></li>
+                    <li><a href="#drop-vs-delete-vs-truncate" style="color: #06b6d4; text-decoration: none;">DROP TABLE vs DELETE vs TRUNCATE TABLE</a></li>
                     <li><a href="#buenas-practicas" style="color: #06b6d4; text-decoration: none;">Buenas prácticas</a></li>
                     <li><a href="#errores-comunes" style="color: #06b6d4; text-decoration: none;">Errores comunes</a></li>
                     <li><a href="#ejercicios" style="color: #06b6d4; text-decoration: none;">Ejercicios propuestos</a></li>
@@ -106,48 +107,471 @@
             </section>
 
             <h2 id="introduccion">Introducción</h2>
-            <!-- Contenido pendiente -->
+            <p><code>DROP TABLE</code> es una sentencia del lenguaje <strong>DDL (Data Definition Language)</strong> que se utiliza para eliminar una tabla de una base de datos.</p>
+
+            <p>Cuando ejecutamos <code>DROP TABLE</code>, no estamos eliminando solamente los registros almacenados. La tabla completa deja de existir: se elimina su estructura y los datos que contenía.</p>
+
+            <p>Por ejemplo, si tenemos una tabla:</p>
+
+            <pre><code>CREATE TABLE Clientes (
+    IdCliente INT PRIMARY KEY,
+    Nombre VARCHAR(100),
+    Email VARCHAR(150)
+);</code></pre>
+
+            <p>y posteriormente ejecutamos:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>la tabla <code>Clientes</code> deja de existir dentro de la base de datos.</p>
+
+            <p>Esto hace que <code>DROP TABLE</code> sea una sentencia que debe utilizarse con cuidado, especialmente cuando trabajamos con bases de datos que contienen información importante.</p>
 
             <h2 id="que-aprenderas">¿Qué aprenderás?</h2>
-            <!-- Contenido pendiente -->
+            <p>En este artículo vas a aprender:</p>
+
+            <ul>
+                <li>Qué es <code>DROP TABLE</code>.</li>
+                <li>Para qué sirve.</li>
+                <li>Por qué pertenece a DDL.</li>
+                <li>Su sintaxis en SQL Server.</li>
+                <li>Cómo eliminar una tabla.</li>
+                <li>Cómo eliminar varias tablas.</li>
+                <li>Cómo comprobar si una tabla existe antes de eliminarla.</li>
+                <li>La diferencia entre <code>DROP TABLE</code>, <code>DELETE</code> y <code>TRUNCATE TABLE</code>.</li>
+                <li>Qué ocurre con los datos y la estructura de la tabla.</li>
+                <li>Qué problemas pueden aparecer cuando existen relaciones entre tablas.</li>
+                <li>Buenas prácticas para evitar eliminar información accidentalmente.</li>
+            </ul>
 
             <h2 id="sintaxis">Sintaxis</h2>
-            <!-- Contenido pendiente -->
+            <p>La forma básica de utilizar <code>DROP TABLE</code> es:</p>
+
+            <pre><code>DROP TABLE nombre_tabla;</code></pre>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>En SQL Server también podemos utilizar <code>IF EXISTS</code>:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Clientes;</code></pre>
+
+            <p>Esta segunda forma permite indicar que la tabla solamente debe eliminarse si existe.</p>
+
+            <p>También podemos indicar el esquema:</p>
+
+            <pre><code>DROP TABLE dbo.Clientes;</code></pre>
+
+            <p>Y SQL Server permite eliminar varias tablas en una misma sentencia:</p>
+
+            <pre><code>DROP TABLE Clientes, Productos, Ventas;</code></pre>
+
+            <p>Cuando se trabaja con varias tablas, es importante tener en cuenta las relaciones existentes entre ellas.</p>
 
             <h2 id="explicacion">Explicación</h2>
-            <!-- Contenido pendiente -->
+            <p>La palabra <code>DROP</code> significa eliminar un objeto de la base de datos.</p>
+
+            <p>Cuando utilizamos:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>SQL Server elimina la tabla <code>Clientes</code> como objeto de la base de datos.</p>
+
+            <p>Esto implica dos cosas importantes:</p>
+
+            <p><strong>1. Se elimina la estructura</strong></p>
+
+            <p>Dejan de existir:</p>
+
+            <ul>
+                <li>las columnas de la tabla;</li>
+                <li>los registros;</li>
+                <li>las restricciones asociadas a la tabla;</li>
+                <li>los índices pertenecientes a la tabla;</li>
+                <li>otros objetos propios de esa tabla.</li>
+            </ul>
+
+            <p><strong>2. Se eliminan los datos</strong></p>
+
+            <p>Todos los registros almacenados en esa tabla dejan de estar disponibles porque la tabla deja de existir.</p>
+
+            <p>Por eso <code>DROP TABLE</code> no debe confundirse con una sentencia que simplemente "vacía" una tabla.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>DELETE FROM Clientes;</code></pre>
+
+            <p>elimina registros, pero la tabla continúa existiendo.</p>
+
+            <p>En cambio:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>elimina la tabla completa.</p>
+
+            <p>Una forma sencilla de recordarlo es:</p>
+
+            <pre><code>DELETE    → elimina registros
+TRUNCATE  → elimina todos los registros
+DROP      → elimina la tabla</code></pre>
 
             <div class="ad-in-content">
                 <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
             </div>
 
             <h2 id="ejemplo-practico">Ejemplo práctico</h2>
-            <!-- Contenido pendiente -->
+            <p>Supongamos que estamos trabajando con una base de datos de una biblioteca.</p>
+
+            <p>Primero podemos crear una tabla:</p>
+
+            <pre><code>CREATE TABLE Libros (
+    IdLibro INT PRIMARY KEY,
+    Titulo VARCHAR(150),
+    Autor VARCHAR(100),
+    AnioPublicacion INT
+);</code></pre>
+
+            <p>Agregamos algunos registros:</p>
+
+            <pre><code>INSERT INTO Libros (IdLibro, Titulo, Autor, AnioPublicacion)
+VALUES
+(1, 'El principito', 'Antoine de Saint-Exupéry', 1943),
+(2, '1984', 'George Orwell', 1949),
+(3, 'Don Quijote de la Mancha', 'Miguel de Cervantes', 1605);</code></pre>
+
+            <p>Podemos consultar la información:</p>
+
+            <pre><code>SELECT *
+FROM Libros;</code></pre>
+
+            <p>Si decidimos que la tabla ya no es necesaria y queremos eliminarla completamente:</p>
+
+            <pre><code>DROP TABLE Libros;</code></pre>
+
+            <p>Después de ejecutar la sentencia, podemos comprobarlo intentando consultar la tabla:</p>
+
+            <pre><code>SELECT *
+FROM Libros;</code></pre>
+
+            <p>SQL Server indicará que el objeto <code>Libros</code> no existe.</p>
+
+            <h3>Usando <code>IF EXISTS</code></h3>
+            <p>Una alternativa más segura cuando no sabemos si la tabla existe es:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Libros;</code></pre>
+
+            <p>De esta manera evitamos el error que se produciría al intentar eliminar una tabla que no existe.</p>
 
             <h2 id="caso-real">Caso real</h2>
-            <!-- Contenido pendiente -->
+            <p>Imaginemos una empresa que está desarrollando un sistema para administrar productos.</p>
+
+            <p>Durante las primeras etapas del proyecto se crea una tabla temporal para realizar pruebas:</p>
+
+            <pre><code>CREATE TABLE ProductosPrueba (
+    IdProducto INT,
+    Nombre VARCHAR(100),
+    Precio DECIMAL(10,2)
+);</code></pre>
+
+            <p>Después de finalizar las pruebas, el equipo determina que esa tabla ya no es necesaria.</p>
+
+            <p>En ese caso podría eliminarla mediante:</p>
+
+            <pre><code>DROP TABLE ProductosPrueba;</code></pre>
+
+            <p>Este ejemplo representa una situación en la que <code>DROP TABLE</code> puede tener sentido: <strong>el objeto realmente dejó de ser necesario</strong>.</p>
+
+            <p>En cambio, si la tabla contiene información real de clientes, ventas o productos de una aplicación que ya está funcionando, eliminarla sin comprobar previamente su utilización podría provocar una pérdida importante de información.</p>
+
+            <p>Por eso, en un entorno real, antes de ejecutar <code>DROP TABLE</code> es fundamental asegurarse de que la tabla puede eliminarse.</p>
+
+            <h2 id="drop-vs-delete-vs-truncate">DROP TABLE vs DELETE vs TRUNCATE TABLE</h2>
+            <p>Esta es una de las diferencias más importantes para recordar en un examen.</p>
+
+            <h3>DELETE</h3>
+
+            <pre><code>DELETE FROM Clientes;</code></pre>
+
+            <p>Elimina registros de la tabla, pero <strong>la tabla continúa existiendo</strong>.</p>
+
+            <p>Podemos conservar su estructura y posteriormente insertar nuevos registros.</p>
+
+            <p>También podemos utilizar <code>WHERE</code>:</p>
+
+            <pre><code>DELETE FROM Clientes
+WHERE IdCliente = 5;</code></pre>
+
+            <p>En este caso solamente se elimina el registro que cumple la condición.</p>
+
+            <h3>TRUNCATE TABLE</h3>
+
+            <pre><code>TRUNCATE TABLE Clientes;</code></pre>
+
+            <p>Elimina todos los registros de la tabla, pero <strong>mantiene la tabla y su estructura</strong>.</p>
+
+            <p>No permite utilizar <code>WHERE</code> para seleccionar registros individuales.</p>
+
+            <h3>DROP TABLE</h3>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>Elimina <strong>la tabla completa</strong>, incluyendo los datos y su estructura.</p>
+
+            <p>Una comparación sencilla:</p>
+
+            <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+                <thead>
+                <tr style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white;">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Sentencia</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Elimina registros</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Mantiene la tabla</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr style="background: rgba(139, 92, 246, 0.05);">
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);"><code>DELETE</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);">Sí</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);">Sí</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);"><code>TRUNCATE TABLE</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);">Sí, todos</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);">Sí</td>
+                </tr>
+                <tr style="background: rgba(139, 92, 246, 0.05);">
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);"><code>DROP TABLE</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);">Sí</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.2);"><strong>No</strong></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>Esta diferencia es fundamental.</p>
 
             <h2 id="buenas-practicas">Buenas prácticas</h2>
-            <!-- Contenido pendiente -->
+            <p>Antes de utilizar <code>DROP TABLE</code>, conviene seguir algunas recomendaciones.</p>
+
+            <h3>1. Comprobar que la tabla existe</h3>
+            <p>Podemos utilizar:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Clientes;</code></pre>
+
+            <p>Esto evita intentar eliminar una tabla inexistente.</p>
+
+            <h3>2. Revisar el nombre</h3>
+            <p>Antes de ejecutar una sentencia destructiva, verificar que estamos trabajando con la tabla correcta.</p>
+
+            <p>Por ejemplo, no es lo mismo:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>que:</p>
+
+            <pre><code>DROP TABLE ClientesPrueba;</code></pre>
+
+            <h3>3. Tener cuidado en bases de datos reales</h3>
+            <p>No utilizar <code>DROP TABLE</code> de manera improvisada en una base de datos de producción.</p>
+
+            <p>Una tabla puede contener información utilizada por diferentes partes de una aplicación.</p>
+
+            <h3>4. Revisar las relaciones</h3>
+            <p>Si una tabla está relacionada con otras mediante claves foráneas, SQL Server puede impedir que sea eliminada hasta resolver esas dependencias.</p>
+
+            <p>Por eso, antes de eliminar una tabla relacionada, es importante conocer cómo está estructurada la base de datos.</p>
+
+            <h3>5. Usar nombres claros</h3>
+            <p>Durante las pruebas puede ser útil diferenciar las tablas temporales o de prueba:</p>
+
+            <pre><code>ProductosPrueba
+ClientesTest
+VentasTemporal</code></pre>
+
+            <p>Esto ayuda a evitar confusiones con las tablas reales.</p>
 
             <h2 id="errores-comunes">Errores comunes</h2>
-            <!-- Contenido pendiente -->
+
+            <h3>Intentar eliminar una tabla que no existe</h3>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>Si <code>Clientes</code> no existe, SQL Server generará un error.</p>
+
+            <p>Podemos evitarlo utilizando:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Clientes;</code></pre>
+
+            <h3>Confundir DROP con DELETE</h3>
+            <p>Un error muy común es pensar que:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>solamente elimina los registros.</p>
+
+            <p>No es así.</p>
+
+            <p><code>DROP TABLE</code> elimina la tabla como objeto.</p>
+
+            <h3>Confundir DROP con TRUNCATE</h3>
+            <p><code>TRUNCATE TABLE</code> deja la tabla disponible:</p>
+
+            <pre><code>TRUNCATE TABLE Clientes;</code></pre>
+
+            <p>Mientras que:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>elimina la tabla.</p>
+
+            <h3>Intentar eliminar una tabla relacionada</h3>
+            <p>Si otra tabla tiene una clave foránea que referencia a la tabla que queremos eliminar, SQL Server puede impedir la operación.</p>
+
+            <p>Por ejemplo:</p>
+
+            <pre><code>Clientes
+   ↑
+   |
+Ventas</code></pre>
+
+            <p>Si <code>Ventas</code> tiene una clave foránea que apunta a <code>Clientes</code>, eliminar <code>Clientes</code> puede generar un conflicto debido a esa relación.</p>
+
+            <p>Esto demuestra por qué es importante conocer las relaciones antes de eliminar objetos de una base de datos.</p>
+
+            <h3>Eliminar una tabla equivocada</h3>
+            <p>Este es probablemente el error más peligroso:</p>
+
+            <pre><code>DROP TABLE Ventas;</code></pre>
+
+            <p>cuando en realidad se pretendía eliminar:</p>
+
+            <pre><code>DROP TABLE VentasPrueba;</code></pre>
+
+            <p>Por eso siempre hay que revisar el nombre antes de ejecutar una sentencia destructiva.</p>
 
             <h2 id="ejercicios">Ejercicios propuestos</h2>
-            <!-- Contenido pendiente -->
+            <p>Estos ejercicios están pensados para que practiques lo aprendido antes de pasar a las próximas sentencias.</p>
+
+            <h3>Ejercicio 1 — Crear y eliminar</h3>
+            <p>Crear una tabla llamada:</p>
+
+            <pre><code>Alumnos</code></pre>
+
+            <p>con las siguientes columnas:</p>
+
+            <ul>
+                <li><code>IdAlumno</code></li>
+                <li><code>Nombre</code></li>
+                <li><code>Edad</code></li>
+            </ul>
+
+            <p>Después eliminar la tabla utilizando <code>DROP TABLE</code>.</p>
+
+            <h3>Ejercicio 2 — Comprobar existencia</h3>
+            <p>Crear una tabla:</p>
+
+            <pre><code>CREATE TABLE Productos (
+    IdProducto INT,
+    Nombre VARCHAR(100)
+);</code></pre>
+
+            <p>Luego utilizar:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Productos;</code></pre>
+
+            <h3>Ejercicio 3 — Diferenciar sentencias</h3>
+            <p>Explicar qué sucede en cada caso:</p>
+
+            <pre><code>DELETE FROM Clientes;</code></pre>
+
+            <pre><code>TRUNCATE TABLE Clientes;</code></pre>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>Indicar en cuál de las tres instrucciones la tabla deja de existir.</p>
+
+            <h3>Ejercicio 4 — Detectar el error</h3>
+            <p>Un estudiante ejecuta:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>pero después intenta:</p>
+
+            <pre><code>SELECT *
+FROM Clientes;</code></pre>
+
+            <p>¿Qué sucederá y por qué?</p>
+
+            <h3>Ejercicio 5 — Análisis</h3>
+            <p>Tenemos:</p>
+
+            <pre><code>Clientes
+Ventas
+Productos</code></pre>
+
+            <p>y <code>Ventas</code> tiene relaciones con <code>Clientes</code> y <code>Productos</code>.</p>
+
+            <p>Antes de eliminar <code>Clientes</code>, ¿qué aspectos deberíamos revisar?</p>
+
+            <p>La respuesta debe considerar las relaciones existentes entre las tablas.</p>
+
+            <p><strong>¿Querés comprobar tus respuestas?</strong></p>
+            <p>Practicá estos ejercicios en la sección interactiva de DDL de BDD Fácil.</p>
+            <p><a href="../ejercicios/ejercicios-fundamentos.html" style="color: #06b6d4; text-decoration: none; font-weight: 600;">→ Ir a los ejercicios interactivos de DDL</a></p>
 
             <div class="ad-in-content">
                 <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
             </div>
 
             <h2 id="podcast">Podcast relacionado</h2>
-            <!-- Contenido pendiente -->
+
+            <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 12px; padding: 2rem; margin-top: 1rem;">
+                <p style="margin-top: 0; color: #94a3b8;">¿Preferís repasar este tema escuchándolo? En este episodio de <strong>BDD Fácil Podcast — Bases de Datos para Estudiar</strong> repasamos qué hace <code>DROP TABLE</code>, cuándo utilizarlo, qué diferencia tiene con <code>DELETE</code> y <code>TRUNCATE TABLE</code> y qué precauciones debemos tener antes de eliminar una tabla.</p>
+
+                <div style="display: flex; align-items: flex-start; gap: 1.2rem; margin-top: 1.5rem;">
+                    <div style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); border-radius: 12px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+                        🎧
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0 0 0.3rem 0; font-size: 1.1rem;">DROP TABLE — Podcast</h3>
+                        <p style="margin: 0 0 1rem 0; color: #94a3b8; font-size: 0.95rem;">En este episodio repasamos qué hace DROP TABLE, cuándo utilizarlo, qué diferencia tiene con DELETE y  qué precauciones debemos tener antes de eliminar una tabla.</p>
+                        <audio controls style="width: 100%; height: 40px; outline: none;">
+                            <source src="../../../seccion-podcast/DROP TABLE — Podcast.m4a" type="audio/mpeg">
+                            Tu navegador no soporta la reproducción de audio.
+                        </audio>
+                        <p style="margin: 0.8rem 0 0 0; font-size: 0.85rem; color: #64748b; font-style: italic;">Escuchá este episodio mientras repasás el artículo.</p>
+                    </div>
+                </div>
+            </div>
 
             <h2 id="resumen">Resumen</h2>
-            <!-- Contenido pendiente -->
+            <p><code>DROP TABLE</code> es una sentencia DDL utilizada para <strong>eliminar una tabla de una base de datos</strong>.</p>
 
-            <h2 id="articulo-siguiente">Artículo siguiente</h2>
-            <!-- Contenido pendiente -->
+            <p>Al utilizar:</p>
+
+            <pre><code>DROP TABLE Clientes;</code></pre>
+
+            <p>la tabla deja de existir junto con los datos y la estructura que contenía.</p>
+
+            <p>Si queremos evitar errores cuando la tabla no existe, podemos utilizar:</p>
+
+            <pre><code>DROP TABLE IF EXISTS Clientes;</code></pre>
+
+            <p>Es importante diferenciarla de otras sentencias:</p>
+
+            <pre><code>DELETE
+→ elimina registros.
+
+TRUNCATE TABLE
+→ elimina todos los registros, pero mantiene la tabla.
+
+DROP TABLE
+→ elimina la tabla completa.</code></pre>
+
+            <p>Antes de utilizar <code>DROP TABLE</code>, especialmente en una base de datos real, debemos comprobar que estamos trabajando con la tabla correcta y revisar las relaciones y dependencias que pueda tener.</p>
+
+            <p><strong>Idea clave para recordar:</strong></p>
+
+            <p><code>DROP TABLE</code> no vacía una tabla: <strong>elimina la tabla como objeto de la base de datos.</strong></p>
 
             <!-- Navegación entre artículos -->
             <div style="display: flex; justify-content: space-between; margin-top: 3rem;">
