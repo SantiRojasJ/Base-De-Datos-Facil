@@ -1,7 +1,7 @@
 # BDD Fácil
 
 Sitio web:
-https://base-de-datos-facil.netlify.app/
+https://bdd-facil.netlify.app/
 
 ## ¿Qué es BDD Fácil?
 
@@ -20,4 +20,4 @@ BDD Fácil es una plataforma educativa para aprender bases de datos relacionales
 
 ## Acceder al sitio
 
-https://base-de-datos-facil.netlify.app/
+https://bdd-facil.netlify.app/
