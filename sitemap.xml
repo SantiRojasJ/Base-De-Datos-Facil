@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
+        <loc>https://bdd-facil.netlify.app/bienvenida.html</loc>
+        <lastmod>2026-09-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
         <loc>https://bdd-facil.netlify.app/</loc>
         <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
