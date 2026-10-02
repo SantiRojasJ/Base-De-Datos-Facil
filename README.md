@@ -1,8 +1,7 @@
 # BDD Fácil
 
 Sitio web:
-https://bdd-facil.netlify.app/
-
+(https://bdd-facil.netlify.app/bienvenida.html)
 ## ¿Qué es BDD Fácil?
 
 BDD Fácil es una plataforma educativa para aprender bases de datos relacionales y no relacionales.
@@ -19,5 +18,5 @@ BDD Fácil es una plataforma educativa para aprender bases de datos relacionales
 - Normalización
 
 ## Acceder al sitio
-
-https://bdd-facil.netlify.app/
+[
+](https://bdd-facil.netlify.app/bienvenida.html)
