@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BDD Fácil | Bienvenido - Aprende Bases de Datos SQL y NoSQL</title>
+    <meta name="description"
+          content="Bienvenido a BDD Fácil. Aprende bases de datos relacionales y no relacionales desde cero con tutoriales gratuitos de SQL, SQL Server, MongoDB, Redis y más.">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="BDD Fácil">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bdd-facil.netlify.app/bienvenida.html">
+    <meta property="og:title" content="BDD Fácil - Bienvenido">
+    <meta property="og:description"
+          content="Aprende bases de datos SQL y NoSQL desde cero. Tutoriales gratuitos, ejemplos prácticos y ejercicios resueltos.">
+    <meta property="og:site_name" content="BDD Fácil">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BDD Fácil - Bienvenido">
+    <meta name="twitter:description"
+          content="Aprende bases de datos SQL y NoSQL desde cero. Tutoriales gratuitos y prácticos.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://bdd-facil.netlify.app/bienvenida.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagenes/logo.png">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0a1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-blob.purple {
+            width: 500px;
+            height: 500px;
+            background: #8b5cf6;
+            top: -150px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-blob.cyan {
+            width: 400px;
+            height: 400px;
+            background: #06b6d4;
+            bottom: -120px;
+            right: -80px;
+            animation-delay: -3s;
+        }
+
+        .bg-blob.pink {
+            width: 300px;
+            height: 300px;
+            background: #ec4899;
+            top: 50%;
+            left: 60%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .welcome-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo / Icon */
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Brand */
+        .brand {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .brand .base {
+            color: #e2e8f0;
+        }
+
+        .brand .de {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand .datos {
+            color: #e2e8f0;
+        }
+
+        .brand .facil {
+            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: 1rem;
+            color: #8b5cf6;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        /* Welcome message */
+        .welcome-message {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-message strong {
+            color: #e2e8f0;
+        }
+
+        /* Feature pills */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-pill {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            color: #c4b5fd;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-pill:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* CTA Button */
+        .cta-wrapper {
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 5px 30px rgba(139, 92, 246, 0.4),
+                0 0 60px rgba(139, 92, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow:
+                0 10px 40px rgba(139, 92, 246, 0.5),
+                0 0 80px rgba(139, 92, 246, 0.15);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .cta-arrow {
+            font-size: 1.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Sub text */
+        .sub-text {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .sub-text a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        .sub-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.4);
+            border-radius: 50%;
+            animation: rise linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; animation-duration: 15s; animation-delay: -2s; width: 3px; height: 3px; }
+        .particle:nth-child(3) { left: 40%; animation-duration: 10s; animation-delay: -4s; background: rgba(6, 182, 212, 0.3); }
+        .particle:nth-child(4) { left: 55%; animation-duration: 14s; animation-delay: -1s; width: 5px; height: 5px; }
+        .particle:nth-child(5) { left: 70%; animation-duration: 11s; animation-delay: -3s; background: rgba(236, 72, 153, 0.3); }
+        .particle:nth-child(6) { left: 85%; animation-duration: 13s; animation-delay: -5s; width: 3px; height: 3px; }
+        .particle:nth-child(7) { left: 15%; animation-duration: 16s; animation-delay: -6s; background: rgba(6, 182, 212, 0.3); width: 2px; height: 2px; }
+        .particle:nth-child(8) { left: 60%; animation-duration: 9s; animation-delay: -2s; }
+        .particle:nth-child(9) { left: 35%; animation-duration: 17s; animation-delay: -7s; background: rgba(236, 72, 153, 0.3); width: 2px; height: 2px; }
+        .particle:nth-child(10) { left: 80%; animation-duration: 12s; animation-delay: -4s; background: rgba(6, 182, 212, 0.3); width: 3px; height: 3px; }
+
+        @keyframes rise {
+            0% { bottom: -10px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { bottom: 110vh; opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .brand { font-size: 2rem; }
+            .welcome-message { font-size: 1.1rem; }
+            .cta-button { font-size: 1.2rem; padding: 1rem 2rem; }
+            .welcome-icon { font-size: 3rem; }
+            .features { gap: 0.5rem; }
+            .feature-pill { font-size: 0.78rem; padding: 0.4rem 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated background -->
+    <div class="bg-blob purple"></div>
+    <div class="bg-blob cyan"></div>
+    <div class="bg-blob pink"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Floating particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="welcome-container">
+
+        <div class="welcome-icon">📀</div>
+
+        <h1 class="brand">
+            <span class="base">Base</span><span class="de">De</span><span class="datos">Datos</span><span class="facil">Facil</span>
+        </h1>
+
+        <p class="tagline">APRENDE &bull; PRACTICA &bull; DOMINA</p>
+
+        <p class="welcome-message">
+            Tu plataforma <strong>gratuita</strong> para aprender bases de datos
+            <strong>SQL</strong> y <strong>NoSQL</strong> desde cero.
+            Tutoriales prácticos, ejercicios resueltos y todo lo que necesitás
+            para convertirte en experto.
+        </p>
+
+        <div class="features">
+            <span class="feature-pill">🗃️ SQL &amp; SQL Server</span>
+            <span class="feature-pill">🔧 T-SQL</span>
+            <span class="feature-pill">🍃 MongoDB</span>
+            <span class="feature-pill">⚡ Redis</span>
+            <span class="feature-pill">🐘 Cassandra</span>
+            <span class="feature-pill">🔮 Neo4j</span>
+        </div>
+
+        <div class="cta-wrapper">
+            <a href="index.html" class="cta-button">
+                Comenzar
+                <span class="cta-arrow">→</span>
+            </a>
+        </div>
+
+        <p class="sub-text">
+            Gratis, sin registro, sin spam. Solo puro conocimiento.
+        </p>
+
+    </div>
+
+</body>
+
+</html>
