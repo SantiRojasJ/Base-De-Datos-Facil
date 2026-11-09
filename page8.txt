@@ -1,0 +1,47 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 7 
+ 
+TRANSACT -SQL 
+SQL Server tiene incorporado un lenguaje denominado Transact -SQL que 
+contiene los comandos y sentencias necesarios para administrar 
+una instancia de SQL Server, crear y administrar sus objetos, y 
+consultar, insertar, modificar, y eliminar datos de las tablas.  
+ 
+Tipos de Sentencias  
+Las distintas sentencias que se pueden 
+ejecutar son:  
+ 
+ (DDL Data 
+Definition Language): se utilizan para crear, modificar y eliminar objetos de 
+una base de datos. Algunas son: CREATE TABLE, ALTER 
+TABLE, DROP TABLE, CREATE INDEX etc.  
+ 
+  (DML Data Manipulation 
+Language): se utilizan para recuperar, 
+agregar, modificar o eliminar datos de una 
+base de datos. Por ejemplo: SELECT, 
+INSERT, UPDATE, DELETE.  
+ 
+  (DCL Data Control Language): 
+conceden o suprimen privilegios a usuarios. Por ejemplo: GRANT 
+y REVOKE.  
+ 
+  
+(TCL Transaction Contro Languaje) : 
+finalizan o abortan la transacción actual: 
+COMMIT, ROLLBACK.  
+ 
+ : DECLARE, OPEN, EXECUTE, DESCRIBE, etc.  
+SENTENCIAS DE DEFINICIÓN DE DATOS – DDL 
+Como ya se vi o anteriormente, este tipo de sentencias son utilizadas para 
+crear y manejar objetos y propiedades de una base de datos, tales como tablas, 
+vistas, procedimientos, etc.   Las sentencias son:  
+Para crear u n objeto : 
+CREATE nombre_objeto  
+Imagen 6: Extraída de Banco de 
+Imágenes Pixabay  
+Imagen 7: Extraída de Banco de 
+Imágenes Pixabay  
+Image n 8: Extraída de Banco de 
+Imágenes Pixabay  

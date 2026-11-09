@@ -1,0 +1,32 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 9 
+ 
+o PRIMARY KEY : para establecer la clave principal o primaria de la tabla  
+o FOREIGN KEY : para establecer las claves secundarias o foráneas de 
+la tabla con respecto a otras.  
+ Lo que está entre [ ] es opcional  incorporarlo o no en la sentencia . 
+ Lo que se separa por la barra vertical “ |” es que debe elegirse uno o el otro . 
+ Las palabras en mayúsculas son palabras reservadas del lenguaje es decir 
+que deben escribirse tal como se presenta en la sintaxis y no deben utilizarse 
+para nombres de otros elementos como objetos, campos, etc.  
+ El Management Studio de SQL Server, por defecto, no es “case sensitivity” es 
+decir no distingue mayúsculas y minúsculas por lo que se puede escribir la 
+sentencia toda en minúsculas.  
+Tipos de datos  
+Como se sabe , una base de datos está compuesta de tablas (entidades) 
+donde almacenamos registros catalogados en función de distintos campos 
+(atributos ).  Un aspecto previo a considerar es la naturaleza de los valores que 
+introducimos en esos campos. Dado que una base de datos trabaja con todo tipo de 
+información, es importante especificarle qué tipo de valor  se le est á introduciendo de 
+manera que, por un lado, facilite la búsqueda posterior y por otro, optimice los 
+recursos de memoria , lo que se conoce como integridad de dominio .  
+Es importante especificar qué tipo de información será permitida en cada una 
+de las columnas qu e conforman la estructura de la fila. Por ejemplo, si se desea 
+almacenar precios de productos en una columna se debería especificar que el tipo 
+de datos sea numérico, más específicamente moneda , si se desea almacenar 
+nombres se debe escoger un tipo de dato  que permita almacenar información de tipo 
+carácter.  
+Cada tipo de dato en SQL Server tendrá un nombre propio, algunos de los 
+cuales se muestran en la tabla siguiente : 
+  

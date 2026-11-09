@@ -1,0 +1,37 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 13 
+ 
+Se tiene luego de la palabra clave CONSTRAINT  el nombre de la constraint  
+que puede ser cualquiera que no exista previamente como objeto en la misma base 
+de datos , pero, como los nombres de las tablas , debe hacer referencia a lo que es. 
+Luego va el tipo de restricción PRIMARY KEY  y por último el campo sobre el cual se 
+crea la c lave primaria entre paréntesis . 
+En la definición de la clave foránea:  
+CONSTRAINT fk_persona_t ipo_doc FOREIGN KEY (id_tipo_doc)  
+           REFERENCES tipos_dni (id_tipo_doc)  
+Se tiene luego de la palabra clave CONSTRAINT  el nombre de la constraint  
+que puede ser cualquiera que no exista previamente como objeto en la misma base 
+de datos. Luego va el tipo de restricción FOREIGN KEY  , seguido por el campo sobre 
+el cual se crea la clave foránea entre paréntesis, posterior a ello, (puede ser sobre la 
+misma línea, aquí no entro en el ancho de la hoja) REFERENCES  la tabla que contiene 
+la clave primaria que referencia y  por último el campo, entre paréntesis, que es PK 
+de la tabla que es extremo uno en la relación.  
+Las comas se utilizan para separar elementos  que son del mismo tipo por ello 
+va separando los campos y luego de la constraint primary key.  
+Modificación de una tabla  
+Con la sentencia ALTER se puede: modificar la estructura o definición de un 
+objeto, agregar o eliminar componentes del mismo.  
+En el cas o particular de una tabla, se pueden modificar, agregar o eliminar 
+restricciones (constraint), columnas, nombres de columnas, tipos de datos, etc.  
+ 
+Para agregar una columna:  
+ALTER TABLE nombre_tabla  
+ADD nombre_columna  tipo_dato  
+Ejemplo : se quiere agregar la contextura física en personas  
+ALTER TABLE personas  
+ADD contextura_fisica  varchar(20)  
+ 
+Para eliminar una columna:  
+ALTER TABLE  nombre_tabla  
+DROP COLUMN  nombre_columna  

@@ -1,0 +1,576 @@
+﻿ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 1 
+ 
+Ãndice  
+Â¿QUÃ‰ ES SQL?  ................................ ................................ ................................ ....... 2 
+Usos de SQL  ................................ ................................ ................................ ..... 3 
+Beneficios  ................................ ................................ ................................ ..........  3 
+Â¿QUÃ‰ ES SQL SERVER? ................................ ................................ ........................  4 
+Arquitectura cliente -servidor  ................................ ................................ ..............  4 
+Aplicaciones cliente  ................................ ................................ ...........................  5 
+Modelos de almacenamiento de datos  ................................ ..............................  5 
+Objetos de SQL Server ................................ ................................ ......................  6 
+TRANSACT -SQL ................................ ................................ ...............................  7 
+Tipos de Sentencias  ................................ ................................ ..........................  7 
+SENTENCIAS DE DEFINICIÃ“N DE DATOS â€“ DDL ................................ .................  7 
+CreaciÃ³n de una tabla  ................................ ................................ .......................  8 
+Tipos de datos  ................................ ................................ ................................ ... 9 
+ModificaciÃ³n de una tabla  ................................ ................................ ................  13 
+EliminaciÃ³n de una tabla ................................ ................................ ..................  14 
+BIBLIOGRAFÃA  ................................ ................................ ................................ ...... 15 
+  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 2 
+ 
+Â¿QUÃ‰ ES SQL?  
+SQL, Lenguaje de Consulta Estructurado  (Structured  
+Query  Language ) es un lenguaje declarativo de acceso a bases 
+de datos relacionales que permite especificar diversos tipos de 
+operaciones sobre las mismas. Unifica  caracterÃ­sticas del  
+Ã¡lgebra y el cÃ¡lculo relacional permitiendo lanzar consultas con 
+el fin de recuperar i nformaciÃ³n de interÃ©s de una base de datos, 
+de una forma sencilla  y en un leguaje similar al inglÃ©s utilizado 
+para la comunicaciÃ³n entre personas . 
+Es un lenguaje estÃ¡ndar utilizado para comunicarse con bases de datos 
+relacionales , definido y publicado por el ISO ( International  Organization  for 
+Standardization â€“ OrganizaciÃ³n Internacional de EstandarizaciÃ³n ) y el ANSI 
+(American National  Standards  Institute â€“ Instituto de Estandar Nacional Americano ). 
+El hecho de que sea estÃ¡ndar no quiere decir que sea idÃ©nt ico para cada base 
+de datos.  
+El Lenguaje Estructurado de Consulta (SQL) es un lenguaje de base de datos 
+normalizado, utilizado por los diferentes motores de bases de datos para realizar 
+determinadas operaciones sobre los datos, o sobre la estructura de l os mismos. Pero 
+como sucede con cualquier sistema de normalizaciÃ³n hay excepciones para casi 
+todo. De hecho, cada motor de bases de datos tiene sus 
+peculiaridades y lo hace diferente de otro motor. Por lo tanto, el 
+lenguaje SQL normalizado (ANSI) no nos se rvirÃ¡ para resolver todos 
+los problemas, aunque si se puede asegurar que cualquier sentencia 
+escrita en ANSI serÃ¡ interpretable por cualquier motor de datos.  
+ 
+ 
+ 
+ 
+ 
+  
+Imagen 1 : ExtraÃ­da de 
+Banco de ImÃ¡genes 
+Pixabay  
+Imagen 2: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 3 
+ 
+Usos de SQL  
+AdemÃ¡s de ser una herramienta de consulta, SQL se utiliza para controlar las 
+funciones que un SGBD  proporciona , incluyendo:  
+ï‚§ DefiniciÃ³n de Datos : Permite que el usuario defina la estructura y la 
+organizaciÃ³n de los datos almacenados, asÃ­ como las relaciones  existentes 
+entre ellos.  
+ï‚§ RecuperaciÃ³n de Datos : Permite a un usuario o a un programa recuperar y 
+utilizar los datos almacenados en una base de datos  
+ï‚§ ManipulaciÃ³n de Datos : Permite a un usuario o a un programa actualizar la 
+base de datos aÃ±adiendo datos nue vos, borrando los viejos y modificando los 
+almacenados previamente.  
+ï‚§ Control de Acceso : Se utiliza para restringir la capacidad de un usuario para 
+recuperar, aÃ±adir y modificar datos, protegiendo los datos almacenados contra 
+accesos no autorizados  
+ï‚§ Compartic iÃ³n de InformaciÃ³n : Para coordinar la comparticiÃ³n de datos entre 
+usuarios concurrentes, asegurÃ¡ndose que no haya interferencias entre ellos.  
+ï‚§ Integridad de datos : Define restricciones de integridad en la base de datos, 
+protegiÃ©ndola de alteraciones indebid as a actualizaciones inconsistentes o 
+fallos de sistema  
+Beneficios  
+ï‚§ Independencia de los proveedores: Esfuerzo mÃ­nimo de conversiÃ³n entre 
+un DBMS y otro.  
+ï‚§ Portabilidad entre sistemas informÃ¡ticos: Las aplicaciones SQL que 
+comienzan en sistemas monousuarios, pueden ser transferidos a sistemas 
+mayores segÃºn van creciendo.  
+ï‚§ Fundamento Relacional: SQL es un lenguaje de base de datos relacionales, 
+y ha llegado a ser popular junto con el modelo de base de datos.  
+ï‚§ Estructura de alto nivel parecida al inglÃ©s: las sente ncias son frases 
+sencillas en inglÃ©s haciendo que SQL sea fÃ¡cil de entender y aprender.  
+ï‚§ Consultas interactivas ad hoc (en lÃ­nea, al instante): SQL es un lenguaje de 
+consultas interactivas que proporciona a los usuarios acceso temporario a los 
+datos almacen ados.  
+ï‚§ MÃºltiples vistas de datos: se puede dar diferentes vistas de la estructura y 
+contenidos de una base de datos a diferentes usuarios.  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 4 
+ 
+ï‚§ DefiniciÃ³n dinÃ¡mica de datos: con SQL la estructura de una base de datos 
+puede ser modificada y ampliada dinÃ¡micamente, incluso mientras los 
+usuarios estÃ¡n accediendo a los contenidos de la base de datos.  
+ï‚§ Arquitectura cliente/servidor: los programas de las computadoras utilizan 
+SQL para comunicarse, a travÃ©s de una red de Ã¡rea local, con los servidores 
+de bas e de datos que almacenan los datos compartidos.  
+Â¿QUÃ‰ ES SQL SERVER?  
+SQL Server  es un Sistema de GestiÃ³n de Bases de Datos Relacionales 
+(SGBDR  o RDBMS Relational Data Base Management System), diseÃ±ado para 
+trabajar con grandes cantidades de informaciÃ³n. Ofr ece el soporte de informaciÃ³n 
+para aplicaciones Cliente/Servidor, las cuales mediante una interfaz y una red LAN 
+los clientes acceden a los datos.  
+Arquitectura cliente -servidor   
+SQL Server utiliza la arquitectura cliente -servidor para 
+separar la carga de trabajo en tareas que se ejecutan en equipos 
+servidores y tareas que se ejecutan en equipos cliente:  
+ï‚§ El cliente es el responsable de la lÃ³gica 
+empresarial y de presentar los datos al 
+usuario. Normalmente, el cliente se ejecuta 
+en uno o varios equipos, pero tambiÃ©n puede ejecutarse en el equipo servidor 
+junto con SQL Server.  
+ï‚§ SQL Server administra las bases de datos y asigna los recursos disponibles 
+del servidor (como la memoria, el ancho de banda de la red y  las operaciones 
+de disco) entre las distintas solicitudes.  
+La arquitectura cliente -servidor permite diseÃ±ar y distribuir aplicaciones para 
+mejorar una gran variedad de entornos. Las interfaces de programaciÃ³n de los 
+clientes proporcionan los medios para q ue las aplicaciones se ejecuten en equipos 
+clientes independientes y se comuniquen con el servidor a travÃ©s de la red.  
+Como es un entorno Cliente/Servidor, los datos se guardan en forma 
+centralizada en un computador denominado SERVIDOR, siendo Ã©ste el resp onsable 
+de:  
+ï‚§ Mantener las relaciones entre los datos de una base de datos  
+ï‚§ Asegurar que los datos estÃ©n correctamente almacenados y que no se 
+infrinjan las reglas que definen las relaciones entre los datos  
+Imagen 3: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 5 
+ 
+ï‚§ Recuperar todos los datos hasta un punto de coheren cia garantizada, en caso 
+de que se produzca un error del sistema  
+Del lado del cliente se accede al servidor a travÃ©s de una aplicaciÃ³n, la cual 
+estÃ¡ basada en el estÃ¡ndar SQL, utilizando un conjunto de sentencias y comandos 
+que permiten especificar la info rmaciÃ³n que se desea recuperar o modificar.  
+Aplicaciones cliente  
+Los usuarios no tienen acceso a SQL Server directamente, sino que utilizan 
+distintas aplicaciones cliente escritas para tener acceso a los datos. Estas 
+aplicaciones tienen acceso a SQL Serve r mediante:  
+SQL Server consta de componentes cliente y servidor que almacenan y 
+recuperan datos. SQL Server utiliza una arquitectura de comunicaciÃ³n por capas para 
+aislar las aplicaciones de la red y los protocolos subyacentes.  
+Esta arquitectura permite d istribuir la misma aplicaciÃ³n en diferentes entornos 
+de red.  
+Modelos de almacenamiento de datos  
+SQL Server administra bases de datos OLTP y OLAP  
+ï‚§ Bases de datos OLTP  (On-Line Transactional 
+Processing: procesamiento transaccional en linea) Son 
+bases de datos orientadas al procesamiento de 
+transacciones que involucra acciones de inserciÃ³n, 
+eliminaciÃ³n y actualizaciÃ³n de datos . SQL Server permite 
+que un gran nÃºmero de usuarios 
+realice transacciones y modif ique 
+simultÃ¡neamente datos en tiempo real 
+en bases de datos OLTP. Algunos 
+ejemplos de bases de datos OLTP serÃ­an sistemas de transacciones 
+bancarias y de billetes de aviÃ³n.  
+ï‚§ Bases de datos OLAP  (On-Line An alytical Processing : procesamiento 
+analÃ­tico en lÃ­nea) En general estas bases de 
+datos involucran acciones de consulta  La 
+tecnologÃ­a OLAP organiza y resume grandes 
+cantidades de datos, de manera que un 
+analista pueda evaluar los datos rÃ¡pidamente 
+en tiempo real.  
+Imagen 4: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+Imagen 5: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 6 
+ 
+Los datos son organizados de otra manera para permitir la realizaciÃ³n de 
+informes, anÃ¡lisis corporativos, estad Ã­sticas que ayudan a la toma de 
+decisiones.  
+Objetos de SQL Server  
+Una base de datos es una colecciÃ³n de datos, tablas y otros objetos. Los 
+objetos de base de datos le ayudan a estructurar los datos y a definir los mecanismos 
+que mantienen la integridad de los datos. En la tabla siguiente se describen los 
+objetos de base de datos de SQL Server.  
+ 
+Objeto de base de datos  DescripciÃ³n  
+Tabla  Define un conjunto de filas que tienen columnas asociadas. Tipo de 
+datos: Define los valores permitidos para los datos de una columna o 
+variable.  
+SQL Server proporciona 
+tipos de datos del 
+sistema.  Los usuarios crean tipos de datos definidos por el usuario.  
+RestricciÃ³n  Define reglas relativas a los valores permitidos en las columnas y es 
+el mecanismo estÃ¡ndar para exigir la integridad de los datos.  
+Valor predeterminado  Define un valor que se almacena en una columna si no se especifica 
+explÃ­citamente ningÃºn otro valor.  
+Regla  Contiene informaciÃ³n que define los valores vÃ¡lidos que se pueden 
+almacenar en una columna o en un tipo de datos.  
+Ãndice  Es una estructura de almacenamiento que proporciona acceso rÃ¡pido 
+para la recuperaciÃ³n de los datos y puede exigir la integridad de los 
+datos.  
+Vista  Proporciona una forma de ver los datos de una o varias tablas o vistas 
+de una base de datos.  
+FunciÃ³n  Definida por el usuario puede devolver un valor escalar o una tabla. 
+Las funciones se utilizan para encapsular la lÃ³gica que se realiza con 
+frecuencia.  
+Procedimiento 
+almacenado  Es una colecciÃ³n con nombre de instrucciones Transact -SQL 
+compiladas previamente que se ejecutan juntas.  
+ 
+Tabla 1:  ElaboraciÃ³n propia . 
+ 
+ 
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 7 
+ 
+TRANSACT -SQL 
+SQL Server tiene incorporado un lenguaje denominado Transact -SQL que 
+contiene los comandos y sentencias necesarios para administrar 
+una instancia de SQL Server, crear y administrar sus objetos, y 
+consultar, insertar, modificar, y eliminar datos de las tablas.  
+ 
+Tipos de Sentencias  
+Las distintas sentencias que se pueden 
+ejecutar son:  
+ï‚§ 
+ (DDL Data 
+Definition Language): se utilizan para crear, modificar y eliminar objetos de 
+una base de datos. Algunas son: CREATE TABLE, ALTER 
+TABLE, DROP TABLE, CREATE INDEX etc.  
+ï‚§ 
+  (DML Data Manipulation 
+Language): se utilizan para recuperar, 
+agregar, modificar o eliminar datos de una 
+base de datos. Por ejemplo: SELECT, 
+INSERT, UPDATE, DELETE.  
+ï‚§ 
+  (DCL Data Control Language): 
+conceden o suprimen privilegios a usuarios. Por ejemplo: GRANT 
+y REVOKE.  
+ï‚§ 
+  
+(TCL Transaction Contro Languaje) : 
+finalizan o abortan la transacciÃ³n actual: 
+COMMIT, ROLLBACK.  
+ï‚§ 
+ : DECLARE, OPEN, EXECUTE, DESCRIBE, etc.  
+SENTENCIAS DE DEFINICIÃ“N DE DATOS â€“ DDL 
+Como ya se vi o anteriormente, este tipo de sentencias son utilizadas para 
+crear y manejar objetos y propiedades de una base de datos, tales como tablas, 
+vistas, procedimientos, etc.   Las sentencias son:  
+Para crear u n objeto : 
+CREATE nombre_objeto  
+Imagen 6: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+Imagen 7: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+Image n 8: ExtraÃ­da de Banco de 
+ImÃ¡genes Pixabay  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 8 
+ 
+ 
+Para modificar un objeto : 
+ALTER nombre_objeto  
+ 
+Para eliminar un objeto : 
+DROP nombre_objeto  
+ 
+CreaciÃ³n de una tabla  
+Sintaxis de una sentencia bÃ¡sica de creaciÃ³n de tabla:  
+ 
+CREATE TABLE  nombre_tabla   
+(nom_col1  tipo_dato  [IDENTITY (inicio,incremento )][NULL|NOT NULL],  
+ nom_col2  tipo_dato,  
+ nom_col_n tipo_dato  
+ [CONSTRAINT  nombre_constraint PRIMARY KEY(nom_col1 )],  
+ [CONSTRAINT  nombre_constraint FOREIGN KEY (nom_col2 )  
+REFERENCES  tabla2 (nombre_columna_tabla2 )] 
+) 
+En donde:  
+ï‚§ CREATE TABLE  nombre_tabla : se debe especificar el nombre de la tabla a 
+crear.  
+ï‚§ Nom_col1 tipo_dato : se describen los nombres de columnas (nombre de 
+campo) con su tipo de dato, cuando sean mÃ¡s de dos campos se separa  con 
+comas.  
+ï‚§ IDENTITY( inicio , incremento ): es una propiedad  que se utiliza para definir a 
+una columna como columna identidad.  Columna cuyo contenido se genera 
+automÃ¡ticamente iniciando con el valor que se le indica en inicio  que es el 
+primer valor a insertarse en la tabla e incremento  es un valor que indica en 
+cuÃ¡nto se incrementa el siguiente valor a insertarse.  
+Provee un valor Ãºnico e incremental, y se suele utilizar en conjunto con la 
+PRIMARY KEY .  Solo puede ser asignada a tipos de datos numÃ©ricos, y puede 
+existir solo una columna con esta prop iedad por tabla.  
+ï‚§ CONSTRAINT : esta propiedad es opcional  y se utiliza para hacer cumplir la 
+integridad de los datos. Algunas de las Constraint que se pueden crear son:  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 9 
+ 
+o PRIMARY KEY : para establecer la clave principal o primaria de la tabla  
+o FOREIGN KEY : para establecer las claves secundarias o forÃ¡neas de 
+la tabla con respecto a otras.  
+ï‚§ Lo que estÃ¡ entre [ ] es opcional  incorporarlo o no en la sentencia . 
+ï‚§ Lo que se separa por la barra vertical â€œ |â€ es que debe elegirse uno o el otro . 
+ï‚§ Las palabras en mayÃºsculas son palabras reservadas del lenguaje es decir 
+que deben escribirse tal como se presenta en la sintaxis y no deben utilizarse 
+para nombres de otros elementos como objetos, campos, etc.  
+ï‚§ El Management Studio de SQL Server, por defecto, no es â€œcase sensitivityâ€ es 
+decir no distingue mayÃºsculas y minÃºsculas por lo que se puede escribir la 
+sentencia toda en minÃºsculas.  
+Tipos de datos  
+Como se sabe , una base de datos estÃ¡ compuesta de tablas (entidades) 
+donde almacenamos registros catalogados en funciÃ³n de distintos campos 
+(atributos ).  Un aspecto previo a considerar es la naturaleza de los valores que 
+introducimos en esos campos. Dado que una base de datos trabaja con todo tipo de 
+informaciÃ³n, es importante especificarle quÃ© tipo de valor  se le est Ã¡ introduciendo de 
+manera que, por un lado, facilite la bÃºsqueda posterior y por otro, optimice los 
+recursos de memoria , lo que se conoce como integridad de dominio .  
+Es importante especificar quÃ© tipo de informaciÃ³n serÃ¡ permitida en cada una 
+de las columnas qu e conforman la estructura de la fila. Por ejemplo, si se desea 
+almacenar precios de productos en una columna se deberÃ­a especificar que el tipo 
+de datos sea numÃ©rico, mÃ¡s especÃ­ficamente moneda , si se desea almacenar 
+nombres se debe escoger un tipo de dato  que permita almacenar informaciÃ³n de tipo 
+carÃ¡cter.  
+Cada tipo de dato en SQL Server tendrÃ¡ un nombre propio, algunos de los 
+cuales se muestran en la tabla siguiente : 
+  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 10 
+ 
+Tipo 
+genÃ©rico  Tipo de dato almace nado Nombre en 
+SQL Server  Cantidad de bytes que ocupa en el 
+almacenamiento  
+Binario  Almacenan cadenas de bits 
+expresados  en nÃºmeros 
+hexadecimales.  binary  Longitud fija (hasta 8 Kb)  
+varbinary  Puede variar en el nro. de dÃ­gitos 
+hexadecimales (hasta 8 Kb.)  
+image  Longitud variable y puede exceder los 8 Kb.  
+AlfanumÃ©rico  
+o Caracter CombinaciÃ³n de letras, 
+sÃ­mbolos y nÃºmeros.  char  Longitud fija (hasta 8 Kb)  
+varchar  Puede variar el nro. de caracteres (hasta 
+8Kb.)  
+text Pueden ser caracteres ASCII y exceder los 8 
+Kb. 
+Fecha y 
+Hora  Fechas  y horas  (dÃ­a, mes y 
+aÃ±o y hora, minuto y 
+segundos segÃºn el formato 
+del sistema   datetime  Fechas entre el 01/01/1753 hasta 31/12/9999 
+(8 by)  
+smalldatetime  Fechas entre el 01/01/1900 hasta 06/06/2079 
+(4 by)  
+NumÃ©ricos 
+Decimal  
+(punto fijo)  NÃºmeros con decimales de 
+coma fija . decimal  Pueden tener hasta 38 dÃ­gitos  
+numeric  Equivalente al decimal.  
+NumÃ©ricos 
+Decimal  
+(punto 
+flotante ) NÃºmeros con decimales 
+aproximados  float  Entre 1,79E + 308 hasta 1,79 + 308  
+real Entre 3,40E + 38 hasta 3,40 + 38.  
+NumÃ©ricos 
+Enteros  Datos numÃ©ricos  enteros  
+positivos o negativos . 
+Tinyint no tiene negativos  bigint  Entre 2^63 hasta 2^63 - 1 (8 by)  
+int Entre -2,147,483,648 hasta 2,147,483,648 
+(4by)  
+smallint  Entre -32,768 hasta 32,767 (2by)  
+tinyint  Entre 0 y 255 (1 by)  
+NumÃ©rico 
+Mone da NumÃ©rico decimal para 
+cantidades monetarias 
+positivas o negativas  money  Entre 922,337,203,685,477,5808 positivos y 
+negativos (8 by)  
+smallmoney  Entre 214,748,3648 (4 by)  
+ Especiales  bit Datos que consisten de 1 o 0. Similar al True 
+o False  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 11 
+ 
+Tipo 
+genÃ©rico  Tipo de dato almace nado Nombre en 
+SQL Server  Cantidad de bytes que ocupa en el 
+almacenamiento  
+cursor  Es empleado en variables o procedimientos 
+almacenados.  
+timestamp  Indica la actividad que ocurre sobre una fila.  
+uniqueidentifi
+er Es un identificador Ãºnico de la fila dentro de 
+la base de datos  
+sql_variant  Almacena varios tipos de datos excepto el 
+tect, ntext, timestamp, image.  
+table  Almacena un resultado de una consulta.  
+Unicode  Se puede almacenar datos 
+Unicode. Utilizan 2 by te por 
+cada carÃ¡cter  nchar  Longitud fija hasta 4000 caracteres Unicode.  
+nvarchar  Longitud variable hasta 4000 caracteres 
+unicode  
+Ntext  Exceden los 4000 caracteres unicodes.  
+Tabla 2: ElaboraciÃ³n propia . 
+ 
+Ejemplo de creaciÃ³n de tablas  
+Se quiere crear las tablas cuya estructura se muestra a continuaciÃ³n:  
+ 
+GrÃ¡fico  1: ElaboraciÃ³n propia . 
+Se van a crear las tablas con sus claves primarias y forÃ¡neas en el mismo 
+momento por ello por integridad referencial se crearÃ¡ primero la tabla tipos_dni  ya 
+que su clave primaria estÃ¡ referenciada por una clave forÃ¡nea de personas : 
+CREATE TABLE tipos_dni 
+(id_tipo_doc int IDENTITY (1,1), 
+ descripcion varchar( 15) 
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 12 
+ 
+ CONSTRAINT pk_tipo_doc PRIMARY KEY (id_tipo_doc)  
+) 
+CREATE TABLE personas  
+(legajo int, 
+ apellido  varchar(50)  not null ,  
+ nombre varchar(50),  
+ fecha_nac  datetime,  
+ peso decimal(4,2), 
+ altura decimal(3,2), 
+ id_tipo_doc  int, 
+ nro_doc varchar( 8) 
+ CONSTRAINT pk_persona PRIMARY KEY (legajo),  
+ CONSTRAINT fk_persona_t ipo_doc  FOREIGN KEY (id_tipo_doc)  
+            REFERENCES tipos_dni (id_tipo_doc)  
+) 
+La propiedad identity (1,1) del campo id_tipo_doc 
+de la tabla tipos_dni indica que el primer tipo de 
+documento ingresado en esa tabla llevarÃ¡ el valor 1, y el 
+resto se le incrementarÃ¡ uno al siguiente por lo que el 
+segundo llevarÃ¡ en nÃºmero 2, el tercero, 3 y asÃ­ 
+sucesivamente.  
+ GrÃ¡fico  2: ElaboraciÃ³n propia . 
+El campo descripciÃ³n se supone que como mÃ¡ximo tendrÃ¡ 15 caracteres. A 
+este tipo de datos es necesario indicarle el tamaÃ±o mÃ¡ximo sino se asume 1.  Los 
+campos tipo decimal llevan dos nÃºmeros en el t amaÃ±o, el primero es el tamaÃ±o total 
+(cantidad de enteros y cantidad de decimales) y el segundo es la cantidad de 
+decimales.  En cambio, el tipo int no requiere tamaÃ±o ya que es fijo al igual que el tipo 
+datetime  y el resto de los tipos de datos enteros . 
+A las claves primarias no es necesario indicarle â€œnot nullâ€ ya que una vez 
+definida la constraint primary key por definiciÃ³n no aceptarÃ¡ nulos. Para los otros 
+campos, como apellido serÃ¡ necesario indicarle que no se aceptan nulos, en caso 
+que no se indique n ada se asume que se permiten valores nulos (valores no 
+definidos).  
+En la definiciÃ³n de la clave primaria:  
+ CONSTRAINT pk_persona PRIMARY KEY (legajo),  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 13 
+ 
+Se tiene luego de la palabra clave CONSTRAINT  el nombre de la constraint  
+que puede ser cualquiera que no exista previamente como objeto en la misma base 
+de datos , pero, como los nombres de las tablas , debe hacer referencia a lo que es. 
+Luego va el tipo de restricciÃ³n PRIMARY KEY  y por Ãºltimo el campo sobre el cual se 
+crea la c lave primaria entre parÃ©ntesis . 
+En la definiciÃ³n de la clave forÃ¡nea:  
+CONSTRAINT fk_persona_t ipo_doc FOREIGN KEY (id_tipo_doc)  
+           REFERENCES tipos_dni (id_tipo_doc)  
+Se tiene luego de la palabra clave CONSTRAINT  el nombre de la constraint  
+que puede ser cualquiera que no exista previamente como objeto en la misma base 
+de datos. Luego va el tipo de restricciÃ³n FOREIGN KEY  , seguido por el campo sobre 
+el cual se crea la clave forÃ¡nea entre parÃ©ntesis, posterior a ello, (puede ser sobre la 
+misma lÃ­nea, aquÃ­ no entro en el ancho de la hoja) REFERENCES  la tabla que contiene 
+la clave primaria que referencia y  por Ãºltimo el campo, entre parÃ©ntesis, que es PK 
+de la tabla que es extremo uno en la relaciÃ³n.  
+Las comas se utilizan para separar elementos  que son del mismo tipo por ello 
+va separando los campos y luego de la constraint primary key.  
+ModificaciÃ³n de una tabla  
+Con la sentencia ALTER se puede: modificar la estructura o definiciÃ³n de un 
+objeto, agregar o eliminar componentes del mismo.  
+En el cas o particular de una tabla, se pueden modificar, agregar o eliminar 
+restricciones (constraint), columnas, nombres de columnas, tipos de datos, etc.  
+ 
+Para agregar una columna:  
+ALTER TABLE nombre_tabla  
+ADD nombre_columna  tipo_dato  
+Ejemplo : se quiere agregar la contextura fÃ­sica en personas  
+ALTER TABLE personas  
+ADD contextura_fisica  varchar(20)  
+ 
+Para eliminar una columna:  
+ALTER TABLE  nombre_tabla  
+DROP COLUMN  nombre_columna  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 14 
+ 
+Ejemplo : se quiere eliminar la columna o el campo contextura_fisica  de la tabla 
+personas  
+ALTER TABLE  personas  
+DROP COLUMN contextura_fisica  
+ 
+Para modificar el tipo de dato:  
+ALTER TABLE  nombre_tabla  
+ALTER COLUMN  nombre_columna tipo_dato  
+Ejemplo : se quiere modificar el tamaÃ±o de  la columna o el campo nro_doc  de 
+la tabla personas  
+ALTER TABLE personas  
+ALTER COLUMN nro_doc varchar(10)  
+ 
+Para agregar una clave primaria : 
+ALTER TABLE nombre_tabla  
+ADD CONSTRAINT nombre_clave PRIMARY KEY ( columna_PK) 
+Ejemplo : se quiere agregar la clave primaria a la tabla tÃ­tulos que no se 
+determinÃ³ cuando se creÃ³ la tabla  
+Alter table titulos 
+add constraint pk_titulos primary key (id_titulo)  
+ 
+EliminaciÃ³n de una tabla  
+Con la sentencia DROP se puede borrar definitivamente una tabla de la base 
+de datos  y todo su contenido .  Sintaxis:  
+DROP TABLE nombre_table  
+  Ejemplo : se quiere eliminar la tabla personas  
+drop table  personas  
+ 
+  
+ 
+ 
+Laboratorio de  ComputaciÃ³n I  Material TeÃ³rico â€“ U1 PÃ¡g. 15 
+ 
+BIBLIOGRAFÃA  
+Gorman K., Hirt A., Noderer D., Rowland -Jones J., Sirpal A., Ryan D. &  Woody B 
+(2019) Introducing Microsoft SQL Server 2019. Reliability, scalability, and security 
+both on premises and in the cloud. Packt Publishing Ltd. Birmingham UK  
+Microsoft. SQL Server 2016. Disponible en: https://www.microsoft.com/es -es/sql -
+server/sql -server -2016  
+Opel, A. & Sheldon, R. (2010). Fundamentos de SQL. Madrid. Editorial Mc Graw Hill  
+Varga S., Cherry D., Dâ€™Antoni J. (2016). Introducing Microsoft SQL Server 2016 
+Mission -Critical Applications, Deeper Insights, Hyperscale Cloud. Washington. 
+Micros oft Press  
+ImÃ¡genes extraÃ­das del Banco de Datos Gratuito Pixabay. Disponible en:  
+https://pixabay.com/es/  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+AtribuciÃ³n -No Comercial -Sin Derivadas  
+ 
+Se permite descargar esta obra y compartirla, siempre y cuando no sea 
+modificado y/o altera do su contenido, ni se comerciali ce. Referenciarlo de la siguiente manera : 
+Universidad TecnolÃ³gica Nacional  Facultad  Regional CÃ³rdoba  (S/D) . Material para la Tecnicatura 
+Universitaria en ProgramaciÃ³n , modalidad virtual , CÃ³rdoba , Argentina.  

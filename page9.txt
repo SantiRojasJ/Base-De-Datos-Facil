@@ -1,0 +1,38 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 8 
+ 
+ 
+Para modificar un objeto : 
+ALTER nombre_objeto  
+ 
+Para eliminar un objeto : 
+DROP nombre_objeto  
+ 
+Creación de una tabla  
+Sintaxis de una sentencia básica de creación de tabla:  
+ 
+CREATE TABLE  nombre_tabla   
+(nom_col1  tipo_dato  [IDENTITY (inicio,incremento )][NULL|NOT NULL],  
+ nom_col2  tipo_dato,  
+ nom_col_n tipo_dato  
+ [CONSTRAINT  nombre_constraint PRIMARY KEY(nom_col1 )],  
+ [CONSTRAINT  nombre_constraint FOREIGN KEY (nom_col2 )  
+REFERENCES  tabla2 (nombre_columna_tabla2 )] 
+) 
+En donde:  
+ CREATE TABLE  nombre_tabla : se debe especificar el nombre de la tabla a 
+crear.  
+ Nom_col1 tipo_dato : se describen los nombres de columnas (nombre de 
+campo) con su tipo de dato, cuando sean más de dos campos se separa  con 
+comas.  
+ IDENTITY( inicio , incremento ): es una propiedad  que se utiliza para definir a 
+una columna como columna identidad.  Columna cuyo contenido se genera 
+automáticamente iniciando con el valor que se le indica en inicio  que es el 
+primer valor a insertarse en la tabla e incremento  es un valor que indica en 
+cuánto se incrementa el siguiente valor a insertarse.  
+Provee un valor único e incremental, y se suele utilizar en conjunto con la 
+PRIMARY KEY .  Solo puede ser asignada a tipos de datos numéricos, y puede 
+existir solo una columna con esta prop iedad por tabla.  
+ CONSTRAINT : esta propiedad es opcional  y se utiliza para hacer cumplir la 
+integridad de los datos. Algunas de las Constraint que se pueden crear son:  

@@ -1,0 +1,56 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 10 
+ 
+Tipo 
+genérico  Tipo de dato almace nado Nombre en 
+SQL Server  Cantidad de bytes que ocupa en el 
+almacenamiento  
+Binario  Almacenan cadenas de bits 
+expresados  en números 
+hexadecimales.  binary  Longitud fija (hasta 8 Kb)  
+varbinary  Puede variar en el nro. de dígitos 
+hexadecimales (hasta 8 Kb.)  
+image  Longitud variable y puede exceder los 8 Kb.  
+Alfanumérico  
+o Caracter Combinación de letras, 
+símbolos y números.  char  Longitud fija (hasta 8 Kb)  
+varchar  Puede variar el nro. de caracteres (hasta 
+8Kb.)  
+text Pueden ser caracteres ASCII y exceder los 8 
+Kb. 
+Fecha y 
+Hora  Fechas  y horas  (día, mes y 
+año y hora, minuto y 
+segundos según el formato 
+del sistema   datetime  Fechas entre el 01/01/1753 hasta 31/12/9999 
+(8 by)  
+smalldatetime  Fechas entre el 01/01/1900 hasta 06/06/2079 
+(4 by)  
+Numéricos 
+Decimal  
+(punto fijo)  Números con decimales de 
+coma fija . decimal  Pueden tener hasta 38 dígitos  
+numeric  Equivalente al decimal.  
+Numéricos 
+Decimal  
+(punto 
+flotante ) Números con decimales 
+aproximados  float  Entre 1,79E + 308 hasta 1,79 + 308  
+real Entre 3,40E + 38 hasta 3,40 + 38.  
+Numéricos 
+Enteros  Datos numéricos  enteros  
+positivos o negativos . 
+Tinyint no tiene negativos  bigint  Entre 2^63 hasta 2^63 - 1 (8 by)  
+int Entre -2,147,483,648 hasta 2,147,483,648 
+(4by)  
+smallint  Entre -32,768 hasta 32,767 (2by)  
+tinyint  Entre 0 y 255 (1 by)  
+Numérico 
+Mone da Numérico decimal para 
+cantidades monetarias 
+positivas o negativas  money  Entre 922,337,203,685,477,5808 positivos y 
+negativos (8 by)  
+smallmoney  Entre 214,748,3648 (4 by)  
+ Especiales  bit Datos que consisten de 1 o 0. Similar al True 
+o False  

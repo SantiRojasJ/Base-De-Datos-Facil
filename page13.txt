@@ -1,0 +1,39 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 12 
+ 
+ CONSTRAINT pk_tipo_doc PRIMARY KEY (id_tipo_doc)  
+) 
+CREATE TABLE personas  
+(legajo int, 
+ apellido  varchar(50)  not null ,  
+ nombre varchar(50),  
+ fecha_nac  datetime,  
+ peso decimal(4,2), 
+ altura decimal(3,2), 
+ id_tipo_doc  int, 
+ nro_doc varchar( 8) 
+ CONSTRAINT pk_persona PRIMARY KEY (legajo),  
+ CONSTRAINT fk_persona_t ipo_doc  FOREIGN KEY (id_tipo_doc)  
+            REFERENCES tipos_dni (id_tipo_doc)  
+) 
+La propiedad identity (1,1) del campo id_tipo_doc 
+de la tabla tipos_dni indica que el primer tipo de 
+documento ingresado en esa tabla llevará el valor 1, y el 
+resto se le incrementará uno al siguiente por lo que el 
+segundo llevará en número 2, el tercero, 3 y así 
+sucesivamente.  
+ Gráfico  2: Elaboración propia . 
+El campo descripción se supone que como máximo tendrá 15 caracteres. A 
+este tipo de datos es necesario indicarle el tamaño máximo sino se asume 1.  Los 
+campos tipo decimal llevan dos números en el t amaño, el primero es el tamaño total 
+(cantidad de enteros y cantidad de decimales) y el segundo es la cantidad de 
+decimales.  En cambio, el tipo int no requiere tamaño ya que es fijo al igual que el tipo 
+datetime  y el resto de los tipos de datos enteros . 
+A las claves primarias no es necesario indicarle “not null” ya que una vez 
+definida la constraint primary key por definición no aceptará nulos. Para los otros 
+campos, como apellido será necesario indicarle que no se aceptan nulos, en caso 
+que no se indique n ada se asume que se permiten valores nulos (valores no 
+definidos).  
+En la definición de la clave primaria:  
+ CONSTRAINT pk_persona PRIMARY KEY (legajo),  

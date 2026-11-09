@@ -1,0 +1,42 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 5 
+ 
+ Recuperar todos los datos hasta un punto de coheren cia garantizada, en caso 
+de que se produzca un error del sistema  
+Del lado del cliente se accede al servidor a través de una aplicación, la cual 
+está basada en el estándar SQL, utilizando un conjunto de sentencias y comandos 
+que permiten especificar la info rmación que se desea recuperar o modificar.  
+Aplicaciones cliente  
+Los usuarios no tienen acceso a SQL Server directamente, sino que utilizan 
+distintas aplicaciones cliente escritas para tener acceso a los datos. Estas 
+aplicaciones tienen acceso a SQL Serve r mediante:  
+SQL Server consta de componentes cliente y servidor que almacenan y 
+recuperan datos. SQL Server utiliza una arquitectura de comunicación por capas para 
+aislar las aplicaciones de la red y los protocolos subyacentes.  
+Esta arquitectura permite d istribuir la misma aplicación en diferentes entornos 
+de red.  
+Modelos de almacenamiento de datos  
+SQL Server administra bases de datos OLTP y OLAP  
+ Bases de datos OLTP  (On-Line Transactional 
+Processing: procesamiento transaccional en linea) Son 
+bases de datos orientadas al procesamiento de 
+transacciones que involucra acciones de inserción, 
+eliminación y actualización de datos . SQL Server permite 
+que un gran número de usuarios 
+realice transacciones y modif ique 
+simultáneamente datos en tiempo real 
+en bases de datos OLTP. Algunos 
+ejemplos de bases de datos OLTP serían sistemas de transacciones 
+bancarias y de billetes de avión.  
+ Bases de datos OLAP  (On-Line An alytical Processing : procesamiento 
+analítico en línea) En general estas bases de 
+datos involucran acciones de consulta  La 
+tecnología OLAP organiza y resume grandes 
+cantidades de datos, de manera que un 
+analista pueda evaluar los datos rápidamente 
+en tiempo real.  
+Imagen 4: Extraída de Banco de 
+Imágenes Pixabay  
+Imagen 5: Extraída de Banco de 
+Imágenes Pixabay  

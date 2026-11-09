@@ -1,0 +1,37 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 15 
+ 
+BIBLIOGRAFÍA  
+Gorman K., Hirt A., Noderer D., Rowland -Jones J., Sirpal A., Ryan D. &  Woody B 
+(2019) Introducing Microsoft SQL Server 2019. Reliability, scalability, and security 
+both on premises and in the cloud. Packt Publishing Ltd. Birmingham UK  
+Microsoft. SQL Server 2016. Disponible en: https://www.microsoft.com/es -es/sql -
+server/sql -server -2016  
+Opel, A. & Sheldon, R. (2010). Fundamentos de SQL. Madrid. Editorial Mc Graw Hill  
+Varga S., Cherry D., D’Antoni J. (2016). Introducing Microsoft SQL Server 2016 
+Mission -Critical Applications, Deeper Insights, Hyperscale Cloud. Washington. 
+Micros oft Press  
+Imágenes extraídas del Banco de Datos Gratuito Pixabay. Disponible en:  
+https://pixabay.com/es/  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Atribución -No Comercial -Sin Derivadas  
+ 
+Se permite descargar esta obra y compartirla, siempre y cuando no sea 
+modificado y/o altera do su contenido, ni se comerciali ce. Referenciarlo de la siguiente manera : 
+Universidad Tecnológica Nacional  Facultad  Regional Córdoba  (S/D) . Material para la Tecnicatura 
+Universitaria en Programación , modalidad virtual , Córdoba , Argentina.  

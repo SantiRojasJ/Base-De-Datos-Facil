@@ -1,0 +1,39 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 2 
+ 
+¿QUÉ ES SQL?  
+SQL, Lenguaje de Consulta Estructurado  (Structured  
+Query  Language ) es un lenguaje declarativo de acceso a bases 
+de datos relacionales que permite especificar diversos tipos de 
+operaciones sobre las mismas. Unifica  características del  
+álgebra y el cálculo relacional permitiendo lanzar consultas con 
+el fin de recuperar i nformación de interés de una base de datos, 
+de una forma sencilla  y en un leguaje similar al inglés utilizado 
+para la comunicación entre personas . 
+Es un lenguaje estándar utilizado para comunicarse con bases de datos 
+relacionales , definido y publicado por el ISO ( International  Organization  for 
+Standardization – Organización Internacional de Estandarización ) y el ANSI 
+(American National  Standards  Institute – Instituto de Estandar Nacional Americano ). 
+El hecho de que sea estándar no quiere decir que sea idént ico para cada base 
+de datos.  
+El Lenguaje Estructurado de Consulta (SQL) es un lenguaje de base de datos 
+normalizado, utilizado por los diferentes motores de bases de datos para realizar 
+determinadas operaciones sobre los datos, o sobre la estructura de l os mismos. Pero 
+como sucede con cualquier sistema de normalización hay excepciones para casi 
+todo. De hecho, cada motor de bases de datos tiene sus 
+peculiaridades y lo hace diferente de otro motor. Por lo tanto, el 
+lenguaje SQL normalizado (ANSI) no nos se rvirá para resolver todos 
+los problemas, aunque si se puede asegurar que cualquier sentencia 
+escrita en ANSI será interpretable por cualquier motor de datos.  
+ 
+ 
+ 
+ 
+ 
+  
+Imagen 1 : Extraída de 
+Banco de Imágenes 
+Pixabay  
+Imagen 2: Extraída de Banco de 
+Imágenes Pixabay  

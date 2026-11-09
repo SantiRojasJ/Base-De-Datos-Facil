@@ -1,0 +1,40 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 4 
+ 
+ Definición dinámica de datos: con SQL la estructura de una base de datos 
+puede ser modificada y ampliada dinámicamente, incluso mientras los 
+usuarios están accediendo a los contenidos de la base de datos.  
+ Arquitectura cliente/servidor: los programas de las computadoras utilizan 
+SQL para comunicarse, a través de una red de área local, con los servidores 
+de bas e de datos que almacenan los datos compartidos.  
+¿QUÉ ES SQL SERVER?  
+SQL Server  es un Sistema de Gestión de Bases de Datos Relacionales 
+(SGBDR  o RDBMS Relational Data Base Management System), diseñado para 
+trabajar con grandes cantidades de información. Ofr ece el soporte de información 
+para aplicaciones Cliente/Servidor, las cuales mediante una interfaz y una red LAN 
+los clientes acceden a los datos.  
+Arquitectura cliente -servidor   
+SQL Server utiliza la arquitectura cliente -servidor para 
+separar la carga de trabajo en tareas que se ejecutan en equipos 
+servidores y tareas que se ejecutan en equipos cliente:  
+ El cliente es el responsable de la lógica 
+empresarial y de presentar los datos al 
+usuario. Normalmente, el cliente se ejecuta 
+en uno o varios equipos, pero también puede ejecutarse en el equipo servidor 
+junto con SQL Server.  
+ SQL Server administra las bases de datos y asigna los recursos disponibles 
+del servidor (como la memoria, el ancho de banda de la red y  las operaciones 
+de disco) entre las distintas solicitudes.  
+La arquitectura cliente -servidor permite diseñar y distribuir aplicaciones para 
+mejorar una gran variedad de entornos. Las interfaces de programación de los 
+clientes proporcionan los medios para q ue las aplicaciones se ejecuten en equipos 
+clientes independientes y se comuniquen con el servidor a través de la red.  
+Como es un entorno Cliente/Servidor, los datos se guardan en forma 
+centralizada en un computador denominado SERVIDOR, siendo éste el resp onsable 
+de:  
+ Mantener las relaciones entre los datos de una base de datos  
+ Asegurar que los datos estén correctamente almacenados y que no se 
+infrinjan las reglas que definen las relaciones entre los datos  
+Imagen 3: Extraída de Banco de 
+Imágenes Pixabay  

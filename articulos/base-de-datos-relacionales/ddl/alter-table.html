@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Básico -->
-    <title>ALTER TABLE: Modificar Tablas en SQL | BDD Facil</title>
-    <meta name="description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes: agregar, modificar y eliminar columnas.">
-    <meta name="keywords" content="ALTER TABLE, SQL, modificar tabla, ADD COLUMN, DROP COLUMN, DDL, modificar estructura">
-    <meta name="author" content="BDD Facil">
+    <title>ALTER TABLE en SQL: modificar tablas paso a paso | BDD Fácil</title>
+    <meta name="description" content="Aprende a utilizar ALTER TABLE en SQL Server para agregar, eliminar y modificar columnas, y definir restricciones en tablas existentes con ejemplos prácticos.">
+    <meta name="keywords" content="ALTER TABLE SQL, modificar tablas SQL Server, ADD, DROP COLUMN, ALTER COLUMN, DDL, modificar columnas, PRIMARY KEY">
+    <meta name="author" content="BDD Fácil">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="ALTER TABLE: Modificar Tablas en SQL">
-    <meta property="og:description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes.">
+    <meta property="og:title" content="ALTER TABLE en SQL: modificar tablas paso a paso">
+    <meta property="og:description" content="Aprende a modificar la estructura de tablas existentes en SQL Server mediante ALTER TABLE y sus principales operaciones.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html">
-    <meta property="og:site_name" content="BDD Facil">
+    <meta property="og:site_name" content="BDD Fácil">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ALTER TABLE: Modificar Tablas en SQL">
-    <meta name="twitter:description" content="Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes.">
+    <meta name="twitter:title" content="ALTER TABLE en SQL: modificar tablas paso a paso">
+    <meta name="twitter:description" content="Guía práctica para agregar, modificar y eliminar columnas en SQL Server.">
 
     <!-- Article Meta -->
     <meta property="article:published_time" content="2026-07-28">
-    <meta property="article:author" content="BDD Facil">
+    <meta property="article:author" content="BDD Fácil">
     <meta property="article:section" content="DDL">
 
     <!-- Canonical URL -->
@@ -39,137 +40,506 @@
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "ALTER TABLE: Modificar Tablas en SQL",
-        "description": "Aprende a usar el comando ALTER TABLE en SQL para modificar la estructura de tablas existentes: agregar, modificar y eliminar columnas.",
-        "author": {
-            "@type": "Organization",
-            "name": "BDD Facil"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "BDD Facil"
-        },
-        "datePublished": "2026-07-28",
-        "inLanguage": "es",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html"
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "ALTER TABLE en SQL: modificar tablas paso a paso",
+            "description": "Guía práctica para modificar la estructura de tablas existentes en SQL Server mediante ALTER TABLE.",
+            "author": {
+                "@type": "Organization",
+                "name": "BDD Fácil"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "BDD Fácil"
+            },
+            "datePublished": "2026-07-28",
+            "inLanguage": "es",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/alter-table.html"
+            }
         }
-    }
     </script>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1323641111499660"
-         crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 <main class="main-content">
+
     <a href="../../../index.html" class="back-button">← Volver al inicio</a>
 
     <!-- Breadcrumb -->
-    <nav style="margin-bottom: 2rem; font-size: 0.9rem; color: #94a3b8;">
+    <nav style="margin-bottom: 2rem; font-size: 0.9rem; color: #94a3b8;" aria-label="Ruta de navegación">
         <ol style="list-style: none; display: flex; gap: 0.5rem; padding: 0;">
-            <li><a href="../../../index.html" style="color: #06b6d4; text-decoration: none;">Inicio</a></li>
+            <li>
+                <a href="../../../index.html" style="color: #06b6d4; text-decoration: none;">Inicio</a>
+            </li>
             <li><span style="color: #64748b;">/</span></li>
-            <li><a href="../../sentencias-ddl-tipos-datos.html" style="color: #06b6d4; text-decoration: none;">DDL</a></li>
+            <li>
+                <a href="../../sentencias-ddl-tipos-datos.html" style="color: #06b6d4; text-decoration: none;">DDL</a>
+            </li>
             <li><span style="color: #64748b;">/</span></li>
             <li aria-current="page" style="color: #94a3b8;">ALTER TABLE</li>
         </ol>
     </nav>
 
     <article>
+
         <header class="article-header">
             <span class="article-category">DDL</span>
-            <h1 class="article-title">ALTER TABLE: Modificar Tablas en SQL</h1>
+
+            <h1 class="article-title">ALTER TABLE en SQL: cómo modificar tablas paso a paso</h1>
+
             <div class="article-meta">
-                <span>Publicado: Julio 2026</span> • <span>Lectura: 8 min</span>
+                <span>Publicado: Julio 2026</span>
+                <span>Lectura: 9 min</span>
             </div>
         </header>
 
         <div class="article-content">
+
             <!-- Índice del artículo -->
             <section style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+
                 <h2 style="margin-top: 0;">Índice del artículo</h2>
+
                 <ul style="margin-bottom: 0;">
                     <li><a href="#introduccion" style="color: #06b6d4; text-decoration: none;">Introducción</a></li>
                     <li><a href="#que-aprenderas" style="color: #06b6d4; text-decoration: none;">¿Qué aprenderás?</a></li>
                     <li><a href="#sintaxis" style="color: #06b6d4; text-decoration: none;">Sintaxis</a></li>
-                    <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación</a></li>
+                    <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación de sus operaciones</a></li>
                     <li><a href="#ejemplo-practico" style="color: #06b6d4; text-decoration: none;">Ejemplo práctico</a></li>
-                    <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Caso real</a></li>
+                    <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Caso práctico completo</a></li>
                     <li><a href="#buenas-practicas" style="color: #06b6d4; text-decoration: none;">Buenas prácticas</a></li>
                     <li><a href="#errores-comunes" style="color: #06b6d4; text-decoration: none;">Errores comunes</a></li>
                     <li><a href="#ejercicios" style="color: #06b6d4; text-decoration: none;">Ejercicios propuestos</a></li>
-                    <li><a href="#podcast" style="color: #06b6d4; text-decoration: none;">Podcast relacionado</a></li>
                     <li><a href="#resumen" style="color: #06b6d4; text-decoration: none;">Resumen</a></li>
                 </ul>
+
             </section>
 
+            <!-- Introducción -->
             <h2 id="introduccion">Introducción</h2>
-            <!-- Contenido pendiente -->
 
+            <p>
+                Cuando creamos una tabla en una base de datos, definimos sus columnas, tipos de datos y restricciones. Sin embargo, con el tiempo pueden aparecer nuevas necesidades: quizás necesitamos almacenar un dato que antes no contemplábamos, cambiar el tipo de una columna o eliminar un campo que dejó de utilizarse.
+            </p>
+
+            <p>
+                Para realizar este tipo de cambios en SQL utilizamos la sentencia <strong>ALTER TABLE</strong>. Su función es modificar la estructura de una tabla que ya existe, sin necesidad de crearla nuevamente desde cero.
+            </p>
+
+            <p>
+                ALTER TABLE pertenece al grupo de sentencias <strong>DDL (Data Definition Language)</strong>, utilizado para definir y administrar la estructura de los objetos de una base de datos.
+            </p>
+
+            <p>
+                En esta guía vamos a trabajar con ejemplos orientados a SQL Server. Veremos cómo agregar columnas, eliminar campos, cambiar sus definiciones y agregar restricciones a una tabla existente.
+            </p>
+
+            <!-- Qué aprenderás -->
             <h2 id="que-aprenderas">¿Qué aprenderás?</h2>
-            <!-- Contenido pendiente -->
 
-            <h2 id="sintaxis">Sintaxis</h2>
-            <!-- Contenido pendiente -->
+            <p>Al terminar este artículo vas a poder:</p>
 
-            <h2 id="explicacion">Explicación</h2>
-            <!-- Contenido pendiente -->
+            <ul>
+                <li>Comprender para qué sirve ALTER TABLE.</li>
+                <li>Reconocer la estructura general de esta sentencia.</li>
+                <li>Agregar nuevas columnas mediante ADD.</li>
+                <li>Eliminar columnas mediante DROP COLUMN.</li>
+                <li>Modificar la definición de una columna mediante ALTER COLUMN.</li>
+                <li>Agregar restricciones a una tabla existente.</li>
+                <li>Identificar qué aspectos revisar antes de modificar una estructura.</li>
+            </ul>
 
-            <div class="ad-in-content">
-                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
-            </div>
+            <!-- Sintaxis -->
+            <h2 id="sintaxis">Sintaxis de ALTER TABLE</h2>
 
-            <h2 id="ejemplo-practico">Ejemplo práctico</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                La sentencia ALTER TABLE comienza indicando el nombre de la tabla que queremos modificar. Después se especifica la operación que se desea realizar.
+            </p>
 
-            <h2 id="caso-real">Caso real</h2>
-            <!-- Contenido pendiente -->
+            <p>Su estructura general es:</p>
 
-            <h2 id="buenas-practicas">Buenas prácticas</h2>
-            <!-- Contenido pendiente -->
+            <pre><code>ALTER TABLE nombre_tabla
+    operacion;</code></pre>
 
-            <h2 id="errores-comunes">Errores comunes</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                La operación puede consistir en agregar una columna, eliminarla, modificar su definición o incorporar una restricción.
+            </p>
 
+            <p>Estas son algunas de las estructuras que vamos a utilizar:</p>
+
+            <h3>Agregar una columna</h3>
+
+            <pre><code>ALTER TABLE nombre_tabla
+ADD nombre_columna tipo_dato;</code></pre>
+
+            <h3>Eliminar una columna</h3>
+
+            <pre><code>ALTER TABLE nombre_tabla
+DROP COLUMN nombre_columna;</code></pre>
+
+            <h3>Modificar una columna</h3>
+
+            <pre><code>ALTER TABLE nombre_tabla
+ALTER COLUMN nombre_columna nuevo_tipo_dato;</code></pre>
+
+            <h3>Agregar una restricción de clave primaria</h3>
+
+            <pre><code>ALTER TABLE nombre_tabla
+ADD CONSTRAINT nombre_restriccion
+PRIMARY KEY (nombre_columna);</code></pre>
+
+            <p>
+                La estructura exacta de cada operación depende del cambio que necesitemos realizar. Por eso, antes de escribir la sentencia, es importante identificar qué parte de la tabla queremos modificar.
+            </p>
+
+            <!-- Explicación -->
+            <h2 id="explicacion">Explicación de las operaciones de ALTER TABLE</h2>
+
+            <h3>1. ADD: agregar una columna</h3>
+
+            <p>
+                La operación ADD permite incorporar una nueva columna a una tabla existente. Para hacerlo, indicamos su nombre y el tipo de dato que almacenará.
+            </p>
+
+            <p>Por ejemplo, imaginemos que tenemos una tabla de personas y necesitamos incorporar una columna para guardar un teléfono:</p>
+
+            <pre><code>ALTER TABLE personas
+ADD telefono VARCHAR(20);</code></pre>
+
+            <p>
+                Con esta instrucción agregamos la columna <code>telefono</code> a la estructura de la tabla <code>personas</code>.
+            </p>
+
+            <p>
+                No estamos creando una tabla nueva: estamos modificando una que ya existe.
+            </p>
+
+            <h3>2. DROP COLUMN: eliminar una columna</h3>
+
+            <p>
+                Si una columna deja de ser necesaria, podemos eliminarla mediante DROP COLUMN. Para ello debemos indicar el nombre del campo que queremos quitar.
+            </p>
+
+            <pre><code>ALTER TABLE personas
+DROP COLUMN telefono;</code></pre>
+
+            <p>
+                Esta instrucción elimina la columna <code>telefono</code> de la tabla <code>personas</code>.
+            </p>
+
+            <p>
+                Es importante distinguir esta operación de eliminar una tabla completa. DROP COLUMN afecta solamente a la columna indicada, mientras que DROP TABLE elimina la tabla.
+            </p>
+
+            <h3>3. ALTER COLUMN: modificar la definición de una columna</h3>
+
+            <p>
+                ALTER COLUMN permite cambiar la definición de una columna existente. Por ejemplo, podemos modificar el tipo de dato o ajustar la longitud permitida para un campo.
+            </p>
+
+            <p>
+                Supongamos que la columna <code>apellido</code> fue creada con una longitud de 50 caracteres y necesitamos ampliarla a 60:
+            </p>
+
+            <pre><code>ALTER TABLE personas
+ALTER COLUMN apellido VARCHAR(60) NOT NULL;</code></pre>
+
+            <p>
+                En este caso, modificamos la definición de la columna <code>apellido</code>, estableciendo un tipo VARCHAR con una longitud máxima de 60 caracteres y manteniendo la condición NOT NULL.
+            </p>
+
+            <p>
+                Antes de realizar este tipo de cambios, conviene revisar los datos existentes y las condiciones definidas para la columna.
+            </p>
+
+            <h3>4. ADD CONSTRAINT: agregar una restricción</h3>
+
+            <p>
+                ALTER TABLE también permite incorporar restricciones a una tabla que ya existe. Para ello se utiliza ADD CONSTRAINT, seguido del nombre y la definición de la restricción.
+            </p>
+
+            <p>Por ejemplo, podemos agregar una clave primaria a una tabla:</p>
+
+            <pre><code>ALTER TABLE proveedores
+ADD CONSTRAINT pk_proveedor
+PRIMARY KEY (id_proveedor);</code></pre>
+
+            <p>
+                La restricción se llama <code>pk_proveedor</code> y establece <code>id_proveedor</code> como clave primaria.
+            </p>
+
+            <p>
+                Para que esta operación pueda realizarse correctamente, la columna debe cumplir las condiciones necesarias para ser una clave primaria.
+            </p>
+
+            <!-- Ejemplo práctico -->
+            <h2 id="ejemplo-practico">Ejemplo práctico: modificar la tabla personas</h2>
+
+            <p>
+                Vamos a retomar la tabla <strong>personas</strong> que utilizamos en el artículo de CREATE TABLE. En aquella oportunidad definimos campos como legajo, apellido, nombre, fecha de nacimiento, peso y altura.
+            </p>
+
+            <p>
+                Imaginemos que necesitamos realizar algunos cambios en su estructura. En lugar de crear otra tabla, podemos utilizar ALTER TABLE para actualizar la que ya existe.
+            </p>
+
+            <h3>Paso 1. Agregar una columna</h3>
+
+            <p>
+                Primero vamos a incorporar un campo para almacenar el teléfono de cada persona.
+            </p>
+
+            <pre><code>ALTER TABLE personas
+ADD telefono VARCHAR(20);</code></pre>
+
+            <p>
+                Ahora la estructura de personas cuenta con una columna adicional llamada <code>telefono</code>.
+            </p>
+
+            <h3>Paso 2. Modificar una columna</h3>
+
+            <p>
+                Supongamos que necesitamos ampliar la longitud permitida para el apellido. Podemos modificar su definición de la siguiente manera:
+            </p>
+
+            <pre><code>ALTER TABLE personas
+ALTER COLUMN apellido VARCHAR(60) NOT NULL;</code></pre>
+
+            <p>
+                La columna continúa siendo de tipo VARCHAR, pero ahora permite almacenar hasta 60 caracteres. También se mantiene la condición NOT NULL.
+            </p>
+
+            <h3>Paso 3. Eliminar una columna</h3>
+
+            <p>
+                Finalmente, imaginemos que el campo teléfono ya no será necesario. Podemos quitarlo de la tabla:
+            </p>
+
+            <pre><code>ALTER TABLE personas
+DROP COLUMN telefono;</code></pre>
+
+            <p>
+                Con esta última instrucción eliminamos la columna <code>telefono</code>.
+            </p>
+
+            <p>
+                Los tres ejemplos muestran cómo una misma tabla puede modificarse de distintas maneras a medida que cambian las necesidades de almacenamiento.
+            </p>
+
+            <!-- Caso práctico -->
+            <h2 id="caso-real">Caso práctico: adaptar una tabla a una nueva necesidad</h2>
+
+            <p>
+                Pensemos en una situación habitual durante el desarrollo de un sistema: inicialmente se crea una tabla para almacenar información básica de personas, pero después se decide incorporar un nuevo dato.
+            </p>
+
+            <p>
+                La tabla ya existe y contiene una estructura definida. En ese momento, volver a crearla no es necesariamente la solución. ALTER TABLE permite realizar el cambio directamente sobre la estructura existente.
+            </p>
+
+            <p>Podemos representar esta situación con la siguiente secuencia:</p>
+
+            <ol>
+                <li>La tabla <code>personas</code> ya fue creada.</li>
+                <li>Surge la necesidad de almacenar un teléfono.</li>
+                <li>Utilizamos ADD para incorporar la nueva columna.</li>
+                <li>Más adelante, el campo deja de ser necesario.</li>
+                <li>Utilizamos DROP COLUMN para eliminarlo.</li>
+            </ol>
+
+            <p>
+                Las instrucciones SQL correspondientes son:
+            </p>
+
+            <pre><code>-- Incorporar una columna
+ALTER TABLE personas
+ADD telefono VARCHAR(20);
+
+-- Eliminar la columna incorporada
+ALTER TABLE personas
+DROP COLUMN telefono;</code></pre>
+
+            <p>
+                Este ejemplo permite observar que ALTER TABLE trabaja sobre una tabla existente y que cada operación modifica su definición.
+            </p>
+
+            <!-- Buenas prácticas -->
+            <h2 id="buenas-practicas">Buenas prácticas al utilizar ALTER TABLE</h2>
+
+            <p>
+                Modificar una tabla puede afectar la estructura que utiliza una aplicación o un sistema. Por eso, antes de ejecutar una sentencia conviene revisar qué cambio se va a realizar y sobre qué columna.
+            </p>
+
+            <ul>
+                <li><strong>Identificar la tabla correcta:</strong> verificar el nombre de la tabla antes de ejecutar la instrucción.</li>
+                <li><strong>Revisar la columna:</strong> comprobar que el campo que queremos modificar o eliminar exista.</li>
+                <li><strong>Elegir el tipo de dato adecuado:</strong> al utilizar ALTER COLUMN, revisar que la nueva definición sea compatible con los datos almacenados.</li>
+                <li><strong>Evaluar las restricciones:</strong> comprobar si la columna participa en una clave primaria, clave foránea u otra restricción.</li>
+                <li><strong>Utilizar nombres descriptivos:</strong> asignar nombres claros a las restricciones agregadas mediante CONSTRAINT.</li>
+                <li><strong>Revisar los cambios antes de ejecutarlos:</strong> especialmente cuando se trata de eliminar columnas o modificar definiciones.</li>
+            </ul>
+
+            <!-- Errores comunes -->
+            <h2 id="errores-comunes">Errores comunes al utilizar ALTER TABLE</h2>
+
+            <p>
+                Al modificar una tabla pueden aparecer errores relacionados con los nombres, los tipos de datos o las restricciones existentes. Estos son algunos aspectos que conviene revisar.
+            </p>
+
+            <h3>1. Intentar modificar una columna inexistente</h3>
+
+            <p>
+                Si escribimos un nombre de columna que no pertenece a la tabla, SQL Server no podrá realizar la operación solicitada.
+            </p>
+
+            <p>
+                Antes de utilizar ADD, DROP COLUMN o ALTER COLUMN, verificá qué columnas forman parte de la tabla.
+            </p>
+
+            <h3>2. Confundir ADD con ALTER COLUMN</h3>
+
+            <p>
+                Ambas operaciones modifican la estructura, pero no hacen lo mismo. ADD incorpora una columna nueva, mientras que ALTER COLUMN cambia la definición de una columna que ya existe.
+            </p>
+
+            <h3>3. Eliminar una columna equivocada</h3>
+
+            <p>
+                DROP COLUMN elimina el campo indicado. Antes de ejecutarlo, es importante verificar que se trate de la columna correcta y que su eliminación no afecte información necesaria para el sistema.
+            </p>
+
+            <h3>4. Modificar una columna sin revisar sus datos</h3>
+
+            <p>
+                Un cambio de tipo de dato o de definición puede no ser compatible con los valores almacenados. Por eso, antes de utilizar ALTER COLUMN conviene revisar el contenido actual de la columna.
+            </p>
+
+            <h3>5. Agregar una clave primaria sin revisar la columna</h3>
+
+            <p>
+                Una clave primaria debe identificar de manera única cada registro. Si la columna contiene valores repetidos o valores NULL, no cumple las condiciones necesarias para establecerla como clave primaria.
+            </p>
+
+            <!-- Ejercicios -->
             <h2 id="ejercicios">Ejercicios propuestos</h2>
-            <!-- Contenido pendiente -->
 
-            <div class="ad-in-content">
-                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
-            </div>
+            <p>
+                Para comprobar lo aprendido, intentá resolver estas actividades utilizando la tabla <code>personas</code> como referencia.
+            </p>
 
-            <h2 id="podcast">Podcast relacionado</h2>
-            <!-- Contenido pendiente -->
+            <h3>Ejercicio 1: agregar una columna</h3>
 
-            <h2 id="resumen">Resumen</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                Escribí una sentencia ALTER TABLE para incorporar una columna llamada <code>email</code>, de tipo VARCHAR con una longitud máxima de 80 caracteres.
+            </p>
 
-            <h2 id="articulo-siguiente">Artículo siguiente</h2>
-            <!-- Contenido pendiente -->
+            <p><strong>Objetivo:</strong> practicar la operación ADD.</p>
+
+            <h3>Ejercicio 2: modificar una columna</h3>
+
+            <p>
+                La columna <code>nombre</code> fue definida como VARCHAR(50). Escribí una sentencia para cambiar su longitud a 70 caracteres y establecer que no admita valores NULL.
+            </p>
+
+            <p><strong>Objetivo:</strong> practicar ALTER COLUMN.</p>
+
+            <h3>Ejercicio 3: eliminar una columna</h3>
+
+            <p>
+                Supongamos que el campo <code>email</code> ya no será necesario. Escribí la instrucción para eliminarlo de la tabla.
+            </p>
+
+            <p><strong>Objetivo:</strong> utilizar DROP COLUMN.</p>
+
+            <h3>Ejercicio 4: agregar una clave primaria</h3>
+
+            <p>
+                Imaginá que existe una tabla llamada <code>proveedores</code> con una columna <code>id_proveedor</code>, pero todavía no tiene una clave primaria. Escribí una sentencia para agregar una restricción llamada <code>pk_proveedor</code> que utilice esa columna.
+            </p>
+
+            <p><strong>Objetivo:</strong> practicar ADD CONSTRAINT y PRIMARY KEY.</p>
+
+            <h3>Para comprobar lo aprendido</h3>
+
+            <ol>
+                <li>¿Para qué sirve ALTER TABLE?</li>
+                <li>¿Qué diferencia existe entre ADD y ALTER COLUMN?</li>
+                <li>¿Qué sucede cuando utilizamos DROP COLUMN?</li>
+                <li>¿Para qué se utiliza ADD CONSTRAINT?</li>
+                <li>¿Qué debemos revisar antes de modificar una columna?</li>
+            </ol>
+
+            <!-- Resumen -->
+            <h2 id="resumen">Resumen: lo que tenés que recordar</h2>
+
+            <p>
+                ALTER TABLE es una sentencia DDL que permite modificar la estructura de una tabla existente. Se utiliza cuando necesitamos adaptar sus columnas o restricciones sin crear una tabla nueva.
+            </p>
+
+            <p>Estas son las operaciones principales que trabajamos:</p>
+
+            <ul>
+                <li><strong>ADD:</strong> permite agregar una columna.</li>
+                <li><strong>DROP COLUMN:</strong> elimina una columna existente.</li>
+                <li><strong>ALTER COLUMN:</strong> modifica la definición de una columna.</li>
+                <li><strong>ADD CONSTRAINT:</strong> permite incorporar una restricción a la tabla.</li>
+            </ul>
+
+            <p>
+                La elección de la operación depende del cambio que necesitemos realizar. Antes de ejecutar una sentencia, es importante identificar la tabla, revisar la columna y comprobar las restricciones que puedan estar relacionadas.
+            </p>
+
+            <p>
+                Practicar estas operaciones te permitirá comprender cómo evoluciona la estructura de una base de datos durante el desarrollo de un sistema.
+            </p>
+
+            <!-- Artículo siguiente -->
+            <h2 id="articulo-siguiente">¿Qué sigue después de ALTER TABLE?</h2>
+
+            <p>
+                Ya vimos cómo modificar una tabla existente. El siguiente paso es conocer qué sucede cuando necesitamos eliminar una tabla completa de la base de datos.
+            </p>
+
+            <p>
+                Para eso existe la sentencia <strong>DROP TABLE</strong>, que permite eliminar una tabla y su contenido. En el próximo artículo vamos a estudiar su sintaxis y sus principales características.
+            </p>
 
             <!-- Navegación entre artículos -->
-            <div style="display: flex; justify-content: space-between; margin-top: 3rem;">
-                <a href="create-table.html" id="link-anterior" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem;">
+
+                <a href="create-table.html" id="link-anterior"
+                   style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
                     ← Anterior: CREATE TABLE
                 </a>
-                <a href="drop-table.html" id="link-siguiente" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+
+                <a href="drop-table.html" id="link-siguiente"
+                   style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
                     Siguiente: DROP TABLE →
                 </a>
+
             </div>
+
         </div>
     </article>
+
 </main>
 
 <script src="../../../js/progreso-lectura.js"></script>
+
 <script>
     ProgresoLectura.inicializar({
         articuloId: 'ddl-alter-table'
     });
 </script>
+
 </body>
 </html>
+```

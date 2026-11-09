@@ -1,0 +1,38 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 3 
+ 
+Usos de SQL  
+Además de ser una herramienta de consulta, SQL se utiliza para controlar las 
+funciones que un SGBD  proporciona , incluyendo:  
+ Definición de Datos : Permite que el usuario defina la estructura y la 
+organización de los datos almacenados, así como las relaciones  existentes 
+entre ellos.  
+ Recuperación de Datos : Permite a un usuario o a un programa recuperar y 
+utilizar los datos almacenados en una base de datos  
+ Manipulación de Datos : Permite a un usuario o a un programa actualizar la 
+base de datos añadiendo datos nue vos, borrando los viejos y modificando los 
+almacenados previamente.  
+ Control de Acceso : Se utiliza para restringir la capacidad de un usuario para 
+recuperar, añadir y modificar datos, protegiendo los datos almacenados contra 
+accesos no autorizados  
+ Compartic ión de Información : Para coordinar la compartición de datos entre 
+usuarios concurrentes, asegurándose que no haya interferencias entre ellos.  
+ Integridad de datos : Define restricciones de integridad en la base de datos, 
+protegiéndola de alteraciones indebid as a actualizaciones inconsistentes o 
+fallos de sistema  
+Beneficios  
+ Independencia de los proveedores: Esfuerzo mínimo de conversión entre 
+un DBMS y otro.  
+ Portabilidad entre sistemas informáticos: Las aplicaciones SQL que 
+comienzan en sistemas monousuarios, pueden ser transferidos a sistemas 
+mayores según van creciendo.  
+ Fundamento Relacional: SQL es un lenguaje de base de datos relacionales, 
+y ha llegado a ser popular junto con el modelo de base de datos.  
+ Estructura de alto nivel parecida al inglés: las sente ncias son frases 
+sencillas en inglés haciendo que SQL sea fácil de entender y aprender.  
+ Consultas interactivas ad hoc (en línea, al instante): SQL es un lenguaje de 
+consultas interactivas que proporciona a los usuarios acceso temporario a los 
+datos almacen ados.  
+ Múltiples vistas de datos: se puede dar diferentes vistas de la estructura y 
+contenidos de una base de datos a diferentes usuarios.  

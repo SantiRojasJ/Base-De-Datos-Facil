@@ -1,0 +1,33 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 14 
+ 
+Ejemplo : se quiere eliminar la columna o el campo contextura_fisica  de la tabla 
+personas  
+ALTER TABLE  personas  
+DROP COLUMN contextura_fisica  
+ 
+Para modificar el tipo de dato:  
+ALTER TABLE  nombre_tabla  
+ALTER COLUMN  nombre_columna tipo_dato  
+Ejemplo : se quiere modificar el tamaño de  la columna o el campo nro_doc  de 
+la tabla personas  
+ALTER TABLE personas  
+ALTER COLUMN nro_doc varchar(10)  
+ 
+Para agregar una clave primaria : 
+ALTER TABLE nombre_tabla  
+ADD CONSTRAINT nombre_clave PRIMARY KEY ( columna_PK) 
+Ejemplo : se quiere agregar la clave primaria a la tabla títulos que no se 
+determinó cuando se creó la tabla  
+Alter table titulos 
+add constraint pk_titulos primary key (id_titulo)  
+ 
+Eliminación de una tabla  
+Con la sentencia DROP se puede borrar definitivamente una tabla de la base 
+de datos  y todo su contenido .  Sintaxis:  
+DROP TABLE nombre_table  
+  Ejemplo : se quiere eliminar la tabla personas  
+drop table  personas  
+ 
+  

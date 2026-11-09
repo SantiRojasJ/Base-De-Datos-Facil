@@ -1,34 +1,35 @@
+﻿
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Básico -->
-    <title>CREATE TABLE: Crear Tablas en SQL | BDD Facil</title>
-    <meta name="description" content="Aprende a usar el comando CREATE TABLE en SQL para crear tablas con columnas, tipos de datos y restricciones.">
-    <meta name="keywords" content="CREATE TABLE, SQL, crear tabla, DDL, tipos de datos, PRIMARY KEY, FOREIGN KEY">
-    <meta name="author" content="BDD Facil">
+    <!-- SEO -->
+    <title>CREATE TABLE en SQL: cómo crear tablas paso a paso | BDD Fácil</title>
+    <meta name="description" content="Aprende a crear tablas en SQL Server con CREATE TABLE. Conoce las columnas, tipos de datos, IDENTITY, PRIMARY KEY y FOREIGN KEY mediante ejemplos prácticos.">
+    <meta name="keywords" content="CREATE TABLE SQL, crear tablas SQL Server, DDL, tipos de datos SQL, PRIMARY KEY, FOREIGN KEY, IDENTITY">
+    <meta name="author" content="BDD Fácil">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="CREATE TABLE: Crear Tablas en SQL">
-    <meta property="og:description" content="Aprende a usar el comando CREATE TABLE en SQL para crear tablas con columnas, tipos de datos y restricciones.">
+    <meta property="og:title" content="CREATE TABLE en SQL: cómo crear tablas paso a paso">
+    <meta property="og:description" content="Una guía práctica para crear tablas en SQL Server, definir columnas y establecer relaciones entre tablas.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-table.html">
-    <meta property="og:site_name" content="BDD Facil">
+    <meta property="og:site_name" content="BDD Fácil">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CREATE TABLE: Crear Tablas en SQL">
-    <meta name="twitter:description" content="Aprende a usar el comando CREATE TABLE en SQL para crear tablas con columnas, tipos de datos y restricciones.">
+    <meta name="twitter:title" content="CREATE TABLE en SQL: cómo crear tablas paso a paso">
+    <meta name="twitter:description" content="Aprende a crear tablas en SQL Server con ejemplos de columnas, tipos de datos y restricciones.">
 
     <!-- Article Meta -->
     <meta property="article:published_time" content="2026-07-28">
-    <meta property="article:author" content="BDD Facil">
+    <meta property="article:author" content="BDD Fácil">
     <meta property="article:section" content="DDL">
 
-    <!-- Canonical URL -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-table.html">
 
     <!-- Favicon -->
@@ -37,139 +38,535 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/Styles.css">
 
-    <!-- JSON-LD -->
+    <!-- Datos estructurados -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "CREATE TABLE: Crear Tablas en SQL",
-        "description": "Aprende a usar el comando CREATE TABLE en SQL para crear tablas con columnas, tipos de datos y restricciones.",
-        "author": {
-            "@type": "Organization",
-            "name": "BDD Facil"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "BDD Facil"
-        },
-        "datePublished": "2026-07-28",
-        "inLanguage": "es",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-table.html"
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "CREATE TABLE en SQL: cómo crear tablas paso a paso",
+            "description": "Guía práctica para crear tablas en SQL Server mediante CREATE TABLE, definir columnas, tipos de datos y restricciones.",
+            "author": {
+                "@type": "Organization",
+                "name": "BDD Fácil"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "BDD Fácil"
+            },
+            "datePublished": "2026-07-28",
+            "inLanguage": "es",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://bdd-facil.netlify.app/articulos/base-de-datos-relacionales/ddl/create-table.html"
+            }
         }
-    }
     </script>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1323641111499660"
-         crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 <main class="main-content">
-    <a href="../../../index.html" class="back-button">← Volver al inicio</a>
+
+    <a href="../../../index.html" class="back-button">Volver al inicio</a>
 
     <!-- Breadcrumb -->
-    <nav style="margin-bottom: 2rem; font-size: 0.9rem; color: #94a3b8;">
+    <nav style="margin-bottom: 2rem; font-size: 0.9rem; color: #94a3b8;" aria-label="Ruta de navegación">
         <ol style="list-style: none; display: flex; gap: 0.5rem; padding: 0;">
-            <li><a href="../../../index.html" style="color: #06b6d4; text-decoration: none;">Inicio</a></li>
+            <li>
+                <a href="../../../index.html" style="color: #06b6d4; text-decoration: none;">Inicio</a>
+            </li>
             <li><span style="color: #64748b;">/</span></li>
-            <li><a href="../../sentencias-ddl-tipos-datos.html" style="color: #06b6d4; text-decoration: none;">DDL</a></li>
+            <li>
+                <a href="../../sentencias-ddl-tipos-datos.html" style="color: #06b6d4; text-decoration: none;">DDL</a>
+            </li>
             <li><span style="color: #64748b;">/</span></li>
             <li aria-current="page" style="color: #94a3b8;">CREATE TABLE</li>
         </ol>
     </nav>
 
     <article>
+
         <header class="article-header">
             <span class="article-category">DDL</span>
-            <h1 class="article-title">CREATE TABLE: Crear Tablas en SQL</h1>
+
+            <h1 class="article-title">CREATE TABLE en SQL: cómo crear tablas paso a paso</h1>
+
             <div class="article-meta">
-                <span>Publicado: Julio 2026</span> • <span>Lectura: 8 min</span>
+                <span>Publicado: Julio 2026</span>
+                <span>Lectura: 9 min</span>
             </div>
         </header>
 
         <div class="article-content">
-            <!-- Índice del artículo -->
+
+            <!-- Índice -->
             <section style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+
                 <h2 style="margin-top: 0;">Índice del artículo</h2>
+
                 <ul style="margin-bottom: 0;">
                     <li><a href="#introduccion" style="color: #06b6d4; text-decoration: none;">Introducción</a></li>
                     <li><a href="#que-aprenderas" style="color: #06b6d4; text-decoration: none;">¿Qué aprenderás?</a></li>
-                    <li><a href="#sintaxis" style="color: #06b6d4; text-decoration: none;">Sintaxis</a></li>
-                    <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación</a></li>
+                    <li><a href="#sintaxis" style="color: #06b6d4; text-decoration: none;">Sintaxis de CREATE TABLE</a></li>
+                    <li><a href="#explicacion" style="color: #06b6d4; text-decoration: none;">Explicación de sus elementos</a></li>
                     <li><a href="#ejemplo-practico" style="color: #06b6d4; text-decoration: none;">Ejemplo práctico</a></li>
-                    <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Caso real</a></li>
+                    <li><a href="#caso-real" style="color: #06b6d4; text-decoration: none;">Dos tablas relacionadas</a></li>
                     <li><a href="#buenas-practicas" style="color: #06b6d4; text-decoration: none;">Buenas prácticas</a></li>
                     <li><a href="#errores-comunes" style="color: #06b6d4; text-decoration: none;">Errores comunes</a></li>
                     <li><a href="#ejercicios" style="color: #06b6d4; text-decoration: none;">Ejercicios propuestos</a></li>
-                    <li><a href="#podcast" style="color: #06b6d4; text-decoration: none;">Podcast relacionado</a></li>
                     <li><a href="#resumen" style="color: #06b6d4; text-decoration: none;">Resumen</a></li>
                 </ul>
+
             </section>
 
+            <!-- Introducción -->
             <h2 id="introduccion">Introducción</h2>
-            <!-- Contenido pendiente -->
 
+            <p>
+                Cuando trabajamos con una base de datos relacional, necesitamos organizar la información en tablas. Cada tabla permite almacenar datos relacionados con un determinado elemento, como personas, productos, clientes o documentos.
+            </p>
+
+            <p>
+                Para definir la estructura de una tabla en SQL utilizamos la sentencia <strong>CREATE TABLE</strong>. Mediante este comando indicamos cómo se llamará la tabla, qué columnas tendrá y qué tipo de información podrá almacenar cada una.
+            </p>
+
+            <p>
+                CREATE TABLE pertenece al grupo de sentencias <strong>DDL (Data Definition Language)</strong>, también conocido como lenguaje de definición de datos. Estas sentencias permiten crear y administrar la estructura de los objetos de una base de datos.
+            </p>
+
+            <p>
+                En este artículo vamos a trabajar con ejemplos orientados a SQL Server. Primero crearemos una tabla sencilla y después veremos cómo establecer una relación entre dos tablas mediante una clave primaria y una clave foránea.
+            </p>
+
+            <!-- Qué aprenderás -->
             <h2 id="que-aprenderas">¿Qué aprenderás?</h2>
-            <!-- Contenido pendiente -->
 
-            <h2 id="sintaxis">Sintaxis</h2>
-            <!-- Contenido pendiente -->
+            <p>Al terminar esta guía vas a poder:</p>
 
-            <h2 id="explicacion">Explicación</h2>
-            <!-- Contenido pendiente -->
+            <ul>
+                <li>Comprender para qué sirve la sentencia CREATE TABLE.</li>
+                <li>Reconocer la estructura básica de una instrucción para crear tablas.</li>
+                <li>Definir columnas y seleccionar sus tipos de datos.</li>
+                <li>Comprender la diferencia entre NULL y NOT NULL.</li>
+                <li>Utilizar IDENTITY para generar valores incrementales.</li>
+                <li>Definir restricciones mediante CONSTRAINT.</li>
+                <li>Establecer claves primarias y claves foráneas.</li>
+                <li>Crear dos tablas relacionadas respetando el orden de creación.</li>
+            </ul>
 
-            <div class="ad-in-content">
-                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
-            </div>
+            <!-- Sintaxis -->
+            <h2 id="sintaxis">Sintaxis de CREATE TABLE</h2>
 
-            <h2 id="ejemplo-practico">Ejemplo práctico</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                La sentencia CREATE TABLE comienza con el nombre de la tabla que queremos crear. A continuación, entre paréntesis, se especifican sus columnas, tipos de datos y las restricciones correspondientes.
+            </p>
 
-            <h2 id="caso-real">Caso real</h2>
-            <!-- Contenido pendiente -->
+            <p>Una estructura general simplificada es la siguiente:</p>
 
-            <h2 id="buenas-practicas">Buenas prácticas</h2>
-            <!-- Contenido pendiente -->
+            <pre><code>CREATE TABLE nombre_tabla (
+    nombre_columna1 tipo_dato,
+    nombre_columna2 tipo_dato,
+    nombre_columna3 tipo_dato
+);</code></pre>
 
-            <h2 id="errores-comunes">Errores comunes</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                Por ejemplo, si queremos crear una tabla llamada <strong>tipos_dni</strong>, podemos definir una columna para identificar cada tipo de documento y otra para guardar su descripción.
+            </p>
 
+            <p>
+                La estructura también permite incorporar restricciones. Estas se utilizan para establecer condiciones sobre los datos y definir relaciones entre tablas.
+            </p>
+
+            <pre><code>CREATE TABLE nombre_tabla (
+    nombre_columna tipo_dato,
+    CONSTRAINT nombre_restriccion
+        PRIMARY KEY (nombre_columna)
+);</code></pre>
+
+            <p>
+                En las representaciones de sintaxis, los corchetes indican elementos opcionales y la barra vertical representa una alternativa entre distintas opciones.
+            </p>
+
+            <!-- Explicación -->
+            <h2 id="explicacion">Explicación de los elementos de CREATE TABLE</h2>
+
+            <h3>1. Nombre de la tabla</h3>
+
+            <p>
+                Es el identificador que utilizaremos para reconocer la tabla dentro de la base de datos. Conviene elegir nombres que permitan entender qué información almacena.
+            </p>
+
+            <p>En el siguiente ejemplo, el nombre de la tabla es <strong>tipos_dni</strong>:</p>
+
+            <pre><code>CREATE TABLE tipos_dni (
+    descripcion VARCHAR(15)
+);</code></pre>
+
+            <h3>2. Columnas y tipos de datos</h3>
+
+            <p>
+                Cada columna representa un dato que queremos almacenar. Al definirla, también debemos indicar su tipo de dato, que determina qué clase de información puede contener.
+            </p>
+
+            <p>Algunos ejemplos del material de SQL Server son:</p>
+
+            <ul>
+                <li><strong>INT:</strong> permite almacenar números enteros.</li>
+                <li><strong>VARCHAR(n):</strong> permite almacenar cadenas de caracteres de longitud variable, hasta el máximo indicado.</li>
+                <li><strong>DATETIME:</strong> se utiliza para almacenar valores de fecha y hora.</li>
+                <li><strong>DECIMAL(p,s):</strong> permite almacenar números decimales, indicando la precisión total y la cantidad de posiciones decimales.</li>
+                <li><strong>BIT:</strong> representa valores de tipo bit.</li>
+                <li><strong>FLOAT:</strong> permite representar números aproximados.</li>
+            </ul>
+
+            <p>
+                Por ejemplo, en <code>VARCHAR(15)</code>, el número 15 indica la longitud máxima de caracteres que puede contener esa columna.
+            </p>
+
+            <p>
+                En <code>DECIMAL(4,2)</code>, el primer número representa la precisión total y el segundo indica cuántas posiciones corresponden a la parte decimal.
+            </p>
+
+            <h3>3. NULL y NOT NULL</h3>
+
+            <p>
+                Al definir una columna podemos indicar si admite valores NULL o si debe contener obligatoriamente un valor.
+            </p>
+
+            <ul>
+                <li><strong>NULL:</strong> permite que la columna no tenga un valor asignado.</li>
+                <li><strong>NOT NULL:</strong> establece que la columna debe tener un valor.</li>
+            </ul>
+
+            <p>Observá la diferencia en este ejemplo:</p>
+
+            <pre><code>CREATE TABLE personas (
+    apellido VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NULL
+);</code></pre>
+
+            <p>
+                En este caso, el apellido debe tener un valor, mientras que el nombre puede quedar sin completar. Si no se especifica lo contrario, el material indica que los campos pueden admitir NULL.
+            </p>
+
+            <h3>4. IDENTITY</h3>
+
+            <p>
+                IDENTITY permite generar valores numéricos incrementales automáticamente. Se define indicando un valor inicial y el incremento que se aplicará.
+            </p>
+
+            <pre><code>id_tipo_doc INT IDENTITY(1,1)</code></pre>
+
+            <p>
+                En este caso, el primer valor generado será 1 y los siguientes aumentarán de a 1. Por ejemplo, la secuencia será 1, 2, 3, 4 y así sucesivamente.
+            </p>
+
+            <p>
+                Según el material, IDENTITY se utiliza con tipos de datos numéricos y solamente puede definirse una columna de este tipo por tabla.
+            </p>
+
+            <h3>5. CONSTRAINT</h3>
+
+            <p>
+                CONSTRAINT permite definir una restricción y asignarle un nombre. Estas restricciones se utilizan para establecer condiciones de integridad sobre los datos almacenados.
+            </p>
+
+            <p>Entre las restricciones que trabajaremos se encuentran:</p>
+
+            <ul>
+                <li><strong>PRIMARY KEY:</strong> identifica de manera única cada registro de una tabla.</li>
+                <li><strong>FOREIGN KEY:</strong> establece una referencia hacia una columna de otra tabla.</li>
+            </ul>
+
+            <p>
+                Es posible asignar nombres descriptivos a las restricciones. Por ejemplo, <code>pk_persona</code> identifica una clave primaria y <code>fk_persona_tipo_doc</code> identifica una clave foránea.
+            </p>
+
+            <!-- Ejemplo práctico -->
+            <h2 id="ejemplo-practico">Ejemplo práctico: crear una tabla de tipos de documento</h2>
+
+            <p>
+                Vamos a crear una tabla llamada <strong>tipos_dni</strong>. Su objetivo será almacenar los distintos tipos de documento y asignar un identificador a cada uno.
+            </p>
+
+            <pre><code>CREATE TABLE tipos_dni (
+    id_tipo_doc INT IDENTITY(1,1),
+    descripcion VARCHAR(15),
+    CONSTRAINT pk_tipo_doc PRIMARY KEY (id_tipo_doc)
+);</code></pre>
+
+            <p>Analicemos qué hace cada parte:</p>
+
+            <ol>
+                <li><code>CREATE TABLE tipos_dni</code>: crea una tabla con ese nombre.</li>
+                <li><code>id_tipo_doc INT</code>: define una columna de números enteros.</li>
+                <li><code>IDENTITY(1,1)</code>: genera identificadores incrementales a partir de 1.</li>
+                <li><code>descripcion VARCHAR(15)</code>: permite almacenar una descripción de hasta 15 caracteres.</li>
+                <li><code>CONSTRAINT pk_tipo_doc</code>: asigna un nombre a la restricción.</li>
+                <li><code>PRIMARY KEY (id_tipo_doc)</code>: establece la columna identificadora como clave primaria.</li>
+            </ol>
+
+            <p>
+                La clave primaria permite identificar cada registro de forma única. En este ejemplo, la columna <code>id_tipo_doc</code> cumple esa función.
+            </p>
+
+            <p>
+                Una vez creada la tabla, podemos utilizarla como referencia desde otra tabla. Esto nos permite representar relaciones entre distintos conjuntos de información.
+            </p>
+
+            <!-- Caso práctico -->
+            <h2 id="caso-real">Caso práctico: crear dos tablas relacionadas</h2>
+
+            <p>
+                Ahora vamos a desarrollar un ejemplo más completo. Imaginemos una base de datos que necesita almacenar información de personas y el tipo de documento que utiliza cada una.
+            </p>
+
+            <p>
+                Para organizar estos datos vamos a utilizar dos tablas:
+            </p>
+
+            <ul>
+                <li><strong>tipos_dni:</strong> almacena los tipos de documento disponibles.</li>
+                <li><strong>personas:</strong> almacena los datos personales y el tipo de documento asociado.</li>
+            </ul>
+
+            <h3>Paso 1. Crear la tabla tipos_dni</h3>
+
+            <p>
+                Primero debemos crear la tabla que contendrá los tipos de documento. Su identificador será la clave primaria.
+            </p>
+
+            <pre><code>CREATE TABLE tipos_dni (
+    id_tipo_doc INT IDENTITY(1,1),
+    descripcion VARCHAR(15),
+    CONSTRAINT pk_tipo_doc PRIMARY KEY (id_tipo_doc)
+);</code></pre>
+
+            <h3>Paso 2. Crear la tabla personas</h3>
+
+            <p>
+                Después creamos la tabla personas. Esta contendrá información como el legajo, apellido, nombre, fecha de nacimiento, peso, altura y número de documento.
+            </p>
+
+            <pre><code>CREATE TABLE personas (
+    legajo INT,
+    apellido VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50),
+    fecha_nac DATETIME,
+    peso DECIMAL(4,2),
+    altura DECIMAL(3,2),
+    id_tipo_doc INT,
+    nro_doc VARCHAR(8),
+    CONSTRAINT pk_persona PRIMARY KEY (legajo),
+    CONSTRAINT fk_persona_tipo_doc FOREIGN KEY (id_tipo_doc)
+        REFERENCES tipos_dni (id_tipo_doc)
+);</code></pre>
+
+            <h3>¿Cómo se relacionan las tablas?</h3>
+
+            <p>
+                La relación se establece mediante la columna <code>id_tipo_doc</code>. En la tabla <strong>tipos_dni</strong>, esta columna es la clave primaria. En la tabla <strong>personas</strong>, se utiliza como clave foránea.
+            </p>
+
+            <p>
+                La instrucción <code>FOREIGN KEY</code> indica que la columna de personas referencia a la columna correspondiente de tipos_dni.
+            </p>
+
+            <p>
+                De esta manera, ambas tablas quedan relacionadas sin necesidad de repetir la descripción del tipo de documento en cada registro de personas.
+            </p>
+
+            <h3>¿Por qué debemos crear primero tipos_dni?</h3>
+
+            <p>
+                El orden de creación es importante porque la tabla personas contiene una clave foránea que referencia a tipos_dni. Por eso, primero debe existir la tabla referenciada y luego podemos crear la tabla que establece esa relación.
+            </p>
+
+            <p>
+                Este ejemplo muestra cómo CREATE TABLE no solamente permite definir columnas, sino también establecer las restricciones necesarias para organizar la información entre diferentes tablas.
+            </p>
+
+            <!-- Buenas prácticas -->
+            <h2 id="buenas-practicas">Buenas prácticas al utilizar CREATE TABLE</h2>
+
+            <p>
+                Antes de crear una tabla, conviene revisar cómo estará organizada la información. Algunas decisiones tomadas en esta etapa determinan la estructura que tendrá la base de datos.
+            </p>
+
+            <ul>
+                <li><strong>Elegir nombres descriptivos:</strong> utilizar nombres que permitan reconocer el propósito de cada tabla, columna y restricción.</li>
+                <li><strong>Seleccionar el tipo de dato adecuado:</strong> definir cada columna según la información que necesita almacenar.</li>
+                <li><strong>Identificar la clave primaria:</strong> determinar qué columna permitirá identificar de manera única cada registro.</li>
+                <li><strong>Revisar los valores NULL:</strong> decidir qué columnas pueden quedar sin información y cuáles deben ser obligatorias.</li>
+                <li><strong>Definir las relaciones:</strong> identificar qué tablas necesitan referenciar a otras mediante claves foráneas.</li>
+                <li><strong>Respetar el orden de creación:</strong> crear primero las tablas que serán referenciadas por otras.</li>
+            </ul>
+
+            <!-- Errores comunes -->
+            <h2 id="errores-comunes">Errores comunes al crear tablas</h2>
+
+            <p>
+                Al comenzar a trabajar con CREATE TABLE, es posible cometer errores al definir columnas, restricciones o relaciones. Estos son algunos puntos que conviene revisar:
+            </p>
+
+            <h3>1. No definir correctamente los tipos de datos</h3>
+
+            <p>
+                Cada columna debe tener un tipo de dato acorde con la información que almacenará. Por ejemplo, utilizar INT para un identificador numérico y VARCHAR para una descripción de texto.
+            </p>
+
+            <h3>2. Confundir NULL con NOT NULL</h3>
+
+            <p>
+                Si una columna se define como NOT NULL, debe contener un valor. Si se necesita permitir que quede sin información, hay que contemplar esa condición al definirla.
+            </p>
+
+            <h3>3. No establecer una clave primaria</h3>
+
+            <p>
+                La clave primaria permite identificar de manera única los registros de una tabla. Es importante determinar qué columna cumplirá esa función al diseñar su estructura.
+            </p>
+
+            <h3>4. Referenciar una tabla que todavía no fue creada</h3>
+
+            <p>
+                Si una tabla contiene una clave foránea que apunta a otra, primero debe existir la tabla referenciada. En el ejemplo anterior, por eso creamos tipos_dni antes que personas.
+            </p>
+
+            <h3>5. No separar correctamente los elementos</h3>
+
+            <p>
+                Las columnas y restricciones deben estar separadas correctamente mediante comas. Al escribir la sentencia, revisá también que los paréntesis estén completos y que los nombres de las columnas coincidan con los definidos.
+            </p>
+
+            <!-- Ejercicios -->
             <h2 id="ejercicios">Ejercicios propuestos</h2>
-            <!-- Contenido pendiente -->
 
-            <div class="ad-in-content">
-                <small>📢 Google AdSense - Anuncio en Contenido 336x280</small>
-            </div>
+            <p>
+                Ahora que conocés la estructura de CREATE TABLE, es momento de poner en práctica los conceptos. Intentá resolver los siguientes ejercicios antes de consultar las respuestas.
+            </p>
 
-            <h2 id="podcast">Podcast relacionado</h2>
-            <!-- Contenido pendiente -->
+            <h3>Ejercicio 1: crear una tabla sencilla</h3>
 
-            <h2 id="resumen">Resumen</h2>
-            <!-- Contenido pendiente -->
+            <p>
+                Creá una tabla llamada <code>productos</code> que tenga las siguientes columnas:
+            </p>
 
-            <h2 id="articulo-siguiente">Artículo siguiente</h2>
-            <!-- Contenido pendiente -->
+            <ul>
+                <li><code>id_producto</code>: número entero.</li>
+                <li><code>descripcion</code>: texto de hasta 40 caracteres.</li>
+                <li><code>precio</code>: número decimal con cuatro posiciones de precisión total y dos decimales.</li>
+            </ul>
+
+            <p><strong>Objetivo:</strong> practicar la definición de columnas y tipos de datos.</p>
+
+            <h3>Ejercicio 2: utilizar IDENTITY</h3>
+
+            <p>
+                Modificá la estructura del ejercicio anterior para que <code>id_producto</code> genere valores automáticamente comenzando en 1 e incrementándose de a 1.
+            </p>
+
+            <p><strong>Objetivo:</strong> comprender el funcionamiento de IDENTITY.</p>
+
+            <h3>Ejercicio 3: establecer una clave primaria</h3>
+
+            <p>
+                Definí una restricción llamada <code>pk_producto</code> para establecer <code>id_producto</code> como clave primaria.
+            </p>
+
+            <p><strong>Objetivo:</strong> practicar el uso de CONSTRAINT y PRIMARY KEY.</p>
+
+            <h3>Ejercicio 4: crear dos tablas relacionadas</h3>
+
+            <p>
+                Creá dos tablas: <code>categorias</code> y <code>productos</code>. La primera debe tener un identificador y una descripción. La segunda debe incluir un identificador propio y una columna para referenciar la categoría correspondiente.
+            </p>
+
+            <p>
+                Definí una clave primaria en cada tabla y una clave foránea en productos que haga referencia al identificador de categorias.
+            </p>
+
+            <p><strong>Objetivo:</strong> aplicar PRIMARY KEY, FOREIGN KEY y comprender el orden de creación de las tablas.</p>
+
+            <h3>Para comprobar lo aprendido</h3>
+
+            <p>Antes de terminar, intentá responder estas preguntas:</p>
+
+            <ol>
+                <li>¿A qué grupo de sentencias pertenece CREATE TABLE?</li>
+                <li>¿Qué información se define al crear una columna?</li>
+                <li>¿Para qué sirve IDENTITY(1,1)?</li>
+                <li>¿Qué diferencia existe entre PRIMARY KEY y FOREIGN KEY?</li>
+                <li>¿Por qué es importante crear primero la tabla referenciada?</li>
+            </ol>
+
+            <!-- Resumen -->
+            <h2 id="resumen">Resumen: lo que tenés que recordar</h2>
+
+            <p>
+                CREATE TABLE es una sentencia DDL utilizada para crear tablas y definir su estructura dentro de una base de datos.
+            </p>
+
+            <p>Los conceptos principales de esta guía son:</p>
+
+            <ul>
+                <li><strong>CREATE TABLE:</strong> crea una nueva tabla.</li>
+                <li><strong>Columnas:</strong> representan los datos que se almacenarán.</li>
+                <li><strong>Tipos de datos:</strong> determinan qué clase de información admite cada columna.</li>
+                <li><strong>NULL y NOT NULL:</strong> indican si una columna puede quedar sin valor.</li>
+                <li><strong>IDENTITY:</strong> genera valores numéricos incrementales.</li>
+                <li><strong>CONSTRAINT:</strong> permite definir restricciones con nombre.</li>
+                <li><strong>PRIMARY KEY:</strong> identifica de manera única los registros.</li>
+                <li><strong>FOREIGN KEY:</strong> permite establecer referencias entre tablas.</li>
+            </ul>
+
+            <p>
+                La mejor manera de aprender CREATE TABLE es practicar con diferentes estructuras. Empezá creando tablas sencillas y después incorporá restricciones y relaciones, como hicimos con los ejemplos de tipos_dni y personas.
+            </p>
+
+            <!-- Artículo siguiente -->
+            <h2 id="articulo-siguiente">¿Qué sigue después de CREATE TABLE?</h2>
+
+            <p>
+                Una vez que aprendiste a crear tablas, el siguiente paso es conocer cómo modificar su estructura. Para eso existe <strong>ALTER TABLE</strong>, una sentencia que permite agregar, eliminar o modificar columnas y restricciones de una tabla existente.
+            </p>
+
+            <p>
+                En el siguiente artículo vamos a trabajar con esta sentencia y sus principales operaciones.
+            </p>
 
             <!-- Navegación entre artículos -->
-            <div style="display: flex; justify-content: space-between; margin-top: 3rem;">
-                <a href="create-database.html" id="link-anterior" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
-                    ← Anterior: CREATE DATABASE
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem;">
+
+                <a href="create-database.html" id="link-anterior"
+                   style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    Anterior: CREATE DATABASE
                 </a>
-                <a href="alter-table.html" id="link-siguiente" style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
-                    Siguiente: ALTER TABLE →
+
+                <a href="alter-table.html" id="link-siguiente"
+                   style="background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);">
+                    Siguiente: ALTER TABLE
                 </a>
+
             </div>
+
         </div>
     </article>
+
 </main>
 
 <script src="../../../js/progreso-lectura.js"></script>
+
 <script>
     ProgresoLectura.inicializar({
         articuloId: 'ddl-create-table'
     });
 </script>
+
 </body>
 </html>
+```

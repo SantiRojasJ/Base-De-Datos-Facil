@@ -1,0 +1,35 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 11 
+ 
+Tipo 
+genérico  Tipo de dato almace nado Nombre en 
+SQL Server  Cantidad de bytes que ocupa en el 
+almacenamiento  
+cursor  Es empleado en variables o procedimientos 
+almacenados.  
+timestamp  Indica la actividad que ocurre sobre una fila.  
+uniqueidentifi
+er Es un identificador único de la fila dentro de 
+la base de datos  
+sql_variant  Almacena varios tipos de datos excepto el 
+tect, ntext, timestamp, image.  
+table  Almacena un resultado de una consulta.  
+Unicode  Se puede almacenar datos 
+Unicode. Utilizan 2 by te por 
+cada carácter  nchar  Longitud fija hasta 4000 caracteres Unicode.  
+nvarchar  Longitud variable hasta 4000 caracteres 
+unicode  
+Ntext  Exceden los 4000 caracteres unicodes.  
+Tabla 2: Elaboración propia . 
+ 
+Ejemplo de creación de tablas  
+Se quiere crear las tablas cuya estructura se muestra a continuación:  
+ 
+Gráfico  1: Elaboración propia . 
+Se van a crear las tablas con sus claves primarias y foráneas en el mismo 
+momento por ello por integridad referencial se creará primero la tabla tipos_dni  ya 
+que su clave primaria está referenciada por una clave foránea de personas : 
+CREATE TABLE tipos_dni 
+(id_tipo_doc int IDENTITY (1,1), 
+ descripcion varchar( 15) 

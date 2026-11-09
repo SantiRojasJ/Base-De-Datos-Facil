@@ -1,0 +1,41 @@
+ 
+ 
+Laboratorio de  Computación I  Material Teórico – U1 Pág. 6 
+ 
+Los datos son organizados de otra manera para permitir la realización de 
+informes, análisis corporativos, estad ísticas que ayudan a la toma de 
+decisiones.  
+Objetos de SQL Server  
+Una base de datos es una colección de datos, tablas y otros objetos. Los 
+objetos de base de datos le ayudan a estructurar los datos y a definir los mecanismos 
+que mantienen la integridad de los datos. En la tabla siguiente se describen los 
+objetos de base de datos de SQL Server.  
+ 
+Objeto de base de datos  Descripción  
+Tabla  Define un conjunto de filas que tienen columnas asociadas. Tipo de 
+datos: Define los valores permitidos para los datos de una columna o 
+variable.  
+SQL Server proporciona 
+tipos de datos del 
+sistema.  Los usuarios crean tipos de datos definidos por el usuario.  
+Restricción  Define reglas relativas a los valores permitidos en las columnas y es 
+el mecanismo estándar para exigir la integridad de los datos.  
+Valor predeterminado  Define un valor que se almacena en una columna si no se especifica 
+explícitamente ningún otro valor.  
+Regla  Contiene información que define los valores válidos que se pueden 
+almacenar en una columna o en un tipo de datos.  
+Índice  Es una estructura de almacenamiento que proporciona acceso rápido 
+para la recuperación de los datos y puede exigir la integridad de los 
+datos.  
+Vista  Proporciona una forma de ver los datos de una o varias tablas o vistas 
+de una base de datos.  
+Función  Definida por el usuario puede devolver un valor escalar o una tabla. 
+Las funciones se utilizan para encapsular la lógica que se realiza con 
+frecuencia.  
+Procedimiento 
+almacenado  Es una colección con nombre de instrucciones Transact -SQL 
+compiladas previamente que se ejecutan juntas.  
+ 
+Tabla 1:  Elaboración propia . 
+ 
+ 
