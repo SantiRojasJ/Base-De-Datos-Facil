@@ -36,8 +36,9 @@ var ejerciciosData = [
         pista: "Combiná INNER JOIN con WHERE para filtrar y ORDER BY para ordenar."
     },
     {
-        solucion: "SELECT C.nombre_carrera, (SELECT COUNT(*) FROM Alumnos A WHERE A.id_carrera = C.id_carrera) AS cantidad_alumnos, (SELECT COUNT(*) FROM Materias M WHERE M.id_carrera = C.id_carrera) AS cantidad_materias FROM Carreras C HAVING cantidad_alumnos > 2 ORDER BY cantidad_alumnos DESC;",
-        pista: "Usá subconsultas para contar alumnos y materias por carrera, o combiná JOINs con GROUP BY y HAVING."
+        solucion: "SELECT C.nombre_carrera, A.cantidad_alumnos, M.cantidad_materias FROM Carreras C CROSS APPLY (SELECT COUNT(*) AS cantidad_alumnos FROM Alumnos WHERE id_carrera = C.id_carrera) AS A CROSS APPLY (SELECT COUNT(*) AS cantidad_materias FROM Materias WHERE id_carrera = C.id_carrera) AS M WHERE A.cantidad_alumnos > 2 ORDER BY A.cantidad_alumnos DESC;",
+        pista: "Usá CROSS APPLY para calcular la cantidad de alumnos y de materias por carrera, o combiná JOINs con GROUP BY y HAVING.",
+        validar: validarEjercicio10
     }
 ];
 
@@ -78,6 +79,32 @@ function normalizar(sql) {
         .replace(/;\s*/g, " ")
         .replace(/\s+/g, " ")
         .trim();
+}
+
+function validarEjercicio10(respuesta) {
+    var sql = normalizar(respuesta);
+
+    if (!/\bfrom\s+carreras\b/.test(sql)) return false;
+    if (!/\balumnos\b/.test(sql) || !/\bmaterias\b/.test(sql)) return false;
+    if (!/\bnombre_carrera\b/.test(sql)) return false;
+    if ((sql.match(/\bcount\s*\(/g) || []).length < 2) return false;
+    if (!/\border\s+by\b[\s\S]*\bdesc\b/.test(sql)) return false;
+
+    var filtroAlumnos = /(?:count\s*\([^)]*\)|cantidad_alumnos)\s*(?:>\s*2(?!\d)|>=\s*3(?!\d))/.test(sql);
+    if (!filtroAlumnos) return false;
+
+    var tieneHaving = /\bhaving\b/.test(sql);
+    var tieneGroupBy = /\bgroup\s+by\b/.test(sql);
+
+    if (tieneHaving && !tieneGroupBy) return false;
+
+    if (tieneGroupBy) {
+        return /\bjoin\s+alumnos\b/.test(sql) && /\bjoin\s+materias\b/.test(sql);
+    }
+
+    if (/\bcross\s+apply\b|\bouter\s+apply\b/.test(sql)) return true;
+
+    return /\bwhere\b[\s\S]*cantidad_alumnos\s*(?:>\s*2(?!\d)|>=\s*3(?!\d))/.test(sql);
 }
 
 function getIntentos(index) {
@@ -123,7 +150,11 @@ function corregir(index) {
     var solucionNormalizada = normalizar(ejerciciosData[index].solucion);
     var respuestaNormalizada = normalizar(respuesta);
 
-    if (respuestaNormalizada === solucionNormalizada) {
+    var esCorrecta = typeof ejerciciosData[index].validar === "function"
+        ? ejerciciosData[index].validar(respuesta)
+        : respuestaNormalizada === solucionNormalizada;
+
+    if (esCorrecta) {
         resultado.className = "result-message result-correct";
         resultado.innerHTML = "✅ Correcto. Excelente trabajo.";
         marcarCompletado(index);

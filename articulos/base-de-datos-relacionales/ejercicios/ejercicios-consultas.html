@@ -613,7 +613,7 @@ ORDER BY A.nombre ASC;</code></pre>
             <div class="hint-area" id="pista-9">
                 <div class="hint-inner">
                     <span class="hint-label">💡 Pista</span>
-                    <p class="hint-text">Usá subconsultas para contar alumnos y materias por carrera, o combiná JOINs con GROUP BY y HAVING.</p>
+                    <p class="hint-text">Usá CROSS APPLY para calcular la cantidad de alumnos y de materias por carrera, o combiná JOINs con GROUP BY y HAVING.</p>
                 </div>
             </div>
 
@@ -622,11 +622,21 @@ ORDER BY A.nombre ASC;</code></pre>
                     <span class="solution-label">Solución</span>
                     <pre><code>SELECT
     C.nombre_carrera,
-    (SELECT COUNT(*) FROM Alumnos A WHERE A.id_carrera = C.id_carrera) AS cantidad_alumnos,
-    (SELECT COUNT(*) FROM Materias M WHERE M.id_carrera = C.id_carrera) AS cantidad_materias
+    A.cantidad_alumnos,
+    M.cantidad_materias
 FROM Carreras C
-HAVING cantidad_alumnos > 2
-ORDER BY cantidad_alumnos DESC;</code></pre>
+CROSS APPLY (
+    SELECT COUNT(*) AS cantidad_alumnos
+    FROM Alumnos
+    WHERE id_carrera = C.id_carrera
+) AS A
+CROSS APPLY (
+    SELECT COUNT(*) AS cantidad_materias
+    FROM Materias
+    WHERE id_carrera = C.id_carrera
+) AS M
+WHERE A.cantidad_alumnos > 2
+ORDER BY A.cantidad_alumnos DESC;</code></pre>
                 </div>
             </div>
 
